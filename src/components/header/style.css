@@ -1,0 +1,237 @@
+* {color: #333;}
+button {
+  cursor: pointer;
+}
+
+.topBanner {
+    height: 40px;
+    margin: 0 auto;
+    background-color: #C8E900;
+  }
+
+ .banBtn {
+    line-height: 40px;
+    letter-spacing: -0.06em;
+    font-weight: 600;
+  }
+  
+ .banBtn span {
+    font-size: 15px;
+  }
+  /* topBanner end */
+
+  .container {
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+  }
+
+  .topMenu {
+    margin-left: 20px;
+  }
+
+  .topMenu ul {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+
+  .menuShare {
+    font-size: 12px;
+    letter-spacing: -0.06em;
+  }
+   .line {
+    width: 1px;
+    height: 13px;
+    margin: 3px 12px;
+    background-color: #ccc;
+  }
+  /* topMenu end */
+
+  .midMenu {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .infoDelivery {
+    width: 91px;
+    height: 28px;
+    line-height: 14px;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 18px;
+    border: 1px solid rgb(216, 216, 216);
+    background: #fff;
+    margin: 0 194px 0 20px;
+  }
+
+  .infoDelivery span {
+    color: #223928;
+  }
+
+  /* searchBar area */
+  .searchBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 420px;
+    height: 36px;
+    border: 1px solid #223928;
+    border-radius: 30px;
+  }
+
+  .searchBox {
+    width: 320px;
+    border: none;
+    line-height: 32px;
+    font-size: 14px;
+    letter-spacing: -0.06em;
+    margin-left: 16px;
+  }
+
+  .searchBox:focus {
+    outline: none;
+  }
+
+  .searchBtn {
+    width: 20px;
+    height: 20px;
+    background: url(../../../public/image/search_icon.png) no-repeat;
+    background-size: 18px;
+    border: none;
+    margin-right: 16px;
+  }
+  /* searchBar end */
+
+  .iconMenu ul {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    position: absolute;
+    right: 0;
+    top: 47px;
+  }
+
+  .iconMenu ul li .iconShare {
+    margin-left: 20px;
+    width: 26px;
+    height: 26px;
+    display: block;
+  }
+
+  .deliveryIcon {
+    width: 28px !important;
+    height: 28px !important;
+    background: url(../../../public//image/delivery6.png);
+    background-size: 28px;
+  }
+
+  .mypageIcon {
+    background: url(../../../public//image/mypge6.png);
+    background-size: 26px;
+  }
+
+  .zzimIcon {
+    background: url(../../../public//image/zzim6.png);
+    background-size: 26px;
+  }
+
+  .cartIcon {
+    background: url(../../../public//image/cart6.png);
+    background-size: 26px;
+  }
+
+  /* mainMenu area */
+  .mainMenu {
+    display: flex;
+    font-weight: 600;
+    letter-spacing: -0.06em;
+    height: 56px;
+    line-height: 56px;
+  }
+
+  .mainMenu ul {
+    display: flex;
+    align-items: flex-end;
+    margin: 0 auto;
+  }
+
+  .mainMenu ul li {
+    margin: 0 25px 0 25px;
+  }
+
+  /* category hover */
+  .menu:hover {
+    color: #BEDD00;
+  }
+  
+  .category {
+    display: flex;
+  }
+
+  .cateInner {
+    display: block;
+  }
+
+  .cateInner:before {
+    content: ''; 
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    background: url(../../../public/image/category.png);
+    background-size: 20px;
+    margin-right: 7px;
+  }
+
+  /* category hover */
+  .cateInner:hover {
+    color: #BEDD00;
+  }
+
+  .cateInner:hover:before {
+    content: ''; 
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    background: url(../../../public/image/category_hover.png);
+    background-size: 20px;
+    margin-right: 7px;
+  }
+
+  .address {
+    width: 125px;
+    height: 30px;
+    text-align: center;
+    line-height: 26px;
+    margin-top: 13px;
+    border-radius: 30px;
+    border: none;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .address::before {
+    content: '';
+    display: inline-block;
+    position: relative;
+    top: 4px;
+    width: 18px;
+    height: 18px;
+    background: url(../../../public/image/location6.png);
+    background-size: 18px;
+    margin-right: 7px;
+  }
+
+  /* category hover */
+  .address:hover {
+    background: #ccc;
+  }
+
+
+
