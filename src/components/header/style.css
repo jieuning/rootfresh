@@ -124,22 +124,22 @@ button {
   .deliveryIcon {
     width: 28px !important;
     height: 28px !important;
-    background: url(../../../public//image/delivery6.png);
+    background: url(../../../public/image/delivery6.png);
     background-size: 28px;
   }
 
   .mypageIcon {
-    background: url(../../../public//image/mypge6.png);
+    background: url(../../../public/image/mypge6.png);
     background-size: 26px;
   }
 
   .zzimIcon {
-    background: url(../../../public//image/zzim6.png);
+    background: url(../../../public/image/zzim6.png);
     background-size: 26px;
   }
 
   .cartIcon {
-    background: url(../../../public//image/cart6.png);
+    background: url(../../../public/image/cart6.png);
     background-size: 26px;
   }
 

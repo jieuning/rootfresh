@@ -1,0 +1,36 @@
+.swiper-slide {
+    overflow: hidden;
+    width: 100%;
+    height: 400px;
+    background: #ccc;
+}
+
+.bg {
+    width: 100%;
+    height: 400px;
+    display: block;
+}
+
+.slide1 {
+    background: url(../../../public/image/main_banner1.png);
+    background-size: cover;
+    background-position: center center;
+}
+
+.slide2 {
+    background: url(../../../public/image/main_banner2.png);
+    background-size: cover;
+    background-position: center center;
+}
+
+.slide3 {
+    background: url(../../../public/image/main_banner3.png);
+    background-size: cover;
+    background-position: center center;
+}
+
+.slide4 {
+    background: url(../../../public/image/main_banner4.png);
+    background-size: cover;
+    background-position: center center;
+}
