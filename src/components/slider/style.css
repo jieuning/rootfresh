@@ -36,9 +36,49 @@
     background-position: center center;
 }
 
-.button-prev-slide,
-.button-next-slide{
+/* navigation */
+/* .navi-share {
+    width: 42px;
+    height: 42px;
     position: absolute;
+    top: 50%;
     transform: translateY(-50%);
     z-index: 1;
+    border: none;
+} */
+
+.button-prev-slide{
+    width: 42px;
+    height: 42px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    border: none;
+    left: 20%;
+    background: url(./prev.png);
+    background-size: cover;
+    opacity: 0;
+}
+.button-next-slide{
+    right: 20%;
+    background: url(./next.png);
+    background-size: cover;
+}
+
+/* pagenation */
+.swiper-pagination {
+    position: absolute;
+    font-weight: 600;
+    color: #fff;
+}
+
+.swiper-pagination-fraction {
+    width: 60px !important;
+    height: 28px;
+    left: 70% !important;
+    bottom: 20px !important;
+    line-height: 26px;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
 }
