@@ -7,8 +7,8 @@ import Logo from '../../assets/logo.svg'
 function Header() {
     return (
         <header>
-            <div className="topBanner">
-                <Link className="banBtn" to='#'>
+            <div className="top-banner">
+                <Link className="top-banner-btn" to='#'>
                     지금 가입하면 첫 주문&nbsp;
                     <span>100원</span>
                     &nbsp;혜택!
@@ -16,50 +16,50 @@ function Header() {
             </div> {/* topBanner end */}
 
             <div className="container">
-                <nav className="topMenu">
+                <nav className="top-menu">
                     <ul>
-                        <li style={{ fontWeight: '600' }}><Link className="menuShare" to='#'>회원가입</Link></li>
+                        <li style={{ fontWeight: '600' }}><Link className="menu-share" to='#'>회원가입</Link></li>
                         <li className="line"></li>
-                        <li><Link className="menuShare" to='#'>로그인</Link></li>
+                        <li><Link className="menu-share" to='#'>로그인</Link></li>
                         <li className="line"></li>
-                        <li><Link className="menuShare" to='#'>고객센터</Link></li>
+                        <li><Link className="menu-share" to='#'>고객센터</Link></li>
                     </ul>
                 </nav> {/* topMenu end */}
 
-                <div className="midMenu">
+                <div className="mid-menu">
                     <h1 className="logo">
                         <Link to='#'><img src={Logo} /></Link>
                     </h1>
-                    <button className="infoDelivery">
+                    <button className="info-delivery">
                         <span>루트</span>
                         배송 안내
                     </button>
-                    <div className="searchBar">
-                        <input className="searchBox" type="search" placeholder="원하시는 상품을 입력해주세요"></input>
-                        <button className="searchBtn"></button>
+                    <div className="search-bar">
+                        <input className="search-box" type="search" placeholder="원하시는 상품을 입력해주세요"></input>
+                        <button className="search-btn"></button>
                     </div>
                 </div> {/* midMenu end */}
 
-                <nav className="iconMenu">
+                <nav className="icon-menu">
                     <ul>
                         <li>
-                            <Link className="deliveryIcon iconShare" to='#'></Link>
+                            <Link className="delivery-icon icon-share" to='#'></Link>
                         </li>
                         <li>
-                            <Link className="mypageIcon iconShare" to='#'></Link>
+                            <Link className="mypage-icon icon-share" to='#'></Link>
                         </li>
                         <li>
-                            <Link className="zzimIcon iconShare" to='#'></Link>
+                            <Link className="zzim-icon icon-share" to='#'></Link>
                         </li>
                         <li>
-                            <Link className="cartIcon iconShare" to='#'></Link>
+                            <Link className="cart-icon icon-share" to='#'></Link>
                         </li>
                     </ul>
                 </nav>
 
-                <nav className="mainMenu">
+                <nav className="main-menu">
                     <div className="category">
-                        <Link className="cateInner" to='#'>
+                        <Link className="category-inner" to='#'>
                             전체상품 보기
                         </Link>
                     </div>
