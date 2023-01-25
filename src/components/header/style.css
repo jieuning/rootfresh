@@ -1,23 +1,23 @@
-header {color: #333;}
 
 button {
   cursor: pointer;
 }
 
-.topBanner {
+.top-banner {
     height: 40px;
     margin: 0 auto;
     background-color: #C8E900;
   }
 
- .banBtn {
-    line-height: 40px;
+ .top-banner-btn {
+    line-height: 38px;
     letter-spacing: -0.06em;
-    font-weight: 600;
+    font-weight: 500;
   }
   
- .banBtn span {
-    font-size: 15px;
+ .top-banner-btn span {
+    font-size: 16px;
+    font-weight: 700;
   }
   /* topBanner end */
 
@@ -27,17 +27,17 @@ button {
     margin: 0 auto;
   }
 
-  .topMenu {
+  .top-menu {
     margin-left: 20px;
   }
 
-  .topMenu ul {
+  .top-menu ul {
     display: flex;
     justify-content: flex-end;
     margin-top: 10px;
   }
 
-  .menuShare {
+  .menu-share {
     font-size: 12px;
     letter-spacing: -0.06em;
   }
@@ -49,14 +49,14 @@ button {
   }
   /* topMenu end */
 
-  .midMenu {
+  .mid-menu {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     margin-top: 20px;
   }
 
-  .infoDelivery {
+  .info-delivery {
     width: 91px;
     height: 28px;
     line-height: 14px;
@@ -68,12 +68,12 @@ button {
     margin: 0 194px 0 20px;
   }
 
-  .infoDelivery span {
+  .info-delivery span {
     color: #223928;
   }
 
   /* searchBar area */
-  .searchBar {
+  .search-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -83,7 +83,7 @@ button {
     border-radius: 30px;
   }
 
-  .searchBox {
+  .search-box {
     width: 320px;
     border: none;
     line-height: 32px;
@@ -92,11 +92,11 @@ button {
     margin-left: 16px;
   }
 
-  .searchBox:focus {
+  .search-box:focus {
     outline: none;
   }
 
-  .searchBtn {
+  .search-btn {
     width: 20px;
     height: 20px;
     background: url(../../../public/image/search_icon.png) no-repeat;
@@ -106,7 +106,7 @@ button {
   }
   /* searchBar end */
 
-  .iconMenu ul {
+  .icon-menu ul {
     display: flex;
     justify-content: flex-end;
     flex-direction: row;
@@ -115,51 +115,51 @@ button {
     top: 47px;
   }
 
-  .iconMenu ul li .iconShare {
+  .icon-menu ul li .icon-share {
     margin-left: 20px;
     width: 26px;
     height: 26px;
     display: block;
   }
 
-  .deliveryIcon {
+  .delivery-icon {
     width: 28px !important;
     height: 28px !important;
     background: url(../../../public/image/delivery6.png);
     background-size: 28px;
   }
 
-  .mypageIcon {
+  .mypage-icon {
     background: url(../../../public/image/mypge6.png);
     background-size: 26px;
   }
 
-  .zzimIcon {
+  .zzim-icon {
     background: url(../../../public/image/zzim6.png);
     background-size: 26px;
   }
 
-  .cartIcon {
+  .cart-icon {
     background: url(../../../public/image/cart6.png);
     background-size: 26px;
   }
 
   /* mainMenu area */
-  .mainMenu {
+  .main-menu {
     display: flex;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: -0.06em;
     height: 56px;
     line-height: 56px;
   }
 
-  .mainMenu ul {
+  .main-menu ul {
     display: flex;
     align-items: flex-end;
     margin: 0 auto;
   }
 
-  .mainMenu ul li {
+  .main-menu ul li {
     margin: 0 25px 0 25px;
   }
 
@@ -172,11 +172,11 @@ button {
     display: flex;
   }
 
-  .cateInner {
+  .category-inner {
     display: block;
   }
 
-  .cateInner:before {
+  .category-inner:before {
     content: ''; 
     display: inline-block;
     position: relative;
@@ -189,11 +189,11 @@ button {
   }
 
   /* category hover */
-  .cateInner:hover {
+  .category-inner:hover {
     color: #BEDD00;
   }
 
-  .cateInner:hover:before {
+  .category-inner:hover:before {
     content: ''; 
     display: inline-block;
     position: relative;
