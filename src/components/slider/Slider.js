@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import "./style.css";
-import { mainSliderTxt } from "../../data";
+import { mainSliderTxt } from '../../data';
+
+//image
+import mainBanner1 from './image/main_banner1.png'
+import mainBanner2 from './image/main_banner2.png'
+import mainBanner3 from './image/main_banner3.png'
+import mainBanner4 from './image/main_banner4.png'
+
+//components
+import {MainBanner1, MainBanner2} from './MainBanner'
 
 //swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -9,16 +18,21 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Navigation, Pagination, Autoplay } from 'swiper';
 
+const bannerImage = [
+  mainBanner1,
+  mainBanner2,
+  mainBanner3,
+  mainBanner4
+]
 
 function MySwiper() {
 
-  const [isHovering, setIsHovering] = useState(false);
+  let [banText] = useState(mainSliderTxt);
+  // let [mainBanner, setMainBanner]  = useState[MainBanner1, MainBanner2, MainBanner2, MainBanner2];
+  // console.log(mainBanner)
 
   return (
-    <div
-      onMouseOver={() => setIsHovering(true)}
-      onMouseOut={() => setIsHovering(false)}
-    >
+    <div>
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         slidesPerView={1}
@@ -30,43 +44,35 @@ function MySwiper() {
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log('slide change')}
         loop={true}
-        speed={300}
+        speed={400}
         autoplay={{
           delay: 5000,
           disableOnInteraction: false,
         }}
       >
         <SwiperSlide>
-          <a href='#' className='bg slide1'></a>
-          <div className='bantxt white'>
-            <h4 className='slide-title-w'>{mainSliderTxt[0].title}</h4>
-            <h3 className='slide-subtitle-w'>{mainSliderTxt[0].subtitle}</h3>
-            <p className='content-w'>{mainSliderTxt[0].content}</p>
-          </div>
+          <MainBanner1
+              banText={banText[0]}
+              bannerImage={bannerImage[0]}
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <a href='#' className='bg slide2'></a>
-          <div className='bantxt'>
-            <h4 className='slide-title'>{mainSliderTxt[1].title}</h4>
-            <h3 className='slide-subtitle'>{mainSliderTxt[1].subtitle}</h3>
-            <p className='content'>{mainSliderTxt[1].content}</p>
-          </div>
+          <MainBanner2
+            banText={banText[1]}
+            bannerImage={bannerImage[1]}
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <a href='#' className='bg slide3'></a>
-          <div className='bantxt'>
-            <h4 className='slide-title'>{mainSliderTxt[2].title}</h4>
-            <h3 className='slide-subtitle'>{mainSliderTxt[2].subtitle}</h3>
-            <p className='content'>{mainSliderTxt[2].content}</p>
-          </div>
+          <MainBanner2
+            banText={banText[2]}
+            bannerImage={bannerImage[2]}
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <a href='#' className='bg slide4'></a>
-          <div className='bantxt'>
-            <h4 className='slide-title'>{mainSliderTxt[3].title}</h4>
-            <h3 className='slide-subtitle'>{mainSliderTxt[3].subtitle}</h3>
-            <p className='content'>{mainSliderTxt[3].content}</p>
-          </div>
+          <MainBanner2
+            banText={banText[3]}
+            bannerImage={bannerImage[3]}
+          />
         </SwiperSlide>
         <button className='button-prev-slide'></button>
         <button className='button-next-slide'></button>
@@ -74,6 +80,5 @@ function MySwiper() {
     </div>
   );
 };
-
 
 export default MySwiper;
