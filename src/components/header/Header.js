@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css"
 import { Route, Routes, Link, NavLink, Router } from "react-router-dom";
 import Logo from '../../assets/logo.svg'
 
 
 function Header() {
+
+    let [menu] = useState(["THE신선", "오늘또구매", "베스트", "신상품", "마감할인", "특별한특가"]);
+
     return (
         <header>
             <div className="top-banner">
@@ -42,18 +45,10 @@ function Header() {
 
                 <nav className="icon-menu">
                     <ul>
-                        <li>
-                            <Link className="delivery-icon icon-share" to='#'></Link>
-                        </li>
-                        <li>
-                            <Link className="mypage-icon icon-share" to='#'></Link>
-                        </li>
-                        <li>
-                            <Link className="zzim-icon icon-share" to='#'></Link>
-                        </li>
-                        <li>
-                            <Link className="cart-icon icon-share" to='#'></Link>
-                        </li>
+                        <li><Link className="delivery-icon icon-share" to='#'></Link></li>
+                        <li><Link className="mypage-icon icon-share" to='#'></Link></li>
+                        <li><Link className="zzim-icon icon-share" to='#'></Link></li>
+                        <li><Link className="cart-icon icon-share" to='#'></Link></li>
                     </ul>
                 </nav>
 
@@ -64,12 +59,11 @@ function Header() {
                         </Link>
                     </div>
                     <ul>
-                        <li><Link className="menu" to='#'>THE신선</Link></li>
-                        <li><Link className="menu" to='#'>오늘또구매</Link></li>
-                        <li><Link className="menu" to='#'>베스트</Link></li>
-                        <li><Link className="menu" to='#'>신상품</Link></li>
-                        <li><Link className="menu" to='#'>마감할인</Link></li>
-                        <li><Link className="menu" to='#'>특별한특가</Link></li>
+                        {menu.map((a, i) => {
+                            return(
+                                <li><Link className="menu" to='#'>{menu[i]}</Link></li>
+                            )
+                        })}
                     </ul>
                     <button className="address">배송지 입력하기</button>
                 </nav> {/* mainMenu end */}
