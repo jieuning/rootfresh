@@ -1,22 +1,21 @@
 import './App.css';
 import React, { useEffect } from "react";
+import { Route, Routes, Link, useNavigate, Outlet } from "react-router-dom";
 import { createGlobalStyle } from 'styled-components'
-import reset from 'styled-reset'
 import Header from "./components/header/Header"
 import MainPage from "./pages/mainPage/MainPage"
-// import { Route, Routes, Link, NavLink, Router } from "react-router-dom";
+import AboutPage from './pages/aboutPage/AboutPage';
 
-const GlobalStyle = createGlobalStyle`
-  ${reset}
-`
 
 function App() {
   return (
     <React.Fragment>
-      <GlobalStyle />
       <div className="App">
         <Header />
-        <MainPage />
+        <Routes>
+          <Route path="/" element={<MainPage />}/>
+          <Route path="detail" element={<AboutPage />}/>
+        </Routes>
       </div>
 
     </React.Fragment>

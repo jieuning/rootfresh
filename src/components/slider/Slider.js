@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "./style.css";
-import { mainSliderTxt } from '../../data';
+import styled from 'styled-components';
 
 //image
 import mainBanner1 from './image/main_banner1.png'
 import mainBanner2 from './image/main_banner2.png'
 import mainBanner3 from './image/main_banner3.png'
 import mainBanner4 from './image/main_banner4.png'
-
-//components
-import {MainBanner1, MainBanner2} from './MainBanner'
 
 //swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -25,59 +22,50 @@ const bannerImage = [
   mainBanner4
 ]
 
+const Slide = styled.a`
+  width: 100%;
+  height: 400px;
+  display: block;
+  background: url(${(props) => props.bannerImage || bannerImage[0]});
+  background-size: cover;
+  background-position: center center;
+`;
+
 function MySwiper() {
 
-  let [banText] = useState(mainSliderTxt);
-  // let [mainBanner, setMainBanner]  = useState[MainBanner1, MainBanner2, MainBanner2, MainBanner2];
-  // console.log(mainBanner)
-
   return (
-    <div>
-      <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
-        slidesPerView={1}
-        navigation={{
-          prevEl: ".button-prev-slide",
-          nextEl: ".button-next-slide"
-        }}
-        pagination={{ type: "fraction" }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
-        loop={true}
-        speed={400}
-        autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
-        }}
-      >
-        <SwiperSlide>
-          <MainBanner1
-              banText={banText[0]}
-              bannerImage={bannerImage[0]}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <MainBanner2
-            banText={banText[1]}
-            bannerImage={bannerImage[1]}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <MainBanner2
-            banText={banText[2]}
-            bannerImage={bannerImage[2]}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <MainBanner2
-            banText={banText[3]}
-            bannerImage={bannerImage[3]}
-          />
-        </SwiperSlide>
-        <button className='button-prev-slide'></button>
-        <button className='button-next-slide'></button>
-      </Swiper>
-    </div>
+    <Swiper
+      modules={[Navigation, Pagination, Autoplay]}
+      slidesPerView={1}
+      navigation={{
+        prevEl: ".button-prev-slide",
+        nextEl: ".button-next-slide"
+      }}
+      pagination={{ type: "fraction" }}
+      onSwiper={(swiper) => console.log(swiper)}
+      onSlideChange={() => console.log('slide change')}
+      loop={true}
+      speed={400}
+      autoplay={{
+        delay: 5000,
+        disableOnInteraction: false,
+      }}
+    >
+      <SwiperSlide>
+        <a href='#'><Slide bannerImage={bannerImage[0]}></Slide></a>
+      </SwiperSlide>
+      <SwiperSlide>
+        <a href='#'><Slide bannerImage={bannerImage[1]}></Slide></a>
+      </SwiperSlide>
+      <SwiperSlide>
+        <a href='#'><Slide bannerImage={bannerImage[2]}></Slide></a>
+      </SwiperSlide>
+      <SwiperSlide>
+        <a href='#'><Slide bannerImage={bannerImage[3]}></Slide></a>
+      </SwiperSlide>
+      <button className='button-prev-slide'></button>
+      <button className='button-next-slide'></button>
+    </Swiper>
   );
 };
 

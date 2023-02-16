@@ -6,7 +6,7 @@ import Logo from '../../assets/logo.svg'
 
 function Header() {
 
-    let [menu] = useState(["THE신선", "오늘또구매", "베스트", "신상품", "마감할인", "특별한특가"]);
+    let [menu, setMenu] = useState(["THE신선", "오늘또구매", "베스트", "신상품", "마감할인", "특별한특가"]);
 
     return (
         <header>
@@ -59,11 +59,8 @@ function Header() {
                         </Link>
                     </div>
                     <ul>
-                        {menu.map((a, i) => {
-                            return(
-                                <li><Link className="menu" to='#'>{menu[i]}</Link></li>
-                            )
-                        })}
+                        {menu.map((a, i) => (
+                            <li><Link key={a} className="menu" to='#'>{menu[i]}</Link></li>))}
                     </ul>
                     <button className="address">배송지 입력하기</button>
                 </nav> {/* mainMenu end */}
