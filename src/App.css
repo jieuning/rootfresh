@@ -1,9 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+@font-face {
+  font-family: 'Apple SD Gothic';
+  font-style: normal;
+  font-weight: 700;
+  src: url(./fonts/AppleSDGothicNeoEB.woff2) format("woff2"),
+      url(./fonts/AppleSDGothicNeoEB.woff) format("woff"), 
+}
+@font-face {
+  font-family: 'Apple SD Gothic';
+  font-style: normal;
+  font-weight: 600;
+  src: url(./fonts/AppleSDGothicNeoB.woff2) format("woff2"),
+      url(./fonts/AppleSDGothicNeoB.woff) format("woff"), 
+}
+@font-face {
+  font-family: 'Apple SD Gothic';
+  font-style: normal;
+  font-weight: 500;
+  src: url(./fonts/AppleSDGothicNeoM.woff2) format("woff2"),
+      url(./fonts/AppleSDGothicNeoM.woff) format("woff"), 
+}
+@font-face {
+  font-family: 'Apple SD Gothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url(./fonts/AppleSDGothicNeoR.woff2) format("woff2"),
+      url(./fonts/AppleSDGothicNeoR.woff) format("woff"), 
+}
+
 
 .App {
     text-align: center;
     margin: 0 auto;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Noto Sans KR', 'Apple SD Gothic', sans-serif;
     color: #333;
   }
   

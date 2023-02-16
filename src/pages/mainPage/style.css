@@ -1,0 +1,63 @@
+
+section {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h2 {
+    margin-top: 90px;
+    font-size: 26px;
+    font-weight: 400;
+}
+
+.main-container {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.wrap {
+    margin-bottom: 20px;
+}
+
+.txtarea {
+    width: 285px;
+    text-align: left;
+    font-weight: 400;
+}
+
+.sub-banner {
+    margin-top: 90px;
+    margin-bottom: 90px;
+}
+
+.item-title {
+    margin: 10px 0 10px 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.item-price:nth-child(1) span,
+.item-price:nth-child(2) span{
+    margin-right: 6px;
+}
+
+.discount-rate {
+    color: #f1622f;
+    font-weight: 900;
+}
+
+.price {
+    font-weight: 700;
+}
+
+.dimmed-price {
+    font-size: 14px;
+    font-weight: 500;
+    color: #b5b5b5;
+    text-decoration: line-through;
+}
