@@ -1,23 +1,31 @@
 import './App.css';
-import React, { useEffect } from "react";
-import { Route, Routes, Link, useNavigate, Outlet } from "react-router-dom";
-import { createGlobalStyle } from 'styled-components'
+import React, { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+
+//components
 import Header from "./components/header/Header"
+
+//pages
 import MainPage from "./pages/mainPage/MainPage"
-import AboutPage from './pages/aboutPage/AboutPage';
+import DetailPage from './pages/detailPage/DetailPage';
+
+//data
+import itemData from "./data.json"
 
 
 function App() {
+
+  const [items] = useState(itemData);
+
   return (
     <React.Fragment>
       <div className="App">
         <Header />
         <Routes>
-          <Route path="/" element={<MainPage />}/>
-          <Route path="detail" element={<AboutPage />}/>
+          <Route path="/" element={<MainPage items={items}/>} />
+          <Route path="detail/:id" element={<DetailPage items={items} />} />
         </Routes>
       </div>
-
     </React.Fragment>
   );
 }
