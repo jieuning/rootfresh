@@ -23,6 +23,12 @@ h2 {
     margin-bottom: 20px;
 }
 
+.wrap > li > img{
+    width: 285px;
+    height: 285px;
+    border-radius: 10px;
+}
+
 .txtarea {
     width: 285px;
     text-align: left;

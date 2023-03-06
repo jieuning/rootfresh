@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import "./style.css"
-import { Route, Routes, Link, NavLink, Router } from "react-router-dom";
+import { Route, Routes, Link, useNavigate, Router } from "react-router-dom";
 import Logo from '../../assets/logo.svg'
 
 
 function Header() {
 
     let [menu, setMenu] = useState(["THE신선", "오늘또구매", "베스트", "신상품", "마감할인", "특별한특가"]);
+    const navigate = useNavigate();
 
     return (
-        <header>
+        <div id="header">
             <div className="top-banner">
                 <Link className="top-banner-btn" to='#'>
                     지금 가입하면 첫 주문&nbsp;
@@ -31,7 +32,7 @@ function Header() {
 
                 <div className="mid-menu">
                     <h1 className="logo">
-                        <Link to='#'><img src={Logo} /></Link>
+                        <img style={{cursor: 'pointer'}} src={Logo} onClick={()=>{navigate('/')}}/>
                     </h1>
                     <button className="info-delivery">
                         <span>루트</span>
@@ -67,7 +68,7 @@ function Header() {
 
             </div> {/* container end */}
 
-        </header>
+        </div>
     )
 }
 
