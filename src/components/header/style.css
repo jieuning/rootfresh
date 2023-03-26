@@ -1,11 +1,14 @@
-body{
-  font-family: 'Noto Sans KR', sans-serif;
-}
-
-#header {
-  position: relative;
+.main-header {
   width: 100%;
   box-shadow: 0px 3px 4px 0px rgba( 0, 0, 0, 0.1);
+}
+
+.fixed-header {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+
+  z-index: 99;
 }
 
 button {
@@ -15,7 +18,11 @@ button {
 .top-banner {
     height: 40px;
     margin: 0 auto;
-    background-color: #C8E900;
+    background-color: #BAE900;
+  }
+
+  .fixed-top-banner {
+    display: none;
   }
 
  .top-banner-btn {
@@ -30,17 +37,27 @@ button {
   }
   /* topBanner end */
 
-  .container {
+  .header-container {
     position: relative;
+    width: 1200px;
+    margin: 0 auto;
+    background: #fff;
+  }
+
+  .fixed-header-container {
     width: 1200px;
     margin: 0 auto;
   }
 
-  .top-menu {
+  .login-menu {
     margin-left: 20px;
   }
 
-  .top-menu ul {
+  .fixed-login-menu {
+    display: none;
+  }
+
+  .login-menu ul {
     display: flex;
     justify-content: flex-end;
     margin-top: 10px;
@@ -56,16 +73,20 @@ button {
     margin: 8px 12px;
     background-color: #ccc;
   }
-  /* topMenu end */
+  /* login menu end */
 
-  .mid-menu {
+  .logo-search-menu {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-top: 20px;
+    margin: 10px 0 5px 0;
   }
 
-  .info-delivery {
+  .fixed-logo-search-menu {
+    display: none;
+  }
+
+  .delivery-info {
     width: 91px;
     height: 28px;
     line-height: 14px;
@@ -77,7 +98,7 @@ button {
     margin: 0 194px 0 20px;
   }
 
-  .info-delivery span {
+  .delivery-info span {
     color: #223928;
   }
 
@@ -109,48 +130,67 @@ button {
     width: 20px;
     height: 20px;
     background: url(../../../public/image/search_icon.png) no-repeat;
-    background-size: 18px;
+    background-size: contain;
     border: none;
     margin-right: 16px;
   }
   /* searchBar end */
 
-  .icon-menu ul {
+  .user-menu {
     display: flex;
     justify-content: flex-end;
     flex-direction: row;
     position: absolute;
     right: 0;
-    top: 47px;
+    top: 48px;
   }
 
-  .icon-menu ul li .icon-share {
-    margin-left: 20px;
+  .fixed-user-menu {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    float: right;
+    margin-top: 14px;
+  }
+
+  .fixed-align {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu-wrap ul li:nth-child(4) {
+    position: relative;
+  }
+
+  .user-menu-icon {
+    display: inline-block;
     width: 26px;
     height: 26px;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+
+  .add-item-count {
+    position: absolute;
+    top: -8px;
+    left: 38px;
+    width: 16px;
+    height: 16px;
+    background: #BAE900;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    color: #fff;
+    cursor: pointer;
     display: block;
   }
 
-  .delivery-icon {
-    width: 28px !important;
-    height: 28px !important;
-    background: url(../../../public/image/delivery6.png);
-    background-size: 28px;
-  }
-
-  .mypage-icon {
-    background: url(../../../public/image/mypge6.png);
-    background-size: 26px;
-  }
-
-  .zzim-icon {
-    background: url(../../../public/image/zzim6.png);
-    background-size: 26px;
-  }
-
-  .cart-icon {
-    background: url(../../../public/image/cart6.png);
-    background-size: 26px;
+  .none {
+    display: none;
   }
 
   /* mainMenu area */
@@ -164,7 +204,6 @@ button {
 
   .main-menu ul {
     display: flex;
-    align-items: flex-end;
     margin: 0 auto;
   }
 
@@ -175,11 +214,15 @@ button {
 
   /* category hover */
   .menu:hover {
-    color: #BEDD00;
+    color: #2A6834;
   }
   
   .category {
     display: flex;
+  }
+
+  .fixed-category {
+    margin-right: 150px;
   }
 
   .category-inner {
@@ -200,7 +243,7 @@ button {
 
   /* category hover */
   .category-inner:hover {
-    color: #BEDD00;
+    color: #2A6834;
   }
 
   .category-inner:hover:before {
@@ -225,6 +268,10 @@ button {
     border: none;
     font-size: 12px;
     font-weight: 500;
+  }
+
+  .fixed-address {
+    display: none;
   }
 
   .address::before {

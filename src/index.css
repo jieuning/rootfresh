@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
-@font-face {
+/* @font-face {
   font-family: 'Apple SD Gothic';
   font-style: normal;
   font-weight: 700;
@@ -26,10 +26,9 @@
   font-weight: 400;
   src: url(../src/fonts/AppleSDGothicNeoR.woff2) format("woff2"),
       url(../src/fonts/AppleSDGothicNeoM.woff) format("woff"), 
-}
+} */
 
 *{
-  margin: 0;
-  font-family: 'Noto Sans KR', 'Apple SD Gothic', sans-serif;
+  font-family: 'Noto Sans KR';
 }
 

@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     gap: 50px;
-    margin-top: 60px;
+    margin-top: 90px;
 }
 
 .detail-image {
@@ -25,10 +25,11 @@
     margin-bottom: 30px;
 }
 
-dl > div{
+dl > div {
     padding: 20px 0;
     display: flex;
-    border-bottom: 2px solid #f7f7f7;
+    align-items: center;
+    border-bottom: 1px solid #f4f4f4;
 }
 
 dl :nth-child(3) dd {
@@ -72,4 +73,61 @@ dd {
     margin-top: 10px;
     text-decoration: line-through;
     color: #b5b5b5;
+}
+
+.empty {
+    width: 100%;
+    height: 500px;
+    margin: auto;
+    background-color: #fff;
+    border: none;
+}
+
+.count-button {
+    width: 92px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.count-button button {
+    width: 26px;
+    height: 26px;
+    border: none;
+    background: #fff;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.amount-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.amount-title {
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 10px;
+}
+
+.amount-price {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-size: 26px;
+    font-weight: 600;
+    margin-top: 50px;
+}
+
+.cart-btn {
+    margin-top: 30px;
+    height: 56px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2A6834;
+    color: #fff;
+    font-size: 18px;
 }

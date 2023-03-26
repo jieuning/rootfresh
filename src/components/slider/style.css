@@ -1,41 +1,12 @@
 
-.swiper-slide {
-    overflow: hidden;
+.banner-image {
     width: 100%;
     height: 400px;
-    position: relative;
-    z-index: 10;
-}
+    object-fit: cover;
+    transform: rotate(0deg);
+  }
 
-/* navigation */
-/* .navi-share {
-    width: 42px;
-    height: 42px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 20;
-    border: none;
-} */
-
-.nevi-show {
-    opacity: 1;
-    transition: all .3s;
-}
-
-/* .nevi-show:hover {
-    opacity: 1;
-    transition: all 0.3s;
-    
-} */
-
-/* .navi-share:hover {
-    position: absolute;
-    opacity: 1;
-    transition: all 0.3s;
-} */
-
-.button-prev-slide {
+/* .button-prev-slide {
     width: 42px;
     height: 42px;
     position: absolute;
@@ -47,6 +18,7 @@
     background: url(./image/prev.png);
     background-size: cover;
 }
+
 .button-next-slide {
     width: 42px;
     height: 42px;
@@ -58,7 +30,7 @@
     right: 20%;
     background: url(./image/next.png);
     background-size: cover;
-}
+} */
 
 /* pagenation */
 .swiper-pagination {
