@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 
+import { slideBanImg } from '../../db/contentOption';
+
 //css
 import "./style.css";
 
@@ -14,8 +16,6 @@ import 'swiper/css/pagination';
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 function MySwiper() {
-
-  const bannerArr = [1, 2, 3, 4]
 
   const BannerPrevRef = useRef(null);
   const BannerNextRef = useRef(null);
@@ -39,9 +39,11 @@ function MySwiper() {
         swiper.params.navigation.nextEl = BannerNextRef.current;
       }}
     >
-      {bannerArr.map(data => (
+      {slideBanImg.map(image => (
         <SwiperSlide>
-          <img className='banner-image' src={process.env.PUBLIC_URL + '/image/main_banner' + data + '.png'} alt="슬라이드 배너" />
+          <img className='banner-image' 
+            src={process.env.PUBLIC_URL + image } 
+            alt="메인 배너" />
         </SwiperSlide>
       ))}
       <SlideButton style={{left: "20%"}} ref={BannerPrevRef}></SlideButton>

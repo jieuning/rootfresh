@@ -1,9 +1,7 @@
 import styled from "styled-components"
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import CommaFormat from "../../components/CommaFormat";
-import DeleteModal from "../../components/cart/DeleteModal";
 import { increase, decrease, removeItem, checkedChange } from "../../store/cartSlice";
-
 
 
 function CartItem({item}) {
@@ -36,9 +34,9 @@ function CartItem({item}) {
                 </dd>
                 <dd className="item-price">
                     <Button onClick={() => {
-                        dispatch(removeItem(item.id))
-                    }}>
-                        <img className="cancle-image" src={process.env.PUBLIC_URL + '/image/cancle_icon.png'} />
+                        dispatch(removeItem(item.id))}}>
+                        <img className="cancle-image" 
+                        src={process.env.PUBLIC_URL + '/image/cancle_icon.png'} />
                     </Button>
                 </dd>
             </div>
@@ -47,6 +45,7 @@ function CartItem({item}) {
 };
 
 export default CartItem;
+
 
 const CartWrap = styled.dl`
     .cart-item {

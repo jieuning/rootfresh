@@ -6,18 +6,18 @@ const cart = createSlice({
     initialState: [],
     reducers : {
         increase(state, action) {
-            let num = state.findIndex((i)=>{ return i.id === action.payload})
+            let num = state.findIndex((i)=>{return i.id === action.payload})
             state[num].count++
         },
         decrease(state, action) {
-            let num = state.findIndex((i)=>{ return i.id === action.payload})
+            let num = state.findIndex((i)=>{return i.id === action.payload})
             state[num].count--
         },
         addItem(state, action) {
             state.push(action.payload)
         },
         removeItem(state, action) {
-            let num = state.findIndex((i)=>{ return i.id === action.payload})
+            let num = state.findIndex((i)=>{return i.id === action.payload})
             console.log(num)
             state.splice(num, 1)
         },
@@ -25,10 +25,10 @@ const cart = createSlice({
             let num = state.findIndex((i)=>{return i.id === action.payload})
             state[num].checked = !state[num].checked
         },
-        allCheckedTrue(state, action) {
+        allCheckedTrue(state) {
             state.forEach((i)=> {i.checked = true})
         },
-        allCheckedFalse(state, action) {
+        allCheckedFalse(state) {
             state.forEach((i)=> {i.checked = false})
         }
     }

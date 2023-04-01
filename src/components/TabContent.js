@@ -22,7 +22,7 @@ function Tab(props) {
         {
             tabButton: (
                 <li className={currentTab === 0 ? "tabButton focused" : "tabButton"}
-                    onClick={() => tabClickHandler(0)}>타임 특가</li>
+                    onClick={() => tabClickHandler(0)}>타임특가</li>
             ),
             tabItems: (
                 <div className="main-container">
@@ -37,7 +37,7 @@ function Tab(props) {
         {
             tabButton: (
                 <li className={currentTab === 1 ? "tabButton focused" : "tabButton"}
-                    onClick={() => tabClickHandler(1)}>한정 특가</li>
+                    onClick={() => tabClickHandler(1)}>한정특가</li>
             ),
             tabItems: (
                 <div className="main-container">
@@ -52,7 +52,7 @@ function Tab(props) {
         {
             tabButton: (
                 <li className={currentTab === 2 ? "tabButton focused" : "tabButton"}
-                    onClick={() => tabClickHandler(2)}>루트 한정 특가</li>
+                    onClick={() => tabClickHandler(2)}>대박특가</li>
             ),
             tabItems: (
                 <div className="main-container">

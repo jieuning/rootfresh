@@ -1,16 +1,11 @@
-import React from "react";
 import styled from "styled-components";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { removeItem } from "../../store/cartSlice";
 
 function DeleteModal({ modal, setModal, checkedList }) {
 
-    const state = useSelector((state) => state);
     const dispatch = useDispatch();
-
-    const cartList = state.cart
-    console.log(cartList)
 
     return (
         <ModalContainer>

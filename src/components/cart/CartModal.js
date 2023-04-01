@@ -2,12 +2,9 @@ import styled from "styled-components";
 
 function cartModal() {
     return (
-        <>
-            <CartModal>
-               <p>장바구니에 상품을 담았습니다</p>
-            </CartModal>
-        </>
-
+        <CartModal>
+            <p>장바구니에 상품을 담았습니다</p>
+        </CartModal>
     )
 }
 

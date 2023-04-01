@@ -5,18 +5,23 @@ import CommaFormat from "./CommaFormat";
 import "../pages/mainPage/style.css"
 
 
-function Card(props) {
+function Card({data, bestItems}) {
+
+    console.log(bestItems)
 
     return (
-        <ul className="wrap">
+        <ul className="card-wrap">
             <li>
-                <img src={process.env.PUBLIC_URL + props.data.image} />
+                {bestItems == data.rank ? 
+                    null : <span className="rank">{data.rank}</span>
+                }
+                <img src={process.env.PUBLIC_URL + data.image} />
                 <div className="txtarea">
                     <div className="item-price">
-                        <h4 className="item-title">{props.data.title}</h4>
-                        <span className="discount-rate" >{props.data.discount_rate}</span>
-                        <span className="price">{CommaFormat(props.data.price)}<span>원</span></span>
-                        <span className="dimmed-price">{props.data.dimmed_price}</span>
+                        <h4 className="item-title">{data.title}</h4>
+                        <span className="discount-rate" >{data.discount_rate}</span>
+                        <span className="price">{CommaFormat(data.price)}<span>원</span></span>
+                        <span className="dimmed-price">{data.dimmed_price}</span>
                     </div>
                 </div>
             </li>

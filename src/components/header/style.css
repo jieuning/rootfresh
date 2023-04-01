@@ -45,6 +45,7 @@ button {
   }
 
   .fixed-header-container {
+    position: relative;
     width: 1200px;
     margin: 0 auto;
   }
@@ -186,7 +187,7 @@ button {
     line-height: 16px;
     color: #fff;
     cursor: pointer;
-    display: block;
+
   }
 
   .none {
@@ -202,12 +203,12 @@ button {
     line-height: 56px;
   }
 
-  .main-menu ul {
+  .main-manu-wrap {
     display: flex;
     margin: 0 auto;
   }
 
-  .main-menu ul li {
+  .main-manu-wrap li {
     margin: 0 25px 0 25px;
     font-weight: 500;
   }
@@ -225,11 +226,11 @@ button {
     margin-right: 150px;
   }
 
-  .category-inner {
-    display: block;
+  .category-btn {
+    cursor: pointer;
   }
 
-  .category-inner:before {
+  .category-btn:before {
     content: ''; 
     display: inline-block;
     position: relative;
@@ -242,11 +243,11 @@ button {
   }
 
   /* category hover */
-  .category-inner:hover {
+  .category-btn:hover {
     color: #2A6834;
   }
 
-  .category-inner:hover:before {
+  .category-btn:hover:before {
     content: ''; 
     display: inline-block;
     position: relative;
