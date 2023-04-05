@@ -8,14 +8,13 @@ import {
     onAuthStateChanged
 } from "../../firebase";
 
-function Login() {
+function Login({ isLoggedIn, setIsLoggedIn }) {
 
     const navigate = useNavigate();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     /* 현재 로그인한 사용자 가져오기 */ 
     useEffect(() => {

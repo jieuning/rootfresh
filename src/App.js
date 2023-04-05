@@ -25,6 +25,7 @@ function App() {
   // const navigate = useNavigate();
 
   const [items] = useState(ItemData);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
   const obj = { items }
@@ -36,13 +37,13 @@ function App() {
     <React.Fragment>
       <div className="Wrapper">
         <div className="contentWrapper">
-          <Header items={items}/>
+          <Header items={items} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
           <Routes>
             <Route path="/" element={<MainPage items={items} />} />
             <Route path="/detail/:id" element={<DetailPage items={items} />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/menu/:name" element={<MenuList items={items} />} />
-            <Route path="/login" element={<Login/>} />
+            <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>} />
             <Route path="/sign-up" element={<SignUp/>} />
           </Routes>
         </div>

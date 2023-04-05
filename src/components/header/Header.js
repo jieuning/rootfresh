@@ -6,11 +6,12 @@ import { useSelector } from "react-redux";
 
 import MenuNavBar from "../MenuNavBar";
 import Menu from "../Menu";
+import UserNav from "./userNav";
 
 import { userMenuAlt } from "../../dummy/contentOption";
 
 
-function Header({items}) {
+function Header({ items, isLoggedIn }) {
     const [scrollHeader, setScrollHeader] = useState(0);
     const [mouseOver, setMouseOver] = useState(false);
 
@@ -22,7 +23,8 @@ function Header({items}) {
 
     //스크롤시 헤더 고정
     const updateScroll = () => {
-        setScrollHeader(window.scrollY || document.documentElement.scrollTop)};
+        setScrollHeader(window.scrollY || 
+            document.documentElement.scrollTop)};
 
     useEffect(() => {
         window.addEventListener('scroll', updateScroll)
@@ -45,18 +47,10 @@ function Header({items}) {
 
             <div className={scrollHeader > 10 ?
                 "fixed-header-container" : "header-container"}>
-                {/* 로그인 관련 메뉴 */}
+                {/* 유저 관련 메뉴 */}
                 <div className={scrollHeader > 10 ?
                     "fixed-login-menu" : "login-menu"}>
-                    <ul>
-                        <li style={{ fontWeight: '600' }}>
-                            <Link className="menu-share" to='/sign-up'>회원가입</Link>
-                        </li>
-                        <li className="line"></li>
-                        <li><Link className="menu-share" to='/login'>로그인</Link></li>
-                        <li className="line"></li>
-                        <li><Link className="menu-share" to='#'>고객센터</Link></li>
-                    </ul>
+                    <UserNav isLoggedIn={isLoggedIn}/>
                 </div> 
                 <div className={scrollHeader > 10 ?
                     "fixed-logo-search-menu" : "logo-search-menu"}>
