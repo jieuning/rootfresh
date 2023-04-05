@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import { firebaseAuth } from "./firebase";
 
 //css
 import './App.css';
@@ -17,12 +18,14 @@ import Login from "./pages/user/login";
 import SignUp from "./pages/user/signUp";
 
 //data
-import ItemData from "./db/data.json"
-
+import ItemData from "./dummy/data.json"
 
 function App() {
 
+  // const navigate = useNavigate();
+
   const [items] = useState(ItemData);
+
 
   const obj = { items }
 
@@ -39,8 +42,8 @@ function App() {
             <Route path="/detail/:id" element={<DetailPage items={items} />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/menu/:name" element={<MenuList items={items} />} />
-            <Route path="/login" element={<Login items={items} />} />
-            <Route path="/sign-up" element={<SignUp items={items} />} />
+            <Route path="/login" element={<Login/>} />
+            <Route path="/sign-up" element={<SignUp/>} />
           </Routes>
         </div>
         <Footer />

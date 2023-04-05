@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import categorydata from "../db/categorydata.json"
+import categorydata from "../dummy/categorydata.json"
 
 
 function MenuNavBar({scrollHeader}) {

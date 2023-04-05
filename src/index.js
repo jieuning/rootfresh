@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import ScrollToTop from './components/ScrollToTop';
-import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 import store from './store/store';
+import firebase from './firebase';
 
 
 export let persistor = persistStore(store);
@@ -25,4 +25,3 @@ root.render(
   </Provider>
 );
 
-reportWebVitals();

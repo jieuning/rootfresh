@@ -1,27 +1,21 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-import { useDispatch } from "react-redux";
-import { removeItem } from "../../store/cartSlice";
 
-function DeleteModal({ modal, setModal, checkedList }) {
+function SignUpModal() {
 
-    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     return (
         <ModalContainer>
             <div className="modal-container modal-background">
                 <div className="modal-container delete-modal">
-                    <h3>선택 항목을 삭제하시겠습니까?</h3>
+                    <h3>가입이 완료되었습니다!</h3>
                     <ButtonWrap>
                         <button className="cancle-button" 
-                        onClick={() => setModal(!modal)}>취소</button>
+                            onClick={()=>navigate('/')}>홈</button>
                         <button className="ok-button" 
-                        onClick={() => {
-                            checkedList.forEach((item) => {
-                                dispatch(removeItem(item.id))
-                                setModal(!modal)
-                            })
-                        }}>확인</button>
+                            onClick={()=>navigate('/login')}>로그인하기</button>
                     </ButtonWrap>
                 </div>
             </div>
@@ -29,7 +23,7 @@ function DeleteModal({ modal, setModal, checkedList }) {
     )
 }
 
-export default DeleteModal;
+export default SignUpModal;
 
 
 const ModalContainer = styled.div`

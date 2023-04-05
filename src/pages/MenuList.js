@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 
-import "../pages/mainPage/style.css"
+import "./mainPage/style.css"
 
 import Card from "../components/Card";
 

@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { useDispatch } from "react-redux";
-import CommaFormat from "../../components/CommaFormat";
+import CommaFormat from "../CommaFormat";
 import { increase, decrease, removeItem, checkedChange } from "../../store/cartSlice";
 
 

@@ -71,7 +71,7 @@ function Cart() {
                             }>선택삭제</button>
                         </dt>
                     </div>
-                    {/* 장바구니에 담긴 아이템 */}
+                    {/* 장바구니 아이템 유무 */}
                     {cartList.length > 0 ? (
                         cartList.map((item, i) => <CartItem item={item} />)
                     ) : (

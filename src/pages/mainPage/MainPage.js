@@ -13,8 +13,8 @@ import NewItem from "../../components/NewItem"
 import RecipeBox from "../../components/RecipeCard"
 
 //data
-import CategoryData from "../../db/categorydata.json"
-import { reviewArr, recipe } from "../../db/contentOption"
+import CategoryData from "../../dummy/categorydata.json"
+import { reviewArr, recipe } from "../../dummy/contentOption"
 
 
 function MainPage(props) {

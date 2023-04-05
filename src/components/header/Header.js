@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import MenuNavBar from "../MenuNavBar";
 import Menu from "../Menu";
 
-import { userMenuAlt } from "../../db/contentOption";
+import { userMenuAlt } from "../../dummy/contentOption";
 
 
 function Header({items}) {

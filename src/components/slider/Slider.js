@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 
-import { slideBanImg } from '../../db/contentOption';
+import { slideBanImg } from '../../dummy/contentOption';
 
 //css
 import "./style.css";
