@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
 import "./style.css"
-import { Link, useNavigate } from "react-router-dom";
 import Logo from '../../assets/logo.svg'
-import { useSelector } from "react-redux";
 
-import MenuNavBar from "../MenuNavBar";
-import Menu from "../Menu";
+import { Link, useNavigate } from "react-router-dom";
+
+import MenuNavBar from "./MenuNavBar";
+import Menu from "./Menu";
 import UserNav from "./userNav";
+import SearchBar from "./searchBar";
+
+import { useSelector } from "react-redux";
 
 import { userMenuAlt } from "../../dummy/contentOption";
 
 
 function Header({ items, isLoggedIn }) {
+
     const [scrollHeader, setScrollHeader] = useState(0);
     const [mouseOver, setMouseOver] = useState(false);
 
@@ -47,7 +51,7 @@ function Header({ items, isLoggedIn }) {
 
             <div className={scrollHeader > 10 ?
                 "fixed-header-container" : "header-container"}>
-                {/* 유저 관련 메뉴 */}
+                {/* 유저 메뉴(로그아웃 기능 위치)*/}
                 <div className={scrollHeader > 10 ?
                     "fixed-login-menu" : "login-menu"}>
                     <UserNav isLoggedIn={isLoggedIn}/>
@@ -64,14 +68,11 @@ function Header({ items, isLoggedIn }) {
                         <span>루트</span>배송 안내
                     </button>
                     {/* 검색 바 */}
-                    <div className="search-bar">
-                        <input className="search-box" type="search" placeholder="원하시는 상품을 입력해주세요" />
-                        <button className="search-btn"></button>
-                    </div>
+                    <SearchBar items={items}/>
                 </div>
 
                 <div className="menu-wrap">
-                    {/* 장바구니 그 외 메뉴 */}
+                    {/* 장바구니 외 유저 편의 메뉴 */}
                     <ul className={scrollHeader > 10 ?
                         "fixed-user-menu" : "user-menu"}>
                         {[1, 2, 3].map((i) => (

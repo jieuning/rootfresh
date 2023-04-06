@@ -1,12 +1,8 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 
-import { menu } from "../dummy/contentOption";
+import { menu } from "../../dummy/contentOption";
 
-function Menu({items}) {
-
-    // const [menu] = useState(mainMenu);
+function Menu() {
 
     const navigate = useNavigate();
  

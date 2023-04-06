@@ -1,22 +1,21 @@
 import { Link, useParams } from "react-router-dom";
 
-import "./mainPage/style.css"
+import "../pages/mainPage/style.css"
 
 import Card from "../components/Card";
 
-function MenuList({items}) {
+function MenuDetail({items}) {
 
     const {name} = useParams();
 
-    const findMenu = items.filter((i) => i.menu === name);
+    /* url의 name과 같은 아이템 필터 */ 
+    const filterMenu = items.filter((i) => i.menu === name);
 
     return(
         <section>
             <h2>{name}</h2>
-
-            
             <div className="main-container">
-                {findMenu.map((data) => (
+                {filterMenu.map((data) => (
                     <Link to={`/detail/${data.id}`}>
                         <Card data={data}/>
                     </Link>
@@ -26,4 +25,4 @@ function MenuList({items}) {
     )
 }
 
-export default MenuList;
+export default MenuDetail;

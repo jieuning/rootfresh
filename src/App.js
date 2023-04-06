@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
-import { firebaseAuth } from "./firebase";
+import React, { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 
 //css
 import './App.css';
@@ -13,20 +12,18 @@ import Footer from "./components/footer"
 import MainPage from "./pages/mainPage/MainPage"
 import DetailPage from './pages/detailPage/DetailPage';
 import Cart from "./pages/cart/Cart";
-import MenuList from "./pages/MenuList";
+import MenuDetail from "./pages/MenuDetail";
 import Login from "./pages/user/login";
 import SignUp from "./pages/user/signUp";
+import SearchDetail from "./pages/SearchDetail ";
 
 //data
 import ItemData from "./dummy/data.json"
 
 function App() {
 
-  // const navigate = useNavigate();
-
   const [items] = useState(ItemData);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
 
   const obj = { items }
 
@@ -37,14 +34,19 @@ function App() {
     <React.Fragment>
       <div className="Wrapper">
         <div className="contentWrapper">
-          <Header items={items} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+          <Header 
+            items={items} 
+            isLoggedIn={isLoggedIn} 
+            setIsLoggedIn={setIsLoggedIn}
+          />
           <Routes>
             <Route path="/" element={<MainPage items={items} />} />
             <Route path="/detail/:id" element={<DetailPage items={items} />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/menu/:name" element={<MenuList items={items} />} />
+            <Route path="/menu/:name" element={<MenuDetail items={items} />} />
             <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>} />
             <Route path="/sign-up" element={<SignUp/>} />
+            <Route path="/search" element={<SearchDetail items={items}/>} />
           </Routes>
         </div>
         <Footer />

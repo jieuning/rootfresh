@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
-import "./style.css"
 
 import { firebaseAuth } from "../../firebase";
 
 function UserNav({ isLoggedIn }) {
 
+    /* 로그아웃 */ 
     const onLogOutClick = () => firebaseAuth.signOut();
 
     return (
         <>
+            {/* 로그인, 로그아웃시 보여질 nav */}
             {isLoggedIn === true ?
                 <ul>
                     <li><div className="menu-share"
