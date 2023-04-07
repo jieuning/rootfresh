@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./style.css"
 import Logo from '../../assets/logo.svg'
 
-import { Link, useNavigate } from "react-router-dom";
-
-import MenuNavBar from "./MenuNavBar";
+//component
+import CategoryNavBar from "./categoryNavBar";
 import Menu from "./Menu";
 import UserNav from "./userNav";
 import SearchBar from "./searchBar";
 
+//redux
 import { useSelector } from "react-redux";
 
+//data
 import { userMenuAlt } from "../../dummy/contentOption";
 
 
@@ -99,7 +101,7 @@ function Header({ items, isLoggedIn }) {
                                 onMouseOut={() => setMouseOver(false)}>
                                 전체상품 보기
                                 {mouseOver == true ?
-                                    <MenuNavBar scrollHeader={scrollHeader} /> : null}
+                                    <CategoryNavBar scrollHeader={scrollHeader} /> : null}
                             </div>
                         </div>
                         {/* 메인 메뉴 */}

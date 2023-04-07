@@ -1,20 +1,14 @@
-import React from "react";
-import CommaFormat from "./CommaFormat";
-
-//css
 import "../pages/mainPage/style.css"
 
+//component
+import CommaFormat from "./CommaFormat";
 
-function Card({data, bestItems}) {
 
-    console.log(bestItems)
+function Card({data}) {
 
     return (
         <ul className="card-wrap">
             <li>
-                {bestItems == data.rank ? 
-                    null : <span className="rank">{data.rank}</span>
-                }
                 <img src={process.env.PUBLIC_URL + data.image} />
                 <div className="txtarea">
                     <div className="item-price">

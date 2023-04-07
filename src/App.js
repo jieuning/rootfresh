@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-
-//css
 import './App.css';
 
 //components
@@ -26,9 +24,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const obj = { items }
-
   localStorage.setItem('data', JSON.stringify(obj))
-
 
   return (
     <React.Fragment>

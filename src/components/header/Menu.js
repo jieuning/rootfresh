@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
+//data
 import { menu } from "../../dummy/contentOption";
 
 function Menu() {

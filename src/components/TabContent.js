@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 //components
 import Card from "./Card";
+import Timer from "./timer";
 
 
 function Tab(props) {
@@ -19,21 +20,39 @@ function Tab(props) {
     };
 
     const tabArr = [
+        /* 타임특가 */ 
         {
             tabButton: (
-                <li className={currentTab === 0 ? "tabButton focused" : "tabButton"}
-                    onClick={() => tabClickHandler(0)}>타임특가</li>
+                <li className={currentTab === 0 ? 
+                    "tabButton focused" : "tabButton"}
+                    onClick={() => tabClickHandler(0)}>
+                    타임특가
+                </li>
             ),
             tabItems: (
-                <div className="main-container">
+                <TapContainer>
                     {timeItems.map((data) => (
-                        <Link to={`/detail/${data.id}`} key={data.id}>
+                        <Link className="card-link" 
+                            to={`/detail/${data.id}`} 
+                            key={data.id}>
                             <Card data={data}></Card>
+                            <span className="timer-wrap">
+                                <div style={{display: "flex"}}>
+                                    <img src={process.env.PUBLIC_URL + '/image/clock.png'}
+                                        alt="검색 버튼" />
+                                    <Timer hh="24" mm="00" ss="00" />
+                                </div>
+                                <span style={{
+                                    fontSize: "14px", marginRight: "20px"}}>
+                                        절찬 구매 중!
+                                </span>
+                            </span>
                         </Link>
                     ))}
-                </div>
+                </TapContainer>
             )
         },
+        /* 한정특가 */ 
         {
             tabButton: (
                 <li className={currentTab === 1 ? "tabButton focused" : "tabButton"}
@@ -49,6 +68,7 @@ function Tab(props) {
                 </div>
             )
         },
+        /* 대박특가 */
         {
             tabButton: (
                 <li className={currentTab === 2 ? "tabButton focused" : "tabButton"}
@@ -66,9 +86,9 @@ function Tab(props) {
 
     return (
         <>
-            <TabMenu>
-                {tabArr.map((tabData, index) => (tabData.tabButton))}
-            </TabMenu>
+            <TabBtn>
+                {tabArr.map((tabData) => tabData.tabButton)}
+            </TabBtn>
             <div>
                 {tabArr[currentTab].tabItems}
             </div>
@@ -80,7 +100,7 @@ function Tab(props) {
 export default Tab;
 
 
-const TabMenu = styled.ul`
+const TabBtn = styled.ul`
     display: flex;
     justify-content: center;
 
@@ -111,4 +131,39 @@ const TabMenu = styled.ul`
             color: #fff;
         }
     }
+`
+
+const TapContainer = styled.div`
+position: relative;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: flex-start;
+gap: 20px;
+margin-top: 30px;
+
+.card-link {
+    position: relative;
+}
+
+.timer-wrap {
+    position: absolute;
+    top: 250px;
+    left: 0;
+    width: 285px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(42, 104, 52,.7);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: #fff;
+}
+
+.timer-wrap img {
+    width: 18px;
+    object-fit: contain;
+    margin: 0 10px 0 20px;
+}
 `

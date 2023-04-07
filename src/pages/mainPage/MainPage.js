@@ -1,7 +1,5 @@
 import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-
-//css
 import "./style.css"
 
 //components
@@ -10,21 +8,24 @@ import Card from "../../components/Card"
 import TabContent from "../../components/TabContent"
 import TheFresh from "../../components/thefresh"
 import NewItem from "../../components/NewItem"
-import RecipeBox from "../../components/RecipeCard"
+import RecipeCard from "../../components/RecipeCard"
 
 //data
 import CategoryData from "../../dummy/categorydata.json"
-import { reviewArr, recipe } from "../../dummy/contentOption"
+import { reviewArr } from "../../dummy/contentOption"
 
 
-function MainPage(props) {
+function MainPage({items}) {
 
     const navigate = useNavigate();
 
-    //베스트 상품 필터
-    const bestItems = props.items.filter(data => data.rank <= 8);
+    /* 베스트 상품 필터 */
+    const bestItems = items.filter(data => data.rank <= 8);
+    console.log(bestItems)
+    /* 레시피 필터 */
+    const recipe = items.filter(data => data.id >= 52);
 
-    //카테고리 데이터
+    /* 카테고리 데이터 */
     const cateData = useState(CategoryData);
 
 
@@ -35,32 +36,34 @@ function MainPage(props) {
 
             <section>
                 <h2>신상품</h2>
-                <NewItem items={props.items} />
+                <NewItem items={items} />
             </section> 
             {/* 서브 배너 */}
             <div className="sub-banner">
                 <img src={process.env.PUBLIC_URL + '/image/sub_banner.png'} alt="감귤 배너 이미지" />
             </div>
 
+            {/* 특가 */}
             <section>
                 <h2>특별한 특가</h2>
-                <TabContent items={props.items} />
+                <TabContent items={items} />
             </section>
 
-            {/* 비밀 레시피 */}
+            {/* 레시피 */}
             <div className="recipe-background">
                 <div className="recipe-wrap">
                     <div className="recipe-title">
                         <h3>비밀 레시피<br />한 눈에 보기</h3>
                     </div>
                     <div className="recipe-box">
-                        {recipe.map((data, i)=>(
-                            <RecipeBox recipe={recipe[i]}/>
+                        {recipe.map((data)=>(
+                            <RecipeCard data={data}/>
                         ))}
                     </div>
                 </div>
             </div>
-
+            
+            {/* 인기 카테고리 */}
             <section>
                 <h2>인기 카테고리 모음</h2>
                 <ul className="cate-wrap">
@@ -73,12 +76,14 @@ function MainPage(props) {
                 </ul>
             </section>
 
+            {/* 베스트 상품 */}
             <section>
                 <h2>베스트</h2>
                 <div className="main-container">
                     {bestItems.map((data) => (
-                        <Link to={`/detail/${data.id}`}>
+                        <Link className="card" to={`/detail/${data.id}`}>
                             <Card data={data}></Card>
+                            <span className="rank">{data.rank}</span>
                         </Link>
                     ))}
                 </div>
@@ -87,16 +92,19 @@ function MainPage(props) {
                 >베스트 상품 더보기</button>
             </section>
 
+            {/* THE신선 */}
             <section>
                 <h2>오늘 수확, THE신선</h2>
-                <TheFresh items={props.items} />
+                <TheFresh items={items} />
             </section>
-
+            
+            {/* 후기 */}
             <section>
                 <h2>고객 후기</h2>
                 <div className="review">
                     {reviewArr.map( i => (
-                        <img src={process.env.PUBLIC_URL + '/image/review' + i + '.png'} alt="리뷰 이미지" />
+                        <img src={process.env.PUBLIC_URL + '/image/review' + i + '.png'} 
+                        alt="리뷰 이미지" />
                     ))}
                 </div>
                 <div className="review-insta">

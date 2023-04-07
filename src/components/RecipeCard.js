@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-function RecipeCard({ recipe }) {
+function RecipeCard({ data }) {
     return (
         <RecipeBox>
-            <img src={process.env.PUBLIC_URL + recipe.image} />
+            <img src={process.env.PUBLIC_URL + data.image} />
             <div className="recipe-content">
-                <h4>{recipe.title}</h4>
-                <p>{recipe.content}</p>
+                <h4>{data.title}</h4>
+                <p>{data.content}</p>
             </div>
         </RecipeBox>
     )

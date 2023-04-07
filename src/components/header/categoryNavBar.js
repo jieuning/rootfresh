@@ -1,13 +1,13 @@
 import { useState } from "react";
 import styled from "styled-components";
 
+//data
 import categorydata from "../../dummy/categorydata.json"
 
 
-function MenuNavBar({scrollHeader}) {
+function CategoryNavBar({scrollHeader}) {
 
     const cateData = useState(categorydata);
-    console.log(cateData)
 
     return (
         <NavMenuContainer>
@@ -23,14 +23,14 @@ function MenuNavBar({scrollHeader}) {
     )
 };
 
-export default MenuNavBar;
+export default CategoryNavBar;
 
 const NavMenuContainer = styled.div`
     .navmenu-wrap {
         overflow-y: scroll;
         position: absolute;
         left: 0;
-        top: 142px;
+        top: 135px;
         height: 100vh;
         z-index: 99;
         display: flex;

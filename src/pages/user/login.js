@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
+//firebase
 import {
     firebaseAuth,
     signInWithEmailAndPassword,
@@ -16,7 +17,7 @@ function Login({ isLoggedIn, setIsLoggedIn }) {
     const [password, setPassword] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
 
-    /* 현재 로그인한 사용자 가져오기 */ 
+    /* 현재 로그인한 유저 데이터 저장 */ 
     useEffect(() => {
         onAuthStateChanged(firebaseAuth, (user) => {
             console.log(user)
@@ -57,7 +58,7 @@ function Login({ isLoggedIn, setIsLoggedIn }) {
 
             loggedIn(isLoggedIn);
 
-            /* 조건 일치하지 않을 시 에러 메세지 */
+        /* 조건 일치하지 않을 시 에러 메세지 */
         } catch (err) {
             console.log(err.code);
             switch (err.code) {
@@ -70,8 +71,6 @@ function Login({ isLoggedIn, setIsLoggedIn }) {
             };
         };
     };
-
-
 
     return (
         <>

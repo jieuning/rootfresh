@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 function footer() {
@@ -31,18 +30,14 @@ function footer() {
                         </div>
                     </FtCsCenter>
                     <FtcompanyInfo>
-                        <p className="company-name">(주)루트프레시</p>
-                        주소: 서울특별시 광진구 화양동
-                        <ul className="company-info">
-                            <li>사업자등록번호: 123-45-67891</li>
-                            <li><a href="#">[사업자정보확인]</a></li>
-                            <li>통신판매업 신고번호: 제2023-12345 호</li>
-                        </ul>
-                        <ul className="company-info">
-                            <li>대표이사: 황지은</li>
-                            <li>개인정보보호책임자: 황지은</li>
-                        </ul>
-                        copyright &copy; rootfresh All Right Reserved.
+                        <span className="company-name">(주)루트프레시</span><br/>
+                        <span>주소: 서울특별시 광진구 화양동</span><br/>
+                        <span>사업자등록번호: 123-45-67891</span><br/>
+                        <span><a href="#">[사업자정보확인]</a></span>
+                        <span>통신판매업 신고번호: 제2023-12345 호</span><br/>
+                        <span>대표이사: 황지은</span>
+                        <span>개인정보보호책임자: 황지은</span><br/>
+                        <span className="copy">copyright &copy; rootfresh All Right Reserved.</span>
                     </FtcompanyInfo>
                 </div>
             </div>
@@ -115,8 +110,8 @@ const FtcompanyInfo = styled.div`
         font-size: 18px;
         font-weight: 600;
     }
-    .company-info {
-        display: flex;
-        gap: 10px
+
+    span {
+        margin-right: 10px;
     }
 `

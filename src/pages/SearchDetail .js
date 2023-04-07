@@ -3,6 +3,7 @@ import { Link, useSearchParams } from "react-router-dom";
 
 import "../pages/mainPage/style.css"
 
+//component
 import Card from "../components/Card";
 
 function SearchDetail({ items }) {

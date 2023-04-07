@@ -11,6 +11,7 @@ h2 {
 }
 
 .main-container {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -24,13 +25,17 @@ h2 {
 }
 
 .card-wrap > li > img{
-    position: relative;
     width: 285px;
     border-radius: 10px;
 }
 
+.card {
+    position: relative;
+}
+
 .rank {
     position: absolute;
+    top: 0;
     width: 32px;
     height: 32px;
     background-color: #bae900;

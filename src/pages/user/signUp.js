@@ -1,14 +1,15 @@
 import styled from "styled-components";
 import { useState } from "react";
 
+//component
+import SignUpModal from "../../components/signUpModal";
+
+//firebase
 import {
     firebaseAuth,
     createUserWithEmailAndPassword,
     updateProfile
 } from "../../firebase";
-
-import SignUpModal from "../../components/signUpModal";
-
 
 function SignUp() {
 
