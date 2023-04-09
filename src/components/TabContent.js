@@ -7,14 +7,15 @@ import Card from "./Card";
 import Timer from "./timer";
 
 
-function Tab(props) {
+function Tab({items}) {
 
     const [currentTab, clickTab] = useState(0);
 
-    const timeItems = props.items.filter(data => data.id > 7 && data.id < 16);
-    const limitedItems = props.items.filter(data => data.id > 15 && data.id < 24);
-    const onlyItems = props.items.filter(data => data.id > 23 && data.id < 32);
+    const timeItems = items.filter(data => data.detail_menu == "타임특가");
+    const limitedItems = items.filter(data => data.detail_menu == "한정특가");
+    const onlyItems = items.filter(data => data.detail_menu == "대박특가");
 
+    /* 버튼 클릭시 해당 index로 이동 */ 
     const tabClickHandler = (index) => {
         clickTab(index);
     };
@@ -36,6 +37,7 @@ function Tab(props) {
                             to={`/detail/${data.id}`} 
                             key={data.id}>
                             <Card data={data}></Card>
+                            {/* 타이머 */}
                             <span className="timer-wrap">
                                 <div style={{display: "flex"}}>
                                     <img src={process.env.PUBLIC_URL + '/image/clock.png'}
@@ -44,7 +46,7 @@ function Tab(props) {
                                 </div>
                                 <span style={{
                                     fontSize: "14px", marginRight: "20px"}}>
-                                        절찬 구매 중!
+                                        24시 한정특가
                                 </span>
                             </span>
                         </Link>
@@ -89,9 +91,7 @@ function Tab(props) {
             <TabBtn>
                 {tabArr.map((tabData) => tabData.tabButton)}
             </TabBtn>
-            <div>
-                {tabArr[currentTab].tabItems}
-            </div>
+            <div>{tabArr[currentTab].tabItems}</div>
         </>
     )
 };

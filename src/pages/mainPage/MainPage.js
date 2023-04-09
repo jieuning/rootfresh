@@ -23,7 +23,7 @@ function MainPage({items}) {
     const bestItems = items.filter(data => data.rank <= 8);
     console.log(bestItems)
     /* 레시피 필터 */
-    const recipe = items.filter(data => data.id >= 52);
+    const recipe = items.filter(data => data.menu == "레시피");
 
     /* 카테고리 데이터 */
     const cateData = useState(CategoryData);

@@ -22,7 +22,7 @@ function SearchBar() {
     return (
         <>
             <SearchWrap>
-                <form onSubmit={onSubmitHandler}>
+                <form onSubmit={onSubmitHandler}>      
                     <input className="search-box"
                         type="text"
                         value={keyword}
@@ -30,7 +30,8 @@ function SearchBar() {
                         placeholder="원하시는 상품을 입력해주세요" />
                     <button className="search-btn"
                         type="submit">
-                            <img src={process.env.PUBLIC_URL + '/image/search_icon.png'} />
+                            <img src={process.env.PUBLIC_URL + '/image/search_icon.png'} 
+                                alt="검색 버튼"/>
                     </button>
                 </form>
             </SearchWrap>

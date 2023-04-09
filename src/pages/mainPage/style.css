@@ -24,9 +24,13 @@ h2 {
     margin-bottom: 20px;
 }
 
-.card-wrap > li > img{
-    width: 285px;
+.img-wrap {
     border-radius: 10px;
+    overflow: hidden;
+}
+
+.img-wrap img{
+    width: 285px;
 }
 
 .card {
@@ -46,7 +50,7 @@ h2 {
     line-height: 31px;
 }
 
-.txtarea {
+.card-info {
     width: 285px;
     text-align: left;
     font-weight: 400;
