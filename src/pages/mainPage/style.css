@@ -34,6 +34,7 @@ h2 {
 }
 
 .card {
+    cursor: pointer;
     position: relative;
 }
 
@@ -120,7 +121,7 @@ h2 {
     width: 382px;
     height: 214px;
     position: absolute;
-    top: 240px;
+    top: 230px;
     left: 0;
     background: url(../../../public/image/season_dish.png);
     background-size: cover;
@@ -136,6 +137,7 @@ h2 {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    cursor: pointer;
 }
 
 .cate-wrap > li {

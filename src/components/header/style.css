@@ -57,22 +57,6 @@ button {
     display: none;
   }
 
-  .login-menu ul {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 10px;
-  }
-
-  .menu-share {
-    font-size: 12px;
-    letter-spacing: -0.06em;
-  }
-   .line {
-    width: 1px;
-    height: 12px;
-    margin: 5px 12px;
-    background-color: #ccc;
-  }
   /* login menu end */
 
   .logo-search-menu {
@@ -108,7 +92,7 @@ button {
     flex-direction: row;
     position: absolute;
     right: 0;
-    top: 48px;
+    top: 40px;
   }
 
   .fixed-user-menu {
@@ -174,7 +158,7 @@ button {
   }
 
   .main-manu-wrap li {
-    margin: 0 25px 0 25px;
+    margin: 0 30px 0 30px;
     font-weight: 500;
   }
 

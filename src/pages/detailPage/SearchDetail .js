@@ -10,7 +10,7 @@ function SearchDetail({ items }) {
     const [searchParams] = useSearchParams();
     const initKeyword = searchParams.get('keyword');
 
-    /* keyword가 포함된 문자열을 가진 아이템 필터링 */
+    /* keyword가 포함된 문자열을 가진 데이터 필터링 */
     const searchFilter = items.filter((data) =>
         data.title.includes(initKeyword));
     console.log(searchFilter)

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -6,10 +6,9 @@ import styled from "styled-components";
 import {
     firebaseAuth,
     signInWithEmailAndPassword,
-    onAuthStateChanged
 } from "../../firebase";
 
-function Login({ isLoggedIn, setIsLoggedIn }) {
+function Login({ isLoggedIn }) {
 
     const navigate = useNavigate();
 
@@ -17,19 +16,7 @@ function Login({ isLoggedIn, setIsLoggedIn }) {
     const [password, setPassword] = useState("");
     const [errorMsg, setErrorMsg] = useState("");
 
-    /* 현재 로그인한 유저 데이터 저장 */ 
-    useEffect(() => {
-        onAuthStateChanged(firebaseAuth, (user) => {
-            console.log(user)
-            if (user) {
-                setIsLoggedIn(true);
-            } else {
-                setIsLoggedIn(false);
-            }
-        });
-    }, []);
-
-    /* isLoggedIn가 true면 홈으로 */ 
+    /* isLoggedIn가 true면 홈으로 */
     const loggedIn = () => {
         if (isLoggedIn === true) {
             return navigate('/')
@@ -47,16 +34,16 @@ function Login({ isLoggedIn, setIsLoggedIn }) {
 
     const handleOnSubmit = async (e) => {
         try {
+            /* 이벤트 기본 동작 막기 */ 
             e.preventDefault();
 
             setErrorMsg("");
+            loggedIn(isLoggedIn);
 
             let loginUser;
             /* 로그인하기 */
             loginUser = await signInWithEmailAndPassword(
                 firebaseAuth, email, password);
-
-            loggedIn(isLoggedIn);
 
         /* 조건 일치하지 않을 시 에러 메세지 */
         } catch (err) {

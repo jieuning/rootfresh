@@ -1,24 +1,22 @@
+import "./style.css"
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+//redux
 import { addItem, increase } from "../../store/cartSlice";
+//component
 import CommaFormat from "../../components/CommaFormat";
-
 import CartModal from "../../components/cart/CartModal";
-
-//css
-import "./style.css"
-
 
 function DetailPage({items}) {
 
-    //items의 해당 아이디 찾기
+    /* url파라미터 가져오기 */
     const { id } = useParams();
 
-    const findItem = items.find((x) => x.id == id)
-    console.log(findItem)
+    /* items데이터의 id와 url파라미터가 같은 데이터를 찾아줌*/ 
+    const findItem = items.find((data) => data.id == id);
 
-    //redux데이터
+    /* redux데이터 */
     const state = useSelector((state) => state);
     const cartData = state.cart;
 
@@ -27,11 +25,11 @@ function DetailPage({items}) {
     const [count, setCount] = useState(1);
     const [modal, setModal] = useState(false);
 
+    /* redux데이터와 find의 id가 같은 index값을 찾아줌 */ 
     const indexFind = cartData.findIndex((i) => { return i.id === findItem.id });
     const findItemId = findItem.id;
-    console.log(findItemId)
 
-    //중복된 아이템 제외, 장바구니 담기 버튼 클릭시 redux에 데이터 담기
+    /* 중복된 아이템 제외, redux에 데이터 담기 */
     const sameItemFind = () => {
         indexFind < 0 ?
         dispatch(addItem({ 
@@ -45,7 +43,7 @@ function DetailPage({items}) {
         : dispatch(increase(findItemId))
     };
 
-    //구매 수량 카운터
+    /* 구매 수량 카운터 */
     const onIncrease = () => {
         setCount(count + 1)
     };
@@ -54,11 +52,10 @@ function DetailPage({items}) {
         : setCount(count - 1)
     };
 
-    //3초 뒤에 '장바구니에 담김' 모달 사라짐
+    /* 3초 뒤에 모달 사라짐 */
     useEffect(() => {
         setTimeout(() => {setModal(false)}, 3000)
     });
-
 
     return (
         <>

@@ -1,42 +1,40 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import "./style.css"
 import Logo from '../../assets/logo.svg'
-
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 //component
 import CategoryNavBar from "./categoryNavBar";
 import Menu from "./Menu";
 import UserNav from "./userNav";
 import SearchBar from "./searchBar";
-
 //redux
 import { useSelector } from "react-redux";
-
 //data
 import { userMenuAlt } from "../../dummy/contentOption";
 
-
-function Header({ items, isLoggedIn }) {
+function Header({ items }) {
 
     const [scrollHeader, setScrollHeader] = useState(0);
     const [mouseOver, setMouseOver] = useState(false);
 
     const navigate = useNavigate();
 
-    //redux데이터
+    /* redux데이터 */
     const state = useSelector((state) => state);
     const cartList = state.cart;
 
-    //스크롤시 헤더 고정
+    /* 스크롤시 헤더 고정 */
     const updateScroll = () => {
         setScrollHeader(window.scrollY || 
-            document.documentElement.scrollTop)};
+        document.documentElement.scrollTop);
+    };
 
     useEffect(() => {
-        window.addEventListener('scroll', updateScroll)
+        window.addEventListener('scroll', updateScroll);
         return () => {
-            window.removeEventListener('scroll', updateScroll)}});
-
+            window.removeEventListener('scroll', updateScroll);
+        };
+    });
 
     return (
         <header className={scrollHeader > 10 ?
@@ -50,21 +48,20 @@ function Header({ items, isLoggedIn }) {
                     &nbsp;혜택!
                 </Link>
             </div>
-
             <div className={scrollHeader > 10 ?
                 "fixed-header-container" : "header-container"}>
                 {/* 유저 메뉴(로그아웃 기능 위치)*/}
                 <div className={scrollHeader > 10 ?
                     "fixed-login-menu" : "login-menu"}>
-                    <UserNav isLoggedIn={isLoggedIn}/>
+                    <UserNav/>
                 </div> 
                 <div className={scrollHeader > 10 ?
-                    "fixed-logo-search-menu" : "logo-search-menu"}>
+                    "fixed-logo-search-menu" : null}>
                     {/* 로고 */}
                     <h1 className="logo">
                         <img style={{ cursor: 'pointer' }}
                             src={Logo} onClick={() => { navigate('/') }}
-                            alt="로고" />
+                            alt="로고"/>
                     </h1>
                     <button className="delivery-info">
                         <span>루트</span>배송 안내
@@ -80,16 +77,19 @@ function Header({ items, isLoggedIn }) {
                         {[1, 2, 3].map((i) => (
                             <li><img className="user-menu-icon"
                                 src={process.env.PUBLIC_URL + '/image/header_icon'+ i +'.png'}
-                                alt={userMenuAlt[i]} />
+                                alt={userMenuAlt[i]}/>
                             </li>
                         ))}
                         <li><img className="user-menu-icon"
-                            src={process.env.PUBLIC_URL + '/image/header_icon4.png'}
-                            onClick={() => { navigate('/Cart') }}
-                            alt="장바구니" />
+                                src={process.env.PUBLIC_URL + '/image/header_icon4.png'}
+                                onClick={() => {navigate('/Cart')}}
+                                alt="장바구니"/>
                             <span
-                                className={cartList.length === 0 ? "none" : "add-item-count"}
-                                onClick={() => { navigate('/Cart') }}>{cartList.length}</span>
+                                className={cartList.length === 0 ? 
+                                "none" : "add-item-count"}
+                                onClick={() => { navigate('/Cart') }}>
+                                {cartList.length}
+                            </span>
                         </li>
                     </ul>
                     <div className="main-menu">
@@ -101,13 +101,16 @@ function Header({ items, isLoggedIn }) {
                                 onMouseOut={() => setMouseOver(false)}>
                                 전체상품 보기
                                 {mouseOver == true ?
-                                    <CategoryNavBar scrollHeader={scrollHeader} /> : null}
+                                    <CategoryNavBar scrollHeader={scrollHeader}/> 
+                                    : null}
                             </div>
                         </div>
                         {/* 메인 메뉴 */}
                             <Menu items={items}/>
                         <button className={scrollHeader > 10 ?
-                            "fixed-address" : "address"}>배송지 입력하기</button>
+                            "fixed-address" : "address"}>
+                            배송지 입력하기
+                        </button>
                     </div>
                 </div>
             </div>

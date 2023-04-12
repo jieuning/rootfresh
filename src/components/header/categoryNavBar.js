@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 //data
@@ -7,14 +8,15 @@ import categorydata from "../../dummy/categorydata.json"
 
 function CategoryNavBar({scrollHeader}) {
 
-    const cateData = useState(categorydata);
+    const [cateData] = useState(categorydata);
+    const navigate = useNavigate();
 
     return (
         <NavMenuContainer>
             <ul className={scrollHeader > 10 ? 
                 "fixed-navmenu-wrap" : "navmenu-wrap"}>
-                {cateData[0].map((ctdata) => (
-                    <li className="navmanu">
+                {cateData.map((ctdata, i) => (
+                    <li className="navmanu" onClick={()=>navigate(`category/${cateData[i].title}`)}>
                         <MenuButton>{ctdata.title}</MenuButton>
                     </li>
                 ))}

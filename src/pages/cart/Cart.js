@@ -29,9 +29,11 @@ function Cart() {
     /* 전체 선택, 해제 */
     const handleAllCheck = (checked) => {
         if(checked) {
-            cartList.forEach((item) => dispatch(allCheckedTrue(item.id)));
+            cartList.forEach((item) => 
+            dispatch(allCheckedTrue(item.id)));
         } else{
-            cartList.forEach((item) => dispatch(allCheckedFalse(item.id)));
+            cartList.forEach((item) => 
+            dispatch(allCheckedFalse(item.id)));
         }
     };
 

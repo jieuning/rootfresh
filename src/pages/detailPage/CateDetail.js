@@ -2,18 +2,20 @@ import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 
-//component
 import Card from "../../components/Card";
 
-function MenuDetail({ items, setItems }) {
+function CateDetail({ items, setItems }) {
 
     const [currentTab, clickTab] = useState(0);
 
     /* url파라미터 name을 가져옴 */
-    const { name } = useParams();
+    const { category } = useParams();
+    console.log(category)
 
     /* items의 menu 와 url의 name과 같은 아이템 필터 */
-    const menufilter = items.filter((data) => data.menu === name);
+    const catefilter = items.filter((data) => data.category === category);
+    console.log(catefilter)
+
 
     /* items 복사 */
     const itemsCopy = [...items];
@@ -39,9 +41,9 @@ function MenuDetail({ items, setItems }) {
 
     return (
         <section>
-            <h2>{name}</h2>
+            <h2>{category}</h2>
             <ItemAlign>
-                <li>총 {menufilter.length}건</li>
+                <li>총 {catefilter.length}건</li>
                 <BtnWrap>
                     <div className={currentTab === 0 ? "focus" : "sort-btn"}
                         onClick={() => {
@@ -68,18 +70,26 @@ function MenuDetail({ items, setItems }) {
                     </div>
                 </BtnWrap>
             </ItemAlign>
-            <Container>
-                {items.map((data) => data.menu === name &&
-                    <Link to={`/detail/${data.id}`}>
-                        <Card data={data} />
-                    </Link>
-                )}
-            </Container>
+            {catefilter.length !== 0 ?
+                <Container>
+                    {items.map((data) => data.category === category &&
+                        <Link to={`/detail/${data.id}`}>
+                            <Card data={data} />
+                        </Link>
+                    )}
+                </Container>
+                :
+                <div style={{margin: "180px 0"}}>
+                    <p style={{ color: "#ccc", marginTop: "20px" }}>
+                        상품이 없습니다.
+                    </p>
+                </div>
+            }
         </section>
     )
-}
+};
 
-export default MenuDetail;
+export default CateDetail;
 
 const ItemAlign = styled.ul`
     margin-top: 50px;
@@ -102,7 +112,6 @@ const BtnWrap = styled.li`
     .focus {
         color: #333;
     }
-
 `
 
 const Line = styled.span`

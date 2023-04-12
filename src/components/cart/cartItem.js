@@ -1,7 +1,14 @@
 import styled from "styled-components"
-import { useDispatch } from "react-redux";
+//component
 import CommaFormat from "../CommaFormat";
-import { increase, decrease, removeItem, checkedChange } from "../../store/cartSlice";
+//redux
+import { useDispatch } from "react-redux";
+import { 
+    increase, 
+    decrease, 
+    removeItem, 
+    checkedChange 
+} from "../../store/cartSlice";
 
 
 function CartItem({item}) {
@@ -19,15 +26,17 @@ function CartItem({item}) {
                     />
                 </dd>
                 <dd>
-                    <img className="cart-image" src={process.env.PUBLIC_URL + item.image} />
+                    <img className="cart-image" src={process.env.PUBLIC_URL + item.image} 
+                    alt="상품 이미지"/>
                 </dd>
                 <dd className="cart-name">{item.name}</dd>
                 <dd className="count-button">
                     <Button onClick={() => 
-                    item.count === 1 ? alert('1개 이상부터 구매 가능합니다') 
-                    : dispatch(decrease(item.id))}>-</Button>
-                    <p>{item.count}</p>
-                    <Button onClick={() => {dispatch(increase(item.id))}}>+</Button>
+                        item.count === 1 ? alert('1개 이상부터 구매 가능합니다') 
+                        : dispatch(decrease(item.id))}>-</Button>
+                        <p>{item.count}</p>
+                    <Button onClick={() => 
+                        {dispatch(increase(item.id))}}>+</Button>
                 </dd>
                 <dd className="item-price">
                     {CommaFormat(item.count * item.price)}<span>원</span>

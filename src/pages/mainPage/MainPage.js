@@ -21,12 +21,11 @@ function MainPage({items}) {
 
     /* 베스트 상품 필터 */
     const bestItems = items.filter(data => data.rank <= 8);
-    console.log(bestItems)
     /* 레시피 필터 */
-    const recipe = items.filter(data => data.menu == "레시피");
+    const recipe = items.filter(data => data.menu === "레시피");
 
     /* 카테고리 데이터 */
-    const cateData = useState(CategoryData);
+    const [cateData] = useState(CategoryData);
 
 
     return (
@@ -67,10 +66,10 @@ function MainPage({items}) {
             <section>
                 <h2>인기 카테고리 모음</h2>
                 <ul className="cate-wrap">
-                    {cateData[0].map((ctdata) => (
-                        <li>
+                    {cateData.map((ctdata, i) => (
+                        <li onClick={()=>navigate(`category/${cateData[i].title}`)}>
                             <img src={process.env.PUBLIC_URL + ctdata.image} />
-                            <p>{ctdata.title2}</p>
+                            <p>{ctdata.title}</p>
                         </li>
                     ))}
                 </ul>
@@ -81,21 +80,23 @@ function MainPage({items}) {
                 <h2>베스트</h2>
                 <div className="main-container">
                     {bestItems.map((data) => (
-                        <Link className="card" to={`/detail/${data.id}`}>
+                        <div className="card" 
+                            onClick={()=>navigate(`/detail/${data.id}`)}>
                             <Card data={data}></Card>
                             <span className="rank">{data.rank}</span>
-                        </Link>
+                        </div>
                     ))}
                 </div>
                 <button className="more-button" 
-                        onClick={()=>navigate(`/menu/베스트`)}
-                >베스트 상품 더보기</button>
+                    onClick={()=>navigate('/menu/베스트')}>
+                    베스트 상품 더보기
+                </button>
             </section>
 
             {/* THE신선 */}
             <section>
                 <h2>오늘 수확, THE신선</h2>
-                <TheFresh items={items} />
+                <TheFresh onClick={()=>navigate('/')} items={items} />
             </section>
             
             {/* 후기 */}

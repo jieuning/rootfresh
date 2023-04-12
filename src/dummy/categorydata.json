@@ -1,122 +1,102 @@
 [
     {
         "id": 0,
-        "title": "🥬 채소·과일",
-        "title2": "채소·과일",
+        "title": "채소·과일",
         "image": "/image/best_category1.png"
     },
     {
         "id": 1,
-        "title": "🥜 견과·쌀",
-        "title2": "견과·쌀",
-        "image": "/image/best_category2.png"
+        "title": "치즈·요구르트",
+        "image": "/image/best_category14.png"
     },
     {
         "id": 2,
-        "title": "🦪 수산·해산",
-        "title2": "수산·해산",
+        "title": "수산·해산",
         "image": "/image/best_category3.png"
     },
     {
         "id": 3,
-        "title": "🥩 정육·계란",
-        "title2": "정육·계란",
+        "title": "정육·계란",
         "image": "/image/best_category4.png"
     },
     {
         "id": 4,
-        "title": "🍲 국·반찬",
-        "title2": "국·반찬",
-        "image": "/image/best_category5.png"
-    },
-    {
-        "id": 5,
-        "title": "🥙 샐러드·간편식",
-        "title2": "샐러드·간편식",
+        "title": "샐러드·간편식",
         "image": "/image/best_category6.png"
     },
     {
-        "id": 6,
-        "title": "🍜 면",
-        "title2": "면",
+        "id": 5,
+        "title": "면",
         "image": "/image/best_category7.png"
     },
     {
-        "id": 7,
-        "title": "🥛 생수·음료·우유",
-        "title2": "생수·음료·우유",
+        "id": 6,
+        "title": "생수·음료·우유",
         "image": "/image/best_category8.png"
     },
     {
-        "id": 8,
-        "title": "🍡 간식·과자·아이스크림",
-        "title2": "간식·과자·아이스크림",
+        "id": 7,
+        "title": "아이스크림",
         "image": "/image/best_category9.png"
     },
     {
-        "id": 9,
-        "title": "🍞 베이커리·떡",
-        "title2": "베이커리·떡",
+        "id": 8,
+        "title": "베이커리·잼",
         "image": "/image/best_category10.png"
     },
     {
-        "id": 10,
-        "title": "🧃 건강식품",
-        "title2": "건강식품",
+        "id": 9,
+        "title": "건강식품",
         "image": "/image/best_category11.png"
     },
     {
-        "id": 11,
-        "title": "🧂 소스·오일",
-        "title2": "소스·오일",
+        "id": 10,
+        "title": "소스·오일",
         "image": "/image/best_category12.png"
     },
     {
-        "id": 12,
-        "title": "🧀 치즈·델리",
-        "title2": "치즈·델리",
+        "id": 11,
+        "title": "치즈·델리",
         "image": "/image/best_category13.png"
     },
     {
+        "id": 12,
+        "title": "견과·쌀",
+        "image": "/image/best_category2.png"
+    },
+    {
         "id": 13,
-        "title": "🥣 치즈·요구르트",
-        "title2": "치즈·요구르트",
-        "image": "/image/best_category14.png"
+        "title": "국·반찬",
+        "image": "/image/best_category5.png"
     },
     {
         "id": 14,
-        "title": "🪑 리빙·생활용품",
-        "title2": "리빙·생활용품",
+        "title": "리빙·생활용품",
         "image": "/image/best_category15.png"
     },
     {
         "id": 15,
-        "title": "🍏 THE신선",
-        "title2": "THE신선",
+        "title": "반찬",
         "image": "/image/best_category16.png"
     },
     {
         "id": 16,
-        "title": "🧂 레시피",
-        "title2": "레시피",
+        "title": "양념",
         "image": "/image/best_category17.png"
     },
     {
         "id": 17,
-        "title": "👍 베스트",
-        "title2": "베스트",
+        "title": "간식·과자",
         "image": "/image/best_category18.png"
     },
     {
         "id": 18,
-        "title": "🎁 선물하기",
-        "title2": "선물하기",
+        "title": "떡",
         "image": "/image/best_category19.png"
     },
     {
         "id": 19,
-        "title": "🕶️ 신상품",
-        "title2": "신상품",
+        "title": "유제품",
         "image": "/image/best_category20.png"
     }
 ]

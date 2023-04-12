@@ -1,12 +1,16 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import CommaFormat from "./CommaFormat";
 
+//component
+import CommaFormat from "./CommaFormat";
 //css
 import "../pages/mainPage/style.css"
 
-function thefresh({items}) {
+function Thefresh({items}) {
 
+    const navigate = useNavigate();
+
+    /* 해당 아이템 필터 */ 
     const freshFruit = items.filter(data => data.id > 47 && data.id < 50);
     const freshSeafood = items.filter(data => data.id > 49 && data.id < 52);
 
@@ -16,12 +20,16 @@ function thefresh({items}) {
                 <li className="fresh-banner">
                     <div className="fresh-title">
                         <h3>더 신선한 싱그러운 제철 채소·과일</h3>
-                        <button className="fresh-more-btn">더 보기</button>
+                        <button className="fresh-more-btn" 
+                            onClick={()=>navigate('/menu/THE신선')}>
+                            더 보기
+                        </button>
                     </div>
                     <img src={process.env.PUBLIC_URL + '/image/thefresh1.png'} />
                 </li>
                 {freshFruit.map((data, i) => (
-                    <li className="fresh-items">
+                    <li className="fresh-items" 
+                        onClick={()=>navigate(`/detail/${data.id}`)}>
                         <img src={process.env.PUBLIC_URL + data.image} />
                         <div className="fresh-txt-wrap">
                             <h5>{data.title}</h5>
@@ -36,12 +44,16 @@ function thefresh({items}) {
                 <li className="fresh-banner">
                     <div className="fresh-title">
                         <h3>더 신선한 제철 해산물</h3>
-                        <button className="fresh-more-btn">더 보기</button>
+                        <button className="fresh-more-btn" 
+                            onClick={()=>navigate('menu/THE신선')}>
+                            더 보기
+                        </button>
                     </div>
                     <img src={process.env.PUBLIC_URL + '/image/thefresh2.png'} />
                 </li>
                 {freshSeafood.map((data, i) => (
-                    <li className="fresh-items">
+                    <li className="fresh-items" 
+                        onClick={()=>navigate(`/detail/${data.id}`)}>
                         <img src={process.env.PUBLIC_URL + data.image} />
                         <div className="fresh-txt-wrap">
                             <h5>{data.title}</h5>
@@ -56,7 +68,7 @@ function thefresh({items}) {
     )
 }
 
-export default thefresh;
+export default Thefresh;
 
 const TheFreshContainer = styled.div`
     display: flex;
@@ -67,6 +79,7 @@ const TheFreshContainer = styled.div`
     .fresh-items {
         display: flex;
         margin-top: 20px;
+        cursor: pointer;
     }
 
     .fresh-txt-wrap {
@@ -123,13 +136,13 @@ const TheFreshContainer = styled.div`
         font-size: 26px;
         font-weight: 500;
         margin-bottom: 10px;
-        color: #1E1E1E;
+        color: #fff;
     }
 
     .fresh-more-btn {
         border-radius: 30px;
         border: none;
         padding: 4px 10px;
-        background-color: rgba(255,255,255,.7);
+        background-color: #fff;
     }
 `

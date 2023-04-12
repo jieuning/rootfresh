@@ -11,9 +11,10 @@ function Tab({items}) {
 
     const [currentTab, clickTab] = useState(0);
 
-    const timeItems = items.filter(data => data.detail_menu == "타임특가");
-    const limitedItems = items.filter(data => data.detail_menu == "한정특가");
-    const onlyItems = items.filter(data => data.detail_menu == "대박특가");
+    /* 해당 아이템 필터 */ 
+    const timeItems = items.filter(data => data.detail_menu === "타임특가");
+    const limitedItems = items.filter(data => data.detail_menu === "한정특가");
+    const onlyItems = items.filter(data => data.detail_menu === "대박특가");
 
     /* 버튼 클릭시 해당 index로 이동 */ 
     const tabClickHandler = (index) => {
