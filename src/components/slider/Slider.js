@@ -1,11 +1,8 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import styled from 'styled-components';
-
-import { slideBanImg } from '../../dummy/contentOption';
-
-//css
 import "./style.css";
-
+//data
+import { slideBanImg } from '../../dummy/contentOption';
 //swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
@@ -23,6 +20,7 @@ function MySwiper() {
   return (
     <StyledSwiper
       slidesPerView={1}
+      /* 커스텀 네비게이션 버튼 */ 
       navigation={{
         prevEl: BannerPrevRef.current,
         nextEl: BannerNextRef.current
@@ -46,15 +44,18 @@ function MySwiper() {
             alt="메인 배너" />
         </SwiperSlide>
       ))}
-      <SlideButton style={{left: "20%"}} ref={BannerPrevRef}></SlideButton>
-      <SlideButton arrowRotate style={{right: "20%"}} ref={BannerNextRef}></SlideButton>
+      <SlideButton 
+        style={{left: "20%"}} 
+        ref={BannerPrevRef} />
+      <SlideButton 
+        arrowRotate 
+        style={{right: "20%"}} 
+        ref={BannerNextRef} />
     </StyledSwiper>
   );
 };
 
 export default MySwiper;
-
-
 
 const StyledSwiper = styled(Swiper)`
   position: relative;

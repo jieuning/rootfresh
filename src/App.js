@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import './App.css';
 //firebase
 import { firebaseAuth, onAuthStateChanged } from "./firebase";
 //components
@@ -39,27 +38,27 @@ function App() {
   }, []);
 
   return (
-    <React.Fragment>
-      <div className="Wrapper">
-        <div className="contentWrapper">
-          <Header
-            items={items}
-            isLoggedIn={isLoggedIn}
-          />
-          <Routes>
-            <Route path="/" element={<MainPage items={items} />} />
-            <Route path="/detail/:id" element={<DetailPage items={items} />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/menu/:name" element={<MenuDetail items={items} setItems={setItems} />} />
-            <Route path="/category/:category" element={<CateDetail items={items} setItems={setItems} />} />
-            <Route path="/login" element={<Login isLoggedIn={isLoggedIn} />} />
-            <Route path="/sign-up" element={<SignUp />} />
-            <Route path="/search" element={<SearchDetail items={items} />} />
-          </Routes>
-        </div>
-        <Footer />
-      </div>
-    </React.Fragment>
+    <div style={{
+      margin: "0 auto", 
+      textAlign: "center",
+      color: "#333"
+    }}>
+        <Header
+          items={items}
+          isLoggedIn={isLoggedIn}
+        />
+        <Routes>
+          <Route path="/" element={<MainPage items={items} />} />
+          <Route path="/detail/:id" element={<DetailPage items={items} />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/menu/:name" element={<MenuDetail items={items} setItems={setItems} />} />
+          <Route path="/category/:category" element={<CateDetail items={items} setItems={setItems} />} />
+          <Route path="/login" element={<Login isLoggedIn={isLoggedIn} />} />
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/search" element={<SearchDetail items={items} />} />
+        </Routes>
+      <Footer />
+    </div>
   );
 }
 
