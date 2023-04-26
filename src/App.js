@@ -15,6 +15,7 @@ import Login from "./pages/user/login";
 import SignUp from "./pages/user/signUp";
 import SearchDetail from "./pages/detailPage/SearchDetail ";
 import CateDetail from "./pages/detailPage/CateDetail";
+import NotFound from "./components/notFound";
 //mobile page
 import MobCategoryNav from "./components/mobile/mobCategoryNav";
 import MobSearch from "./components/mobile/mobSearch";
@@ -65,6 +66,7 @@ function App() {
         <Route path="/m_category_nav/category/:category" element={<CateDetail items={items} setItems={setItems} navigate={navigate} />} />
         <Route path="/m_search" element={<MobSearch/>} />
         <Route path="/m_mypage" element={<MobMypage/>} />
+        <Route path="/*" element={<NotFound navigate={navigate}/>} />
       </Routes>
       <Pc>
         <Footer />
