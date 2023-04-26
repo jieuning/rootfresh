@@ -1,4 +1,4 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import "../mainPage/style.css"
 //component
 import Card from "../../components/Card";

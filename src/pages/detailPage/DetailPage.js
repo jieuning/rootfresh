@@ -10,7 +10,6 @@ import CartModal from "../../components/cart/CartModal";
 //mobile
 import MobDetailHeader from "../../components/mobile/mobDetailHeader";
 import DetailBottomNav from "../../components/mobile/bottomNav/detailBottomNav";
-import MobDetailPopUp from "../../components/mobile/mobDetailPopUp";
 //responsive
 import { Pc, Mobile } from "../../components/mobile/responsive";
 
