@@ -7,9 +7,9 @@ function Menu({navigate}) {
     <>
       <ul className="main-manu-wrap">
         {menu.map((data, i) => (
-          <li onClick={() => { navigate(`/menu/${menu[i].name}`) }}
+          <li key={i} onClick={() => { navigate(`/menu/${menu[i].name}`) }}
             style={{ cursor: "pointer" }}>
-            <div className="menu" key={menu.id}>{menu[i].name}</div>
+            <div className="menu">{menu[i].name}</div>
           </li>))}
       </ul>
     </>

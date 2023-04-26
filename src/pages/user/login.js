@@ -6,6 +6,8 @@ import {
   firebaseAuth,
   signInWithEmailAndPassword,
 } from "../../firebase";
+//responsive
+import { Pc, Mobile } from "../../components/mobile/responsive";
 
 
 function Login({ isLoggedIn }) {
@@ -60,8 +62,13 @@ function Login({ isLoggedIn }) {
   };
 
   return (
-    <>
-      <h2>로그인</h2>
+    <LoginWrap>
+      <Mobile>
+        <img src={process.env.PUBLIC_URL + "/image/mob_cancle_btn.png"}
+          onClick={() => navigate('/')}
+          alt="닫기버튼" />
+      </Mobile>
+      <h2 style={{ margin: "50px 0 0 0" }}>로그인</h2>
       <LoginForm onSubmit={handleOnSubmit}>
         <LoginInput
           type="email"
@@ -80,19 +87,31 @@ function Login({ isLoggedIn }) {
           required
         />
         <p className="errMsg">{errorMsg}</p>{/* 에러 메세지 출력 */}
-        <Button background
+        <Button changeBackground
           type="submit">로그인</Button>
       </LoginForm>
-      <Button color border margin
+      <Button changeColor changeMargin
         onClick={() => navigate('/sign-up')}>
         간편 회원가입
       </Button>
-    </>
+    </LoginWrap>
   )
 };
 
 export default Login;
 
+const LoginWrap = styled.div`
+@media(max-width: 1229px) {
+  padding: 0 20px;
+  img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 50px 20px 20px 20px;
+    width: 14px;
+  }
+}
+`
 const LoginForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -104,13 +123,25 @@ const LoginForm = styled.form`
     font-weight: 500;
     color: #D70F0F;
   }
+  @media(max-width: 1229px) {
+    .errMsg {
+      font-size: 12px;
+    }
+  }
 `
 const LoginInput = styled.input`
-  width: 320px;
+  width: 330px;
   height: 46px;
   border-radius: 4px;
   border: 1px solid #ccc;
   padding: 0 10px;
+  &::placeholder {
+    color: #ccc;
+  }
+  @media(max-width: 1229px) {
+    width: calc(100% - 20px);
+    font-size: 12px;
+  }
 `
 const Button = styled.button`
   width: 342px;
@@ -118,8 +149,13 @@ const Button = styled.button`
   border: none;
   border-radius: 4px;
   font-size: 16px;
-  background-color: ${props => props.background ? "#2A6834" : "#fff"};
-  color: ${props => props.color ? "#2A6834" : "#fff"};
+  @media(max-width: 1229px) {
+    width: 100%;
+    font-size: 12px;
+    padding: 0 10px;
+  }
+  background-color: ${props => props.changeBackground ? "#2A6834" : "#fff"};
+  color: ${props => props.changeColor ? "#2A6834" : "#fff"};
   border: 1px solid #2A6834;
-  margin-top: ${props => props.margin ? "10px" : "20px"}
+  margin-top: ${props => props.changeMargin ? "10px" : "20px"}
 `

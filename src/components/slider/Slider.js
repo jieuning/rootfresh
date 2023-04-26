@@ -9,18 +9,23 @@ import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+//responsive
+import { useMediaQuery } from "react-responsive"
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
-function MySwiper() {
+function MainSlider() {
 
   const BannerPrevRef = useRef(null);
   const BannerNextRef = useRef(null);
 
+  /* 모바일 768px 이하일때 */
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+
   return (
     <StyledSwiper
       slidesPerView={1}
-      /* 커스텀 네비게이션 버튼 */ 
+      /* 커스텀 네비게이션 버튼 */
       navigation={{
         prevEl: BannerPrevRef.current,
         nextEl: BannerNextRef.current
@@ -35,27 +40,33 @@ function MySwiper() {
       onBeforeInit={(swiper) => {
         swiper.params.navigation.prevEl = BannerPrevRef.current;
         swiper.params.navigation.nextEl = BannerNextRef.current;
-      }}
-    >
-      {slideBanImg.map(image => (
-        <SwiperSlide>
-          <img className='banner-image' 
-            src={process.env.PUBLIC_URL + image } 
-            alt="메인 배너" />
-        </SwiperSlide>
+      }}>
+      {slideBanImg.map((image, i) => (
+        isMobile === false ?
+          <SwiperSlide key={i}>
+            <img className='banner-image'
+              src={process.env.PUBLIC_URL + image.pc}
+              alt="메인 배너" />
+          </SwiperSlide>
+          :
+          <SwiperSlide key={i}>
+            <img className='banner-image'
+              src={process.env.PUBLIC_URL + image.mobile}
+              alt="메인 배너" />
+          </SwiperSlide>
       ))}
-      <SlideButton 
-        style={{left: "20%"}} 
+      <SlideButton
+        style={{ left: "20%" }}
         ref={BannerPrevRef} />
-      <SlideButton 
-        arrowRotate 
-        style={{right: "20%"}} 
+      <SlideButton
+        arrowRotate
+        style={{ right: "20%" }}
         ref={BannerNextRef} />
     </StyledSwiper>
   );
 };
 
-export default MySwiper;
+export default MainSlider;
 
 const StyledSwiper = styled(Swiper)`
   position: relative;

@@ -7,6 +7,12 @@ import { addItem, increase } from "../../store/cartSlice";
 //component
 import CommaFormat from "../../components/CommaFormat";
 import CartModal from "../../components/cart/CartModal";
+//mobile
+import MobDetailHeader from "../../components/mobile/mobDetailHeader";
+import DetailBottomNav from "../../components/mobile/bottomNav/detailBottomNav";
+import MobDetailPopUp from "../../components/mobile/mobDetailPopUp";
+//responsive
+import { Pc, Mobile } from "../../components/mobile/responsive";
 
 
 function DetailPage({ items }) {
@@ -26,7 +32,7 @@ function DetailPage({ items }) {
   const [count, setCount] = useState(1);
   const [modal, setModal] = useState(false);
 
-  /* redux데이터와 find의 id가 같은 index값을 찾아줌 */
+  /* redux데이터와 findIndex id가 같은 index값을 찾아줌 */
   const indexFind = cartData.findIndex((i) => { return i.id === findItem.id });
   const findItemId = findItem.id;
 
@@ -60,12 +66,16 @@ function DetailPage({ items }) {
 
   return (
     <>
+      <Mobile>
+        {/* 모바일 상단 고정 헤더 */}
+        <MobDetailHeader findItem={findItem} />
+      </Mobile>
       <div className="detail-container">
         {/* 상품 이미지 */}
         <div className="detail-image">
           <img src={process.env.PUBLIC_URL + findItem.image} />
         </div>
-        <div className="item-info">
+        <div className="item-info-wrap">
           {/* 상품 타이틀 */}
           <div className="title-wrap">
             <h4 className="detail-title">{findItem.title}</h4>
@@ -74,7 +84,7 @@ function DetailPage({ items }) {
             <p className="detail-dimmed-price">{findItem.dimmed_price}</p>
           </div>
           {/* 상품 정보 */}
-          <dl>
+          <dl className="item-info">
             <div>
               <dt>판매단위</dt>
               <dd>{findItem.sales_unit}</dd>
@@ -91,34 +101,46 @@ function DetailPage({ items }) {
               <dt>유통기한</dt>
               <dd>출고일 기준, 1년 이상 남은 상품을 배송해 드립니다</dd>
             </div>
-            <div>
-              <dt>구매수량</dt>
-              <dd>
-                <div className="count-button">
-                  <button onClick={onDecrease}>-</button>
-                  <p>{count}</p>
-                  <button onClick={onIncrease}>+</button>
-                </div>
-              </dd>
-            </div>
+            <Pc>
+              <div>
+                <dt>구매수량</dt>
+                <dd>
+                  <div className="counter">
+                    <button onClick={onDecrease}>-</button>
+                    <p>{count}</p>
+                    <button onClick={onIncrease}>+</button>
+                  </div>
+                </dd>
+              </div>
+            </Pc>
           </dl>
-          {/* 상품 가격의 총 합계 */}
-          <div className="amount-wrap">
-            <div className="amount-price">
-              <span className="amount-title">총 상품 금액: </span>
-              {CommaFormat(count * findItem.price)}<span className="won">원</span>
+          <Pc>
+            {/* 상품 가격 총 합계 */}
+            <div className="amount-wrap">
+              <div className="amount-price">
+                <span className="amount-title">총 상품 금액: </span>
+                {CommaFormat(count * findItem.price)}<span className="won">원</span>
+              </div>
+              {/* 장바구니 담기 버튼 */}
+              <button className="cart-btn"
+                onClick={() => {
+                  sameItemFind()
+                  setModal(true)
+                }}>장바구니 담기</button>
+              {modal === true ? <CartModal /> : null}
             </div>
-            {/* 장바구니 담기 버튼 */}
-            <button className="cart-btn"
-              onClick={() => {
-                sameItemFind()
-                setModal(true)
-              }}>장바구니 담기</button>
-            {modal === true ? <CartModal /> : null}
-          </div>
+          </Pc>
         </div>
       </div>
-      <div className="empty"></div>
+      <Mobile>
+        {/* 모바일 하단 고정 네비게이션(구매하기 버튼) */}
+        <DetailBottomNav
+          sameItemFind={sameItemFind}
+          items={items}
+          modal={modal}
+          setModal={setModal}
+        />
+      </Mobile>
     </>
   )
 };

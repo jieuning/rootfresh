@@ -14,6 +14,7 @@ button {
   cursor: pointer;
 }
 
+/* 헤더 탑 배너 */
 .top-banner {
     height: 40px;
     margin: 0 auto;
@@ -34,7 +35,7 @@ button {
     font-size: 16px;
     font-weight: 700;
   }
-  /* topBanner end */
+  /* 헤더 탑 배너 끝*/
 
   .header-container {
     position: relative;
@@ -49,6 +50,7 @@ button {
     margin: 0 auto;
   }
 
+  /* 로그인 메뉴 영역 */
   .login-menu {
     margin-left: 20px;
   }
@@ -56,9 +58,9 @@ button {
   .fixed-login-menu {
     display: none;
   }
+  /* 로그인 메뉴 영역 끝 */
 
-  /* login menu end */
-
+  /* 검색 바 */
   .logo-search-menu {
     display: flex;
     justify-content: flex-start;
@@ -69,7 +71,9 @@ button {
   .fixed-logo-search-menu {
     display: none;
   }
+  /* 검색 바 끝 */
 
+  /* 배송 안내 버튼 */
   .delivery-info {
     width: 91px;
     height: 28px;
@@ -84,6 +88,12 @@ button {
 
   .delivery-info span {
     color: #223928;
+  }
+  /* 배송 안내 버튼 끝 */
+
+  /* 유저 메뉴 */
+  .menu-wrap ul li:nth-child(4) {
+    position: relative;
   }
 
   .user-menu {
@@ -103,17 +113,6 @@ button {
     margin-top: 14px;
   }
 
-  .fixed-align {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .menu-wrap ul li:nth-child(4) {
-    position: relative;
-  }
-
   .user-menu-icon {
     display: inline-block;
     width: 26px;
@@ -121,7 +120,9 @@ button {
     margin-left: 20px;
     cursor: pointer;
   }
+  /* 유저 메뉴 끝 */
 
+  /* 장바구니에 상품 추가시 아이콘 표시 */
   .add-item-count {
     position: absolute;
     top: -8px;
@@ -136,14 +137,24 @@ button {
     line-height: 16px;
     color: #fff;
     cursor: pointer;
-
   }
 
   .none {
     display: none;
   }
+  @media(max-width: 1229px) {
+    .add-item-count {
+      left: 36px;
+      width: 14px;
+      height: 14px;
+      border: 1px solid #fff;
+      font-size: 10px;
+      line-height: 14px;
+    }
+  }
+  /* 장바구니 추가시 아이콘 표시 끝*/
 
-  /* mainMenu area */
+  /* 메뉴 */
   .main-menu {
     display: flex;
     font-weight: 400;
@@ -162,11 +173,12 @@ button {
     font-weight: 500;
   }
 
-  /* category hover */
   .menu:hover {
     color: #2A6834;
   }
-  
+  /* 메뉴 끝 */
+
+  /* 카테고리 */
   .category {
     display: flex;
   }
@@ -177,6 +189,11 @@ button {
 
   .category-btn {
     cursor: pointer;
+  }
+  @media(max-width: 1229px) {
+    .category {
+      width: 100%;
+    }
   }
 
   .category-btn:before {
@@ -191,7 +208,6 @@ button {
     margin-right: 7px;
   }
 
-  /* category hover */
   .category-btn:hover {
     color: #2A6834;
   }
@@ -207,7 +223,9 @@ button {
     background-size: 20px;
     margin-right: 7px;
   }
+  /* 카테고리 끝 */
 
+  /* 배송지 입력하기 버튼 */
   .address {
     width: 125px;
     height: 30px;
@@ -236,10 +254,9 @@ button {
     margin-right: 7px;
   }
 
-  /* category hover */
   .address:hover {
     background: #ccc;
   }
-
+  /* 배송지 입력하기 버튼 끝 */
 
 

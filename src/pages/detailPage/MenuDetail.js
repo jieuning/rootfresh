@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
-
 //component
 import Card from "../../components/Card";
+//responsive
+import { Pc, Mobile } from "../../components/mobile/responsive";
+//mobile
+import MobDetailHeader from "../../components/mobile/mobDetailHeader";
 
-
-function MenuDetail({ items, setItems }) {
+function MenuDetail({ items, setItems, navigate }) {
 
   const [currentTab, clickTab] = useState(0);
 
@@ -39,8 +41,13 @@ function MenuDetail({ items, setItems }) {
   };
 
   return (
-    <section>
-      <h2>{name}</h2>
+    <MenuDetailContainer>
+      <Pc>
+        <h2>{name}</h2>
+      </Pc>
+      <Mobile>
+        <MobDetailHeader name={name}/>
+      </Mobile>
       <ItemAlign>
         <li>총 {menufilter.length}건</li>
         <BtnWrap>
@@ -70,18 +77,28 @@ function MenuDetail({ items, setItems }) {
         </BtnWrap>
       </ItemAlign>
       <Container>
-        {items.map((data) => data.menu === name &&
-          <Link to={`/detail/${data.id}`}>
+        {items.map((data, i) => data.menu === name &&
+          <div key={i} className="menu-item" 
+            onClick={() => navigate(`/detail/${data.id}`)} >
             <Card data={data} />
-          </Link>
+          </div>
         )}
       </Container>
-    </section>
+    </MenuDetailContainer>
   )
 };
 
 export default MenuDetail;
 
+const MenuDetailContainer = styled.div`
+  width: 1200px;
+  margin: 0 auto;
+  @media(max-width: 1229px) {
+    width: 100%;
+    padding-top: 43px;
+    overflow-y: hidden;
+  }
+`
 const ItemAlign = styled.ul`
   margin-top: 50px;
   display: flex;
@@ -89,6 +106,10 @@ const ItemAlign = styled.ul`
   letter-spacing: -0.06em;
   font-size: 14px;
   font-weight: 500;
+  @media(max-width: 1229px) {
+    padding: 0 20px;
+    font-size: 12px;
+  }
 `
 const BtnWrap = styled.li`
   display: flex;
@@ -106,6 +127,9 @@ const Line = styled.span`
   height: 12px;
   background-color: #ccc;
   margin: 0 7px;
+  @media(max-width: 1229px) {
+    height: 10px;
+  }
 `
 const Container = styled.div`
   display: flex;
@@ -113,4 +137,11 @@ const Container = styled.div`
   align-items: flex-start;
   gap: 20px;
   margin-top: 20px;
+  @media(max-width: 1229px) {
+    padding-left: 20px; 
+    .menu-item {
+      width: calc(50% - 20px);
+      cursor: pointer;
+    }
+  }
 `

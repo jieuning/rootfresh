@@ -19,7 +19,7 @@ function UserNav() {
     <>
       {/* 로그인, 로그아웃시 보여질 nav */}
       {user !== null ?
-        <UserMenu>
+        <UserMenu> 
           <UserName>
             {user.displayName} 님
             <LogoutModal

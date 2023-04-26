@@ -9,9 +9,19 @@ import TheFresh from "../../components/thefresh"
 import NewItem from "../../components/NewItem"
 import RecipeCard from "../../components/RecipeCard"
 import ScrollTopButton from "../../components/topButton"
+import Footer from "../../components/footer"
 //data
 import CategoryData from "../../dummy/categorydata.json"
 import { reviewArr } from "../../dummy/contentOption"
+//responsive
+import { Mobile, Pc, BannerMobile, BannerPc } from "../../components/mobile/responsive"
+//mobile
+import MobTapContent from "../../components/mobile/mobTapContent"
+import MobBestItem from "../../components/mobile/mobBestItem"
+import MobReview from "../../components/mobile/mobReview"
+import MobHeader from "../../components/mobile/mobHeader"
+import BottomNav from "../../components/mobile/bottomNav/bottomNav"
+import MobBestCategory from "../../components/mobile/mobBestCategory"
 
 
 function MainPage({ items }) {
@@ -27,100 +37,142 @@ function MainPage({ items }) {
   const [cateData] = useState(CategoryData);
 
   return (
-    <div className="main-container">
-      {/* 메인 슬라이드 배너 */}
-      <MainSlider />
+    <>
+      <Mobile>
+        <MobHeader items={items} navigate={navigate} />
+        <BottomNav navigate={navigate} />
+      </Mobile>
+      <div className="main-container">
+        {/* 메인 슬라이드 배너 */}
+        <MainSlider />
 
-      {/* 탑버튼 */}
-      <ScrollTopButton />
+        {/* 탑버튼 */}
+        <Pc>
+          <ScrollTopButton />
+        </Pc>
 
-      {/* 신상품 */}
-      <section>
-        <h2>신상품</h2>
-        <NewItem items={items} navigate={navigate} />
-      </section>
+        {/* 신상품 */}
+        <section>
+          <h2>신상품</h2>
+          <NewItem items={items} navigate={navigate} />
+        </section>
 
-      {/* 서브 배너 */}
-      <div className="sub-banner">
-        <img src={process.env.PUBLIC_URL + '/image/sub_banner.png'}
-          alt="배너 이미지" />
-      </div>
-
-      {/* 특가 */}
-      <section>
-        <h2>특별한 특가</h2>
-        <TabContent items={items} />
-      </section>
-
-      {/* 레시피 */}
-      <div className="recipe-background">
-        <div className="recipe-wrap">
-          <div className="recipe-title">
-            <h3>비밀 레시피<br />한 눈에 보기</h3>
+        {/* 서브 배너 */}
+        <BannerPc>
+          <div className="sub-banner">
+            <img src={process.env.PUBLIC_URL + '/image/sub_banner.png'}
+              alt="배너 이미지" />
           </div>
-          <div className="recipe-box">
-            {recipe.map((data) => (
-              <RecipeCard data={data} />
-            ))}
+        </BannerPc>
+        <BannerMobile>
+          <div className="sub-banner">
+            <img src={process.env.PUBLIC_URL + '/image/mob_sub_banner.png'}
+              alt="배너 이미지" />
           </div>
-        </div>
-      </div>
+        </BannerMobile>
+        {/* 특가 */}
+        <section>
+          <Pc>
+            <h2>특별한 특가</h2>
+            <TabContent items={items} navigate={navigate} />
+          </Pc>
+          <Mobile>
+            <MobTapContent items={items} navigate={navigate} />
+          </Mobile>
+        </section>
 
-      {/* 인기 카테고리 */}
-      <section>
-        <h2>인기 카테고리 모음</h2>
-        <ul className="cate-wrap">
-          {cateData.map((ctdata, i) => (
-            <li onClick={() => navigate(`category/${cateData[i].title}`)}>
-              <img src={process.env.PUBLIC_URL + ctdata.image} />
-              <p>{ctdata.title}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* 베스트 상품 */}
-      <section>
-        <h2>베스트</h2>
-        <div className="container">
-          {bestItems.map((data) => (
-            <div className="card"
-              onClick={() => navigate(`/detail/${data.id}`)}>
-              <Card data={data}></Card>
-              <span className="rank">{data.rank}</span>
+        {/* 레시피 */}
+        <Pc>
+          <div className="recipe-background">
+            <div className="recipe-wrap">
+              <div className="recipe-title">
+                <h3>비밀 레시피<br />한 눈에 보기</h3>
+              </div>
+              <div className="recipe-box">
+                {recipe.map((data, i) => (
+                  <RecipeCard key={i} data={data} />
+                ))}
+              </div>
             </div>
-          ))}
-        </div>
-        <button className="more-button"
-          onClick={() => navigate('/menu/베스트')}>
-          베스트 상품 더보기
-        </button>
-      </section>
+          </div>
+        </Pc>
 
-      {/* THE신선 */}
-      <section>
-        <h2>오늘 수확, THE신선</h2>
-        <TheFresh
-          onClick={() => navigate('/')}
-          items={items}
-          navigate={navigate} />
-      </section>
+        {/* 인기 카테고리 */}
+        <section>
+          <h2>인기 카테고리 모음</h2>
+          <Pc>
+            <ul className="cate-wrap">
+              {cateData.map((ctdata, i) => (
+                <li key={i} onClick={() => navigate(`category/${cateData[i].title}`)}>
+                  <img src={process.env.PUBLIC_URL + ctdata.image} />
+                  {ctdata.title}
+                </li>
+              ))}
+            </ul>
+          </Pc>
+          <Mobile>
+            <MobBestCategory cateData={cateData} navigate={navigate}/>
+          </Mobile>
+        </section>
 
-      {/* 후기 */}
-      <section>
-        <h2>고객 후기</h2>
-        <div className="review">
-          {reviewArr.map(i => (
-            <img src={process.env.PUBLIC_URL + '/image/review' + i + '.png'}
-              alt="리뷰 이미지" />
-          ))}
-        </div>
-        <div className="review-insta">
-          <p>더 많은 후기가 궁금하다면?</p>
-          <p>@rootfresh_gramm</p>
-        </div>
-      </section>
-    </div>
+        {/* 베스트 상품 */}
+        <section>
+          <h2>베스트</h2>
+          <Pc>
+            <div className="container">
+              {bestItems.map((data, i) => (
+                <div key={i} className="card"
+                  onClick={() => navigate(`/detail/${data.id}`)}>
+                  <Card key={data.id} data={data}></Card>
+                  <span className="rank">{data.rank}</span>
+                </div>
+              ))}
+            </div>
+            <button className="more-button"
+              onClick={() => navigate('/menu/베스트')}>
+              베스트 상품 더보기
+            </button>
+          </Pc>
+          <Mobile>
+            <MobBestItem bestItems={bestItems} navigate={navigate} />
+          </Mobile>
+        </section>
+
+        {/* THE신선 */}
+        <section className="mob-margin">
+          <h2 className="mob-margin-cancle">
+            오늘 수확, THE신선</h2>
+          <TheFresh
+            onClick={() => navigate('/')}
+            items={items}
+            navigate={navigate} />
+        </section>
+
+        {/* 후기 */}
+        <section>
+          <h2>고객 후기</h2>
+          <Pc>
+            <div className="review">
+              {reviewArr.map((data, i) => (
+                <img src={process.env.PUBLIC_URL + '/image/review' + i + '.png'}
+                  alt="리뷰 이미지"
+                  key={i} />
+              ))}
+            </div>
+          </Pc>
+          <Mobile>
+            <MobReview reviewArr={reviewArr} />
+          </Mobile>
+          <div className="review-insta">
+            <p>더 많은 후기가 궁금하다면?</p>
+            <p>@rootfresh_gramm</p>
+          </div>
+        </section>
+        <Mobile>
+          <Footer />
+        </Mobile>
+      </div>
+    </>
   );
 }
 

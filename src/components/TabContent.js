@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 //components
 import Card from "./Card";
 import Timer from "./timer";
 
 
-function Tab({ items }) {
+function Tab({ items, navigate }) {
 
   const [currentTab, clickTab] = useState(0);
 
@@ -16,7 +15,7 @@ function Tab({ items }) {
   const onlyItems = items.filter(data => data.detail_menu === "대박특가");
 
   /* 버튼 클릭시 해당 index로 이동 */
-  const tabClickHandler = (index) => {
+  const handleTabClick = (index) => {
     clickTab(index);
   };
 
@@ -26,33 +25,26 @@ function Tab({ items }) {
       tabButton: (
         <li className={currentTab === 0 ?
           "tabButton focused" : "tabButton"}
-          onClick={() => tabClickHandler(0)}>
+          onClick={() => handleTabClick(0)}>
           타임특가
         </li>
       ),
       tabItems: (
-        <TapContainer>
-          {timeItems.map((data) => (
-            <Link className="card-link"
-              to={`/detail/${data.id}`}
-              key={data.id}>
-              <Card data={data}></Card>
-              {/* 타이머 */}
-              <span className="timer-wrap">
-                <div style={{ display: "flex" }}>
-                  <img src={process.env.PUBLIC_URL + '/image/clock.png'}
-                    alt="검색 버튼" />
-                  <Timer hh="24" mm="00" ss="00" />
-                </div>
-                <span style={{
-                  fontSize: "14px", marginRight: "20px"
-                }}>
-                  24시 한정특가
-                </span>
-              </span>
-            </Link>
-          ))}
-        </TapContainer>
+        <>
+          {/* 타이머 */}
+          <TimerWrap>
+            < Timer hh="24" mm="00" ss="00" />
+            <p>딱 24시간만 특가 할인중!</p>
+          </TimerWrap>
+          <TapContainer>
+            {timeItems.map((data) => (
+              <div key={data.id} className="card-link"
+                onClick={() => navigate(`/detail/${data.id}`)}>
+                <Card data={data}></Card>
+              </div>
+            ))}
+          </TapContainer>
+        </>
       )
     },
     /* 한정특가 */
@@ -60,18 +52,25 @@ function Tab({ items }) {
       tabButton: (
         <li className={currentTab === 1 ?
           "tabButton focused" : "tabButton"}
-          onClick={() => tabClickHandler(1)}>
+          onClick={() => handleTabClick(1)}>
           한정특가
         </li>
       ),
       tabItems: (
-        <TapContainer>
-          {limitedItems.map((data) => (
-            <Link to={`/detail/${data.id}`} key={data.id}>
-              <Card data={data}></Card>
-            </Link>
-          ))}
-        </TapContainer>
+        <>
+          <TxtWrap>
+            <p>200개 한정</p>
+            <p>정해진 수량이 얼마 남지 않았어요!</p>
+          </TxtWrap>
+          <TapContainer>
+            {limitedItems.map((data) => (
+              <div key={data.id} className="card-link"
+                onClick={() => navigate(`/detail/${data.id}`)} >
+                <Card data={data}></Card>
+              </div>
+            ))}
+          </TapContainer>
+        </>
       )
     },
     /* 대박특가 */
@@ -79,31 +78,41 @@ function Tab({ items }) {
       tabButton: (
         <li className={currentTab === 2 ?
           "tabButton focused" : "tabButton"}
-          onClick={() => tabClickHandler(2)}>대박특가</li>
+          onClick={() => handleTabClick(2)}>대박특가</li>
       ),
       tabItems: (
-        <TapContainer>
-          {onlyItems.map((data) => (
-            <Link to={`/detail/${data.id}`} key={data.id}>
-              <Card data={data}></Card>
-            </Link>))}
-        </TapContainer>
+        <>
+          <TxtWrap>
+            <p>20%~50%</p>
+            <p>대박 할인! 어머 이건 사야해!</p>
+          </TxtWrap>
+          <TapContainer>
+            {onlyItems.map((data) => (
+              <div key={data.id} className="card-link"
+                onClick={() => navigate(`/detail/${data.id}`)} >
+                <Card data={data}></Card>
+              </div>
+            ))}
+          </TapContainer >
+        </>
       )
     }];
 
   return (
     <>
       <TabBtn>
-        {tabArr.map((tabData) => tabData.tabButton)}
+        {tabArr.map((data) => data.tabButton)}
       </TabBtn>
-      <div>{tabArr[currentTab].tabItems}</div>
+      <div className="tap_menu">
+        {tabArr[currentTab].tabItems}
+      </div>
+
     </>
   )
 };
 
 
 export default Tab;
-
 
 const TabBtn = styled.ul`
   display: flex;
@@ -143,24 +152,32 @@ gap: 20px;
 margin-top: 30px;
 .card-link {
   position: relative;
+  cursor: pointer;
 }
-.timer-wrap {
-  position: absolute;
-  top: 250px;
-  left: 0;
-  width: 285px;
-  height: 36px;
+@media(max-width: 1229px) {
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+`
+const TimerWrap = styled.div`
+  width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(42, 104, 52,.7);
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  color: #fff;
-}
-.timer-wrap img {
-  width: 18px;
-  object-fit: contain;
-  margin: 0 10px 0 20px;
-}
+  flex-direction: column;
+  gap: 10px;
+  p {
+    color: #b1b1b1;
+    font-size: 14px;
+  }
+`
+const TxtWrap = styled.div`
+  p:first-child {
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 30px;
+  }
+  p:last-child {
+    font-size: 14px;
+    color: #b1b1b1;
+    margin-top: 10px;
+  }
 `

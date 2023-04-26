@@ -3,19 +3,21 @@ import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 //component
 import Card from "../../components/Card";
+//responsive
+import { Pc, Mobile } from "../../components/mobile/responsive";
+//mobile
+import MobDetailHeader from "../../components/mobile/mobDetailHeader";
 
 
-function CateDetail({ items, setItems }) {
+function CateDetail({ items, setItems, navigate }) {
 
   const [currentTab, clickTab] = useState(0);
 
   /* url파라미터 name을 가져옴 */
   const { category } = useParams();
-  console.log(category)
 
   /* items의 menu 와 url의 name과 같은 아이템 필터 */
   const catefilter = items.filter((data) => data.category === category);
-  console.log(catefilter)
 
   /* items 복사 */
   const itemsCopy = [...items];
@@ -40,10 +42,16 @@ function CateDetail({ items, setItems }) {
   };
 
   return (
-    <section>
-      <h2>{category}</h2>
+    <CateDetailContainer>
+      <Pc>
+        <h2>{category}</h2>
+      </Pc>
+      <Mobile>
+        <MobDetailHeader category={category} />
+      </Mobile>
       <ItemAlign>
         <li>총 {catefilter.length}건</li>
+        {/* 필터 */}
         <BtnWrap>
           <div className={currentTab === 0 ?
             "focus" : "sort-btn"}
@@ -75,26 +83,35 @@ function CateDetail({ items, setItems }) {
       </ItemAlign>
       {catefilter.length !== 0 ?
         <Container>
-          {items.map((data) => data.category === category &&
-            <Link to={`/detail/${data.id}`}>
+          {items.map((data, i) => data.category === category &&
+            <div key={i} className="menu-item"
+              onClick={() => navigate(`/detail/${data.id}`)}>
               <Card data={data} />
-            </Link>
+            </div>
           )}
         </Container>
-        :
         /* 일치하는 상품이 없을시 */
-        <div style={{ margin: "180px 0" }}>
+        : <div style={{ margin: "180px 0" }}>
           <p style={{ color: "#ccc", marginTop: "20px" }}>
             상품이 없습니다.
           </p>
         </div>
       }
-    </section>
+    </CateDetailContainer>
   )
 };
 
 export default CateDetail;
 
+const CateDetailContainer = styled.div`
+  width: 1200px;
+  margin: 0 auto;
+  @media(max-width: 1229px) {
+    width: 100%;
+    padding-top: 43px;
+    overflow-y: hidden;
+  }
+`
 const ItemAlign = styled.ul`
   margin-top: 50px;
   display: flex;
@@ -102,6 +119,10 @@ const ItemAlign = styled.ul`
   letter-spacing: -0.06em;
   font-size: 14px;
   font-weight: 500;
+  @media(max-width: 1229px) {
+    padding: 0 20px;
+    font-size: 12px;
+  }
 `
 const BtnWrap = styled.li`
   display: flex;
@@ -119,6 +140,9 @@ const Line = styled.span`
   height: 12px;
   background-color: #ccc;
   margin: 0 7px;
+  @media(max-width: 1229px) {
+    height: 10px;
+  }
 `
 const Container = styled.div`
   display: flex;
@@ -126,4 +150,11 @@ const Container = styled.div`
   align-items: flex-start;
   gap: 20px;
   margin-top: 20px;
+  @media(max-width: 1229px) {
+    padding-left: 20px; 
+    .menu-item {
+      width: calc(50% - 20px);
+      cursor: pointer;
+    }
+  }
 `

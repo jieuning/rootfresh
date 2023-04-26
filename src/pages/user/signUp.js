@@ -8,6 +8,9 @@ import {
   createUserWithEmailAndPassword,
   updateProfile
 } from "../../firebase";
+//responsive
+import { Mobile } from "../../components/mobile/responsive";
+import { useNavigate } from "react-router-dom";
 
 
 function SignUp() {
@@ -83,9 +86,16 @@ function SignUp() {
     register(name, email, password, confirmPassword);
   };
 
+  const navigate = useNavigate();
+
   return (
     <SignUpContainer>
-      <h2>회원가입</h2>
+      <Mobile>
+        <img src={process.env.PUBLIC_URL + "/image/mob_cancle_btn.png"}
+          onClick={() => navigate(-1)}
+          alt="닫기버튼" />
+      </Mobile>
+      <h2 style={{ margin: "50px 0 0 0" }}>회원가입</h2>
       {signUpModal === true ? <SignUpModal /> : null}{/* 회원가입 성공시 모달 */}
       <SignUpForm onSubmit={handleOnSubmit}>
         <label>이름</label>
@@ -129,6 +139,16 @@ const SignUpContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media(max-width: 1229px) {
+    padding: 0 20px;
+    img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      padding: 50px 20px 20px 20px;
+      width: 14px;
+    }
+  }
 `
 const SignUpForm = styled.form`
   display: flex;
@@ -145,6 +165,9 @@ const SignUpForm = styled.form`
     font-weight: 500;
     color: #D70F0F;
   }
+  @media(max-width: 1229px) {
+    width: 100%;
+  }
 `
 const SignUpInput = styled.input`
   width: 320px;
@@ -152,6 +175,9 @@ const SignUpInput = styled.input`
   border-radius: 4px;
   border: 1px solid #ccc;
   padding: 0 10px;
+  @media(max-width: 1229px) {
+    width: calc(100% - 20px);
+  }
 `
 const Button = styled.button`
   width: 342px;
@@ -163,4 +189,7 @@ const Button = styled.button`
   color: #fff;
   border: 1px solid #2A6834;
   margin-top: 20px;
+  @media(max-width: 1229px) {
+    width: 100%;
+  }
 `

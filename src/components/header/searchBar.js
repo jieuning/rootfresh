@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+//responsive
+import { Pc, Mobile } from "../mobile/responsive";
 
 
 function SearchBar() {
 
-  const navigate = useNavigate();
-
   const [keyword, setKeyword] = useState("");
+
+  const navigate = useNavigate();
 
   /* onChange 핸들러 */
   const KeyWordChangeHandler = (e) => {
@@ -21,22 +23,25 @@ function SearchBar() {
   }
 
   return (
-    <>
-      <SearchWrap>
-        <form onSubmit={onSubmitHandler}>
-          <input className="search-box"
-            type="text"
-            value={keyword}
-            onChange={KeyWordChangeHandler}
-            placeholder="원하시는 상품을 입력해주세요" />
-          <button className="search-btn"
-            type="submit">
+    <SearchWrap>
+      <form onSubmit={onSubmitHandler}>
+        <Mobile>
+          <img src={process.env.PUBLIC_URL + '/image/mob_search_icon.png'}
+            alt="검색 아이콘" />
+        </Mobile>
+        <input className="search-box"
+          type="text"
+          value={keyword}
+          onChange={KeyWordChangeHandler}
+          placeholder="원하시는 상품을 검색해주세요" />
+        <Pc>
+          <button className="search-btn" type="submit">
             <img src={process.env.PUBLIC_URL + '/image/search_icon.png'}
               alt="검색 버튼" />
           </button>
-        </form>
-      </SearchWrap>
-    </>
+        </Pc>
+      </form>
+    </SearchWrap>
   )
 };
 
@@ -70,5 +75,30 @@ const SearchWrap = styled.div`
   .search-btn img {
     width: 20px;
     object-fit: contain;
+  }
+  @media(max-width: 1229px) {
+    width: 100%;
+    border: none;
+    background-color: #f2f2f2;
+    border-radius: 3px;
+    form {
+      display: flex;
+      align-items: center;
+    }
+    input {
+      background-color: #f2f2f2;
+    }
+    input::placeholder {
+      color: #b6b6b6;
+    }
+    .search-box {
+      margin-left: 10px;
+      width: 170px;
+    }
+    img {
+      width: 14px;
+      height: 14px;
+      margin-left: 10px;
+    }
   }
 `

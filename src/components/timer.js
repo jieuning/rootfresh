@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import styled from "styled-components";
 
 /* 1의 자릿수일 때 0을 추가로 붙여줌 */
 const padNumber = (num) => {
@@ -42,10 +43,32 @@ const Timer = ({ hh, mm, ss }) => {
 
 
   return (
-    <div>
-      {hour} : {min} : {sec}
-    </div>
+    <TimerWrap>
+        <img src={process.env.PUBLIC_URL + '/image/clock_icon.png'}
+          alt="검색 버튼" />
+        {hour} : {min} : {sec}
+    </TimerWrap>
   )
 };
 
 export default Timer;
+
+const TimerWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  font-size: 28px;
+  font-weight: 800;
+  img {
+    width: 30px;
+    margin-right: 10px;
+  }
+  @media(max-width: 1229px) {
+    font-size: 20px;
+    justify-content: flex-start;
+    img {
+      width: 22px;
+    }
+  }
+`

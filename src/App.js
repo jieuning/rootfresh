@@ -1,5 +1,6 @@
+import "./App.css"
 import React, { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 //firebase
 import { firebaseAuth, onAuthStateChanged } from "./firebase";
 //components
@@ -14,10 +15,19 @@ import Login from "./pages/user/login";
 import SignUp from "./pages/user/signUp";
 import SearchDetail from "./pages/detailPage/SearchDetail ";
 import CateDetail from "./pages/detailPage/CateDetail";
+//mobile page
+import MobCategoryNav from "./components/mobile/mobCategoryNav";
+import MobSearch from "./components/mobile/mobSearch";
+import MobMypage from "./components/mobile/mobMypage";
 //data
 import ItemData from "./dummy/data.json"
+//responsive
+import { Pc } from "./components/mobile/responsive";
+
 
 function App() {
+
+  const navigate = useNavigate();
 
   const [items, setItems] = useState(ItemData);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -28,7 +38,6 @@ function App() {
   /* 현재 로그인한 유저 데이터 저장 */
   useEffect(() => {
     onAuthStateChanged(firebaseAuth, (user) => {
-      console.log(user)
       if (user) {
         setIsLoggedIn(true);
       } else {
@@ -38,26 +47,28 @@ function App() {
   }, []);
 
   return (
-    <div style={{
-      margin: "0 auto", 
-      textAlign: "center",
-      color: "#333"
-    }}>
-        <Header
-          items={items}
-          isLoggedIn={isLoggedIn}
-        />
-        <Routes>
-          <Route path="/" element={<MainPage items={items} />} />
-          <Route path="/detail/:id" element={<DetailPage items={items} />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/menu/:name" element={<MenuDetail items={items} setItems={setItems} />} />
-          <Route path="/category/:category" element={<CateDetail items={items} setItems={setItems} />} />
-          <Route path="/login" element={<Login isLoggedIn={isLoggedIn} />} />
-          <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/search" element={<SearchDetail items={items} />} />
-        </Routes>
-      <Footer />
+    <div id="app">
+      <Pc>
+        <Header items={items} isLoggedIn={isLoggedIn}/>
+      </Pc>
+      <Routes>
+        <Route path="/" element={<MainPage items={items} />} />
+        <Route path="/detail/:id" element={<DetailPage items={items} />} />
+        <Route path="/cart" element={<Cart/>} />
+        <Route path="/menu/:name" element={<MenuDetail items={items} setItems={setItems} navigate={navigate} />} />
+        <Route path="/category/:category" element={<CateDetail items={items} setItems={setItems} />} />
+        <Route path="/login" element={<Login isLoggedIn={isLoggedIn} />} />
+        <Route path="/sign-up" element={<SignUp/>} />
+        <Route path="/search" element={<SearchDetail items={items} navigate={navigate} />} />
+        {/* 모바일 */}
+        <Route path="/m_category_nav" element={<MobCategoryNav/>} />
+        <Route path="/m_category_nav/category/:category" element={<CateDetail items={items} setItems={setItems} navigate={navigate} />} />
+        <Route path="/m_search" element={<MobSearch/>} />
+        <Route path="/m_mypage" element={<MobMypage/>} />
+      </Routes>
+      <Pc>
+        <Footer />
+      </Pc>
     </div>
   );
 }

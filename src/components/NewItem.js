@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import "../pages/mainPage/style.css"
 //component
 import Card from "./Card";
 //swiper
@@ -10,23 +9,30 @@ import 'swiper/css/navigation'
 
 SwiperCore.use([Navigation]);
 
-
+ 
 function NewItem({ items, navigate }) {
 
-  const NewItems = items.filter(data => data.menu === "신상품");
+  const NewItems = items.filter(data =>
+    data.menu === "신상품");
 
   return (
     <NewContainer>
       <Swiper
-        slidesPerView={4}
-        spaceBetween={20}
+        slidesPerView={"auto"}
+        spaceBetween={10}
         navigation={{
           prevEl: ".swiper-button-prev",
           nextEl: ".swiper-button-next"
         }}
+        breakpoints={{
+          1230: {
+            slidesPerView: 4,
+            spaceBetween: 20
+          }
+        }}
       >
-        {NewItems.map((data) => (
-          <SwiperSlide>
+        {NewItems.map((data, i) => (
+          <SwiperSlide key={i}>
             <div className="container"
               onClick={() => navigate(`/detail/${data.id}`)}>
               <Card data={data}></Card>
@@ -43,7 +49,6 @@ function NewItem({ items, navigate }) {
 export default NewItem;
 
 const NewContainer = styled.div`
-  position: relative;
   .swiper-button-prev {
     width: 40px;
     height: 40px;
@@ -57,6 +62,7 @@ const NewContainer = styled.div`
     background-size: cover;
     border-radius: 50%;
     box-shadow: 0 3px 4px rgb(0 0 0 / 16%);
+    overflow: hidden;
   }
   .swiper-button-next {
     width: 40px;
@@ -74,5 +80,24 @@ const NewContainer = styled.div`
   }
   .swiper-button-prev::after,
   .swiper-button-next::after
-    {display: none}
+    {
+      display: none
+    }
+  @media(max-width: 1229px) {
+    .swiper-button-prev {
+      display: none;
+    }
+    .swiper-button-next {
+      display: none;
+    }
+    .swiper-wrapper {
+      width: 40%;
+    }
+    .swiper-slide:first-child{
+      margin-left: 20px;
+    }
+    .swiper-slide:last-child {
+      margin-right: 20px;
+    }
+  } 
 `

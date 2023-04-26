@@ -23,6 +23,11 @@ const CartModal = styled.div`
   background-color: #2A6834;
   border-radius: 6px;
   line-height: 56px;
+  z-index: 99;
+  @media(max-width: 1229px) {
+    font-size: 14px;
+    top: -400px;
+  }
 `
 
 

@@ -77,16 +77,18 @@ function Header({ items, isLoggedIn }) {
           <ul className={scrollHeader > 10 ?
             "fixed-user-menu" : "user-menu"}>
             {[1, 2, 3].map((i) => (
-              <li><img className="user-menu-icon"
-                src={process.env.PUBLIC_URL + '/image/header_icon' + i + '.png'}
-                alt={userMenuAlt[i]} />
+              <li key={i}>
+                <img className="user-menu-icon"
+                  src={process.env.PUBLIC_URL + '/image/header_icon' + i + '.png'}
+                  alt={userMenuAlt[i]} />
               </li>
             ))}
             {/* 장바구니 */}
-            <li><img className="user-menu-icon"
-              src={process.env.PUBLIC_URL + '/image/header_icon4.png'}
-              onClick={() => { navigate('/Cart') }}
-              alt="장바구니" />
+            <li>
+              <img className="user-menu-icon"
+                src={process.env.PUBLIC_URL + '/image/header_icon4.png'}
+                onClick={() => { navigate('/Cart') }}
+                alt="장바구니" />
               <span className={cartList.length === 0 ?
                 "none" : "add-item-count"}
                 onClick={() => { navigate('/Cart') }}>
@@ -108,7 +110,7 @@ function Header({ items, isLoggedIn }) {
               </div>
             </div>
             {/* 메인 메뉴 */}
-            <Menu items={items} navigate={navigate}/>
+            <Menu items={items} navigate={navigate} />
             <button className={scrollHeader > 10 ?
               "fixed-address" : "address"}>
               배송지 입력하기
