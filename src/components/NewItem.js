@@ -9,25 +9,24 @@ import 'swiper/css/navigation'
 
 SwiperCore.use([Navigation]);
 
- 
-function NewItem({ items, navigate }) {
 
+function NewItem({ items, navigate }) {
   const NewItems = items.filter(data =>
     data.menu === "신상품");
 
   return (
-    <NewContainer>
+    <NewItemContainer>
       <Swiper
         slidesPerView={"auto"}
         spaceBetween={10}
-        navigation={{
-          prevEl: ".swiper-button-prev",
-          nextEl: ".swiper-button-next"
-        }}
         breakpoints={{
           1230: {
             slidesPerView: 4,
-            spaceBetween: 20
+            spaceBetween: 20,
+            navigation: {
+              prevEl: ".swiper-button-prev",
+              nextEl: ".swiper-button-next"
+            }
           }
         }}
       >
@@ -42,13 +41,16 @@ function NewItem({ items, navigate }) {
       </Swiper>
       <button className="swiper-button-prev" />
       <button className="swiper-button-next" />
-    </NewContainer>
+    </NewItemContainer>
   )
+
+
 }
 
 export default NewItem;
 
-const NewContainer = styled.div`
+const NewItemContainer = styled.div`
+  position: relative;
   .swiper-button-prev {
     width: 40px;
     height: 40px;
@@ -62,7 +64,6 @@ const NewContainer = styled.div`
     background-size: cover;
     border-radius: 50%;
     box-shadow: 0 3px 4px rgb(0 0 0 / 16%);
-    overflow: hidden;
   }
   .swiper-button-next {
     width: 40px;
@@ -99,5 +100,4 @@ const NewContainer = styled.div`
     .swiper-slide:last-child {
       margin-right: 20px;
     }
-  } 
 `

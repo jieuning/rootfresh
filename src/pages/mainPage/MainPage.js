@@ -153,7 +153,7 @@ function MainPage({ items }) {
           <h2>고객 후기</h2>
           <Pc>
             <div className="review">
-              {reviewArr.map((data, i) => (
+              {reviewArr.map(i => (
                 <img src={process.env.PUBLIC_URL + '/image/review' + i + '.png'}
                   alt="리뷰 이미지"
                   key={i} />
