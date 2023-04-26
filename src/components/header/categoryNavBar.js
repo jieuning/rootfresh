@@ -16,7 +16,7 @@ function CategoryNavBar({ scrollHeader }) {
       <ul className={scrollHeader > 10 ? // 헤더 픽스 시 
         "fixed-navmenu-wrap" : "navmenu-wrap"}>
         {cateData.map((ctdata, i) => (
-          <li className="navmanu"
+          <li key={i} className="navmanu"
             onClick={() => navigate(`category/${cateData[i].title}`)}>
             <MenuButton>{ctdata.title}</MenuButton>
           </li>

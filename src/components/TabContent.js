@@ -37,8 +37,8 @@ function Tab({ items, navigate }) {
             <p>딱 24시간만 특가 할인중!</p>
           </TimerWrap>
           <TapContainer>
-            {timeItems.map((data) => (
-              <div key={data.id} className="card-link"
+            {timeItems.map((data, i) => (
+              <div key={i} className="card-link"
                 onClick={() => navigate(`/detail/${data.id}`)}>
                 <Card data={data}></Card>
               </div>
@@ -63,8 +63,8 @@ function Tab({ items, navigate }) {
             <p>정해진 수량이 얼마 남지 않았어요!</p>
           </TxtWrap>
           <TapContainer>
-            {limitedItems.map((data) => (
-              <div key={data.id} className="card-link"
+            {limitedItems.map((data, i) => (
+              <div key={i} className="card-link"
                 onClick={() => navigate(`/detail/${data.id}`)} >
                 <Card data={data}></Card>
               </div>
@@ -87,8 +87,8 @@ function Tab({ items, navigate }) {
             <p>대박 할인! 어머 이건 사야해!</p>
           </TxtWrap>
           <TapContainer>
-            {onlyItems.map((data) => (
-              <div key={data.id} className="card-link"
+            {onlyItems.map((data, i) => (
+              <div key={i} className="card-link"
                 onClick={() => navigate(`/detail/${data.id}`)} >
                 <Card data={data}></Card>
               </div>
@@ -100,9 +100,11 @@ function Tab({ items, navigate }) {
 
   return (
     <>
-      <TabBtn>
-        {tabArr.map((data) => data.tabButton)}
-      </TabBtn>
+      <TabBtnWrap>
+        {tabArr.map((data, i) => 
+          <TabBtn key={i}>{data.tabButton}</TabBtn>
+        )}
+      </TabBtnWrap>
       <div className="tap_menu">
         {tabArr[currentTab].tabItems}
       </div>
@@ -114,14 +116,17 @@ function Tab({ items, navigate }) {
 
 export default Tab;
 
+const TabBtnWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+`
 const TabBtn = styled.ul`
   display: flex;
   justify-content: center;
   .tabButton {
     display: flex;
-    width: clac(100% / 3)
-    height: 32px;
-    margin: 30px 5px 0 5px;
+    margin: 0 5px;
     padding: 8px 14px;
     font-size: 14px;
     border-radius: 30px;
