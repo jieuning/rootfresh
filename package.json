@@ -2,7 +2,7 @@
   "name": "rootfresh",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://jieuning.github.io/rootfresh-app",
+  "homepage": "https://jieuning.github.io/rootfresh",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@reduxjs/toolkit": "^1.9.3",
