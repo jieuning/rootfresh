@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/rootfresh/static/css/main.da271f20.css",
-    "main.js": "/rootfresh/static/js/main.025e4a39.js",
+    "main.css": "/rootfresh/static/css/main.7aba1c91.css",
+    "main.js": "/rootfresh/static/js/main.cc315c30.js",
     "static/media/season_dish.png": "/rootfresh/static/media/season_dish.cf454413e2d5736c6437.png",
     "static/media/logo.png": "/rootfresh/static/media/logo.0dedc00dbd4ca5c365ca.png",
     "index.html": "/rootfresh/index.html",
-    "main.da271f20.css.map": "/rootfresh/static/css/main.da271f20.css.map",
-    "main.025e4a39.js.map": "/rootfresh/static/js/main.025e4a39.js.map"
+    "main.7aba1c91.css.map": "/rootfresh/static/css/main.7aba1c91.css.map",
+    "main.cc315c30.js.map": "/rootfresh/static/js/main.cc315c30.js.map"
   },
   "entrypoints": [
-    "static/css/main.da271f20.css",
-    "static/js/main.025e4a39.js"
+    "static/css/main.7aba1c91.css",
+    "static/js/main.cc315c30.js"
   ]
 }
