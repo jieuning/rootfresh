@@ -1,4 +1,4 @@
-# rootfresh🥬
+# 🥬rootfresh
 
 ### 💻 0.프로젝트 소개
 * 개인 프로젝트
