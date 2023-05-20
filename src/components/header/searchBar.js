@@ -78,6 +78,7 @@ const SearchWrap = styled.div`
   }
   @media(max-width: 1229px) {
     width: 100%;
+    padding: 4px 0;
     border: none;
     background-color: #f2f2f2;
     border-radius: 3px;

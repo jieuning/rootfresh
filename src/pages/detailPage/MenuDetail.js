@@ -95,7 +95,7 @@ const MenuDetailContainer = styled.div`
   margin: 0 auto;
   @media(max-width: 1229px) {
     width: 100%;
-    padding-top: 43px;
+    padding: 43px 0 90px 0;
     overflow-y: hidden;
   }
 `
@@ -108,7 +108,7 @@ const ItemAlign = styled.ul`
   font-weight: 500;
   @media(max-width: 1229px) {
     padding: 0 20px;
-    font-size: 12px;
+    font-size: 14px;
   }
 `
 const BtnWrap = styled.li`
@@ -127,9 +127,6 @@ const Line = styled.span`
   height: 12px;
   background-color: #ccc;
   margin: 0 7px;
-  @media(max-width: 1229px) {
-    height: 10px;
-  }
 `
 const Container = styled.div`
   display: flex;

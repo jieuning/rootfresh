@@ -150,29 +150,29 @@ const CartItemWrap = styled.dl`
     padding: 20px 0 20px 20px;
     .item-name {
       width: 100%;
-      font-size: 12px;
+      font-size: 14px;
       margin: 0 0 10px 10px;
     }
     .add-item-image {
-      width: 58px;
+      width: 68px;
       margin-left: 0;
     }
     .count-button {
-      font-size: 12px;
+      font-size: 14px;
     }
     .item-price {
       width: 100%;
-      font-size: 12px;
+      font-size: 14px;
       text-align: left;
       margin-bottom: 20px;
     }
     .item-cancle {
       position: absolute;
       right: 0;
-      padding-right: 10px;
+      padding-right: 20px;
     }
     .item-cancle img {
-      width: 12px;
+      width: 16px;
     }
   }
 `
@@ -199,4 +199,8 @@ const Button = styled.button`
   background: #fff;
   border-radius: 3px;
   text-align: center;
+  @media(max-width: 1229px) {
+    width: 32px;
+    height: 32px;
+  }  
 `

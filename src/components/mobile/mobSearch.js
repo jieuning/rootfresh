@@ -21,5 +21,5 @@ export default MobSearch;
 
 const SearchBarWrap = styled.div`
   margin: 0 20px; 
-  padding-top: 53px; 
+  padding-top: 60px; 
 `

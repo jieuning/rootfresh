@@ -28,9 +28,13 @@ h2 {
   .mob-margin {
     margin-left: 20px;
   }
+  .mob-margin-cancle {
+    margin-left: 0;
+  }
   h2 {
     margin-top: 50px;
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: 500;
     margin-left: 20px;
   }
   .container {
@@ -58,8 +62,8 @@ h2 {
 }
 @media(max-width: 1229px) {
   .main-container {
-    padding-top: 84px;
-    padding-bottom: 75px;
+    padding-top: 100px;
+    padding-bottom: 82px;
   }
   .sub-banner {
     width: 100%;
@@ -201,7 +205,7 @@ h2 {
 }
 @media(max-width: 1229px) {
   .review-insta {
-    font-size: 12px;
+    font-size: 14px;
     padding-bottom: 50px;
   }
   .review img {

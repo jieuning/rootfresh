@@ -133,7 +133,7 @@ const TheFreshContainer = styled.div`
   .fresh-title h3 {
     z-index: 30;
     font-size: 26px;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 10px;
     color: #fff;
   }
@@ -169,11 +169,11 @@ const TheFreshContainer = styled.div`
       padding: 20px;
     }
     .fresh-title h3 {
-      font-size: 16px;
-      font-weight: 500;
+      font-size: 18px;
+      font-weight: 600;
     }
     .fresh-more-btn {
-      font-size: 10px;
+      font-size: 12px;
     }
   }
 `

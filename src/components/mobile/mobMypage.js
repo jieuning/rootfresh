@@ -47,7 +47,7 @@ const MypageContainer = styled.div`
   padding-top: 43px;
   padding-bottom: 75px;
   .login-btn {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.4;
     margin-top: 20px;
     padding: 0 20px;
@@ -56,12 +56,13 @@ const MypageContainer = styled.div`
     padding: 0 20px;
     margin-top: 20px;
     line-height: 1.4;
-    font-size: 14px;
+    font-size: 16px;
   }
 `
 const Button = styled.button`
   width: 100%;
-  padding: 10px 0;
+  padding: 14px 0;
+  font-size: 16px;
   border: ${props => props.changeBorder ? "1px solid #2A6834" : "none"};
   border-radius: 6px;
   background-color: ${props => props.changeBackground ? "#fff" : "#2A6834"};

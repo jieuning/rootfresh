@@ -15,7 +15,8 @@ function MobBestCategory({ navigate }) {
     <BestCateContainer>
       <Swiper
         slidesPerView={"auto"}
-        spaceBetween={15}>
+        spaceBetween={15}
+        >
         <ul className="cate-wrap">
           {cateData.map((ctdata, i) => (
             <SwiperSlide key={i}>
@@ -36,7 +37,10 @@ export default MobBestCategory;
 const BestCateContainer = styled.div`
   margin-top: 30px;
   .swiper-wrapper {
-    width: 15%;
+    width: 18%;
+  }
+  .swiper-wrapper {
+    transition-timing-function: linear;
   }
   .swiper-slide:first-child{
     margin-left: 20px;

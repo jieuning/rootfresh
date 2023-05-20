@@ -94,7 +94,7 @@ const TabBtnWrap = styled.div`
   display: flex;
   gap: 12px;
   margin-left: 20px;
-  font-size: 12px;
+  font-size: 14px;
   .tabBtn {
     position: relative;
     background: none;
@@ -116,6 +116,9 @@ const TabBtnWrap = styled.div`
   }
 `
 const StyledSwiper = styled(Swiper)`
+  .swiper-wrapper {
+    transition-timing-function: linear;
+  }
   .swiper-slide:first-child {
     margin-left: 20px;
   }
@@ -126,16 +129,14 @@ const TabContent = styled.div`
   flex-wrap: wrap;
   align-items: flex-start;
   margin-top: 22px;
-  @media(max-width: 1229px) {
-    gap: 10px;
-    .card-link {
-      position: relative;
-      width: calc(33.33% - 20px);
-    }
+  gap: 10px;
+  .card-link {
+    position: relative;
+    width: calc(33.33% - 20px);
   }
 `
 const Content = styled.p`
-  font-size: ${props => props.changeSize ? "14px" : "12px"};
+  font-size: ${props => props.changeSize ? "16px" : "14px"};
   margin-top: ${props => props.changeMargin ? "30px" : "10px"};
   color: ${props => props.changeColor ? "#b1b1b1" : "#333"};
 `

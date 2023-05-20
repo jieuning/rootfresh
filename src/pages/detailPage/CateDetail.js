@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 //component
 import Card from "../../components/Card";
@@ -9,7 +9,9 @@ import { Pc, Mobile } from "../../components/mobile/responsive";
 import MobDetailHeader from "../../components/mobile/mobDetailHeader";
 
 
-function CateDetail({ items, setItems, navigate }) {
+function CateDetail({ items, setItems }) {
+
+  const navigate = useNavigate();
 
   const [currentTab, clickTab] = useState(0);
 
@@ -108,7 +110,7 @@ const CateDetailContainer = styled.div`
   margin: 0 auto;
   @media(max-width: 1229px) {
     width: 100%;
-    padding-top: 43px;
+    padding: 43px 0 90px;
     overflow-y: hidden;
   }
 `
@@ -121,7 +123,6 @@ const ItemAlign = styled.ul`
   font-weight: 500;
   @media(max-width: 1229px) {
     padding: 0 20px;
-    font-size: 12px;
   }
 `
 const BtnWrap = styled.li`
@@ -150,11 +151,11 @@ const Container = styled.div`
   align-items: flex-start;
   gap: 20px;
   margin-top: 20px;
+  cursor: pointer;
   @media(max-width: 1229px) {
     padding-left: 20px; 
     .menu-item {
       width: calc(50% - 20px);
-      cursor: pointer;
     }
   }
 `

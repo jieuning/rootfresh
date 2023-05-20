@@ -19,6 +19,7 @@
 }
   .cart-wrap {
     width: 100%;
+    height: auto;
     padding-bottom: 10px;
     margin: 0;
   }
@@ -80,13 +81,13 @@
 }
 @media(max-width: 1229px) {
   .cart-wrap input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     top: 0;
   }
   .cart-wrap input[type="checkbox"]::after {
-    width: 11px;
-    height: 11px;
+    width: 13px;
+    height: 13px;
   }
 }
 /* 체크박스 커스텀 비활성화 끝 */
@@ -111,8 +112,8 @@
 }
 @media(max-width: 1229px) {
   .cart-wrap input[type="checkbox"]:checked::after {
-    width: 11px;
-    height: 11px;
+    width: 13px;
+    height: 13px;
   }
 }
 /* 체크박스 커스텀 활성화 끝 */
@@ -132,11 +133,11 @@
 }
 @media(max-width: 1229px) {
   .select-remove {
-    font-size: 12px;
+    font-size: 14px;
     cursor: pointer;
   }
   .cart-check label {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 400;
     display: inline-block;
   }
@@ -213,17 +214,17 @@
     padding: 20px;
   }
   .amount-price-box div {
-    font-size: 12px;
+    font-size: 14px;
   }
   .amount-price-box span p {
-    font-size: 14px;
+    font-size: 16px;
     letter-spacing: -0.02em;
   }
   .amount-price-box span p span {
-    font-size: 12px;
+    font-size: 14px;
   }
   .delivery-price p:nth-child(2) {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 /* 결제 합계 금액 박스 끝 */

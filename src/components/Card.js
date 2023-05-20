@@ -76,19 +76,19 @@ const CardWrap = styled.ul`
       width: 100%;
       text-align: left;
       font-weight: 400;
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 500;
       line-height: 1.3;
     }
     .item-title {
-      font-size: 12px;
+      font-size: 14px;
       margin: 5px 0 0 0;
     }
     .price {
       margin-left: 5px;
     }
     .dimmed-price {
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 300;
     }
   }

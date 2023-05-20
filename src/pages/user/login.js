@@ -123,11 +123,6 @@ const LoginForm = styled.form`
     font-weight: 500;
     color: #D70F0F;
   }
-  @media(max-width: 1229px) {
-    .errMsg {
-      font-size: 12px;
-    }
-  }
 `
 const LoginInput = styled.input`
   width: 330px;
@@ -140,7 +135,9 @@ const LoginInput = styled.input`
   }
   @media(max-width: 1229px) {
     width: calc(100% - 20px);
-    font-size: 12px;
+    font-size: 14px;
+    box-shadow: none;
+    outline: none; 
   }
 `
 const Button = styled.button`
@@ -151,7 +148,6 @@ const Button = styled.button`
   font-size: 16px;
   @media(max-width: 1229px) {
     width: 100%;
-    font-size: 12px;
     padding: 0 10px;
   }
   background-color: ${props => props.changeBackground ? "#2A6834" : "#fff"};

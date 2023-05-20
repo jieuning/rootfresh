@@ -45,14 +45,13 @@ const NavMenuContainer = styled.div`
     flex-direction: column;
   }
   li:first-child {
-    padding-top: 43px;
+    padding-top: 60px;
   }
   li {
     width: 100%;
-    height: 45px;
-    line-height: 45px;
+    padding: 12px 0;
     background-color: #fff;
-    border: 1px solid #f2f2f2;
+    border-bottom: 1px solid #f2f2f2;
   }
 `
 const MenuButton = styled.button`
@@ -61,11 +60,11 @@ const MenuButton = styled.button`
   border: none;
   padding: 0 20px;
   text-align: left;
-  line-height: 45px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-size: 16px;
   img {
-    width: 10px;
+    width: 14px;
   }
 `

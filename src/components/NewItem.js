@@ -6,6 +6,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation } from "swiper";
 import 'swiper/css';
 import 'swiper/css/navigation'
+//image
+import menuPrev from "../assets/menu_arrow_prev.png"
+import menuNext from "../assets/menu_arrow_next.png"
 
 SwiperCore.use([Navigation]);
 
@@ -23,6 +26,7 @@ function NewItem({ items, navigate }) {
           1230: {
             slidesPerView: 4,
             spaceBetween: 20,
+            slidesPerGroup: 4,
             navigation: {
               prevEl: ".swiper-button-prev",
               nextEl: ".swiper-button-next"
@@ -39,12 +43,10 @@ function NewItem({ items, navigate }) {
           </SwiperSlide>
         ))}
       </Swiper>
-      <button className="swiper-button-prev" />
-      <button className="swiper-button-next" />
+      <button className="swiper-button-prev"></button>
+      <button className="swiper-button-next"></button>
     </NewItemContainer>
   )
-
-
 }
 
 export default NewItem;
@@ -60,7 +62,7 @@ const NewItemContainer = styled.div`
     transform: translateY(-50%);
     z-index: 20;
     border: none;
-    background: url('image/menu_arrow_prev.png');
+    background: url(${menuPrev});
     background-size: cover;
     border-radius: 50%;
     box-shadow: 0 3px 4px rgb(0 0 0 / 16%);
@@ -74,7 +76,7 @@ const NewItemContainer = styled.div`
     transform: translateY(-50%); 
     z-index: 20;
     border: none;
-    background: url('image/menu_arrow_next.png');
+    background: url(${menuNext});
     background-size: cover;
     border-radius: 50%;
     box-shadow: 0 3px 4px rgb(0 0 0 / 16%);
@@ -93,6 +95,9 @@ const NewItemContainer = styled.div`
     }
     .swiper-wrapper {
       width: 40%;
+    }
+    .swiper-wrapper {
+      transition-timing-function: linear;
     }
     .swiper-slide:first-child{
       margin-left: 20px;

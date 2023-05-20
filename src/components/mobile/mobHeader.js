@@ -1,6 +1,6 @@
 import styled from "styled-components";
 //image
-import Logo from "../../assets/logo.svg";
+import Logo from "../../assets/logo.png";
 //data
 import { mHeader, menu } from "../../dummy/contentOption";
 //redux
@@ -16,7 +16,7 @@ function MobHeader({ navigate }) {
     <>
       <HeaderTop>
         {/* 카테고리 버튼 */}
-        <Image style={{marginLeft: "20px"}}
+        <Image changeWidth={"20px"} style={{ marginLeft: "20px" }}
           src={process.env.PUBLIC_URL + mHeader[0]}
           alt="카테고리 버튼"
           onClick={() => navigate('/m_category_nav')} />
@@ -24,13 +24,10 @@ function MobHeader({ navigate }) {
         <LogoImage src={Logo} alt="로고" />
         {/* 유저 편의 메뉴 */}
         <div className="m-user-menu">
-          <Image changeWidth={"18px"}
-            src={process.env.PUBLIC_URL + mHeader[1]}
+          <Image src={process.env.PUBLIC_URL + mHeader[1]}
             alt="주소지입력" />
           <div>
-            <Image
-              changeWidth={"18px"}
-              src={process.env.PUBLIC_URL + mHeader[2]}
+            <Image src={process.env.PUBLIC_URL + mHeader[2]}
               alt="장바구니"
               onClick={() => navigate('/cart')} />
             <span className={cartList.length === 0 ?
@@ -58,7 +55,7 @@ export default MobHeader;
 const HeaderTop = styled.div`
   position: fixed;
   width: 100%;
-  height: 52px;
+  height: 54px;
   display: flex;
   align-items: flex-end;
   background-color: #fff;
@@ -69,33 +66,33 @@ const HeaderTop = styled.div`
     position: absolute;
     right: 0;
     display: flex;
-    gap: 8px;
+    gap: 16px;
     margin-right: 20px;
   }
 `
 const Image = styled.img`
-  width: ${props => props.changeWidth || '14px'};
+  width: ${props => props.changeWidth || '22px'};
   margin-bottom: 10px;
 `
 const LogoImage = styled.img`
-  width: 42px;
+  width: 54px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  margin-bottom: 10px;
+  padding-bottom: 10px;
 `
 const Menu = styled.ul`
   width: 100%;
-  height: 30px;
+  padding: 16px 0;
   position: fixed;
-  top: 53px;
+  top: 55px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 25px;
   background-color: #fff;
   border-bottom: 1px solid #e5e5e5;
-  font-size: 12px;
+  font-size: 14px;
   z-index: 99;
   li {
     cursor: pointer;

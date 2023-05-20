@@ -60,6 +60,7 @@ const TimerWrap = styled.div`
   margin-top: 30px;
   font-size: 28px;
   font-weight: 800;
+  white-space: nowrap;
   img {
     width: 30px;
     margin-right: 10px;

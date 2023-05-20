@@ -98,7 +98,7 @@ function DetailPage({ items }) {
             </div>
             <div>
               <dt>유통기한</dt>
-              <dd>출고일 기준, 1년 이상 남은 상품을 배송해 드립니다</dd>
+              <dd>출고일 기준, 1년 이상 남은 상품을 배송해 드립니다.</dd>
             </div>
             <Pc>
               <div>

@@ -175,8 +175,14 @@ const SignUpInput = styled.input`
   border-radius: 4px;
   border: 1px solid #ccc;
   padding: 0 10px;
+  &::placeholder {
+    color: #ccc;
+  }
   @media(max-width: 1229px) {
     width: calc(100% - 20px);
+    font-size: 14px;
+    box-shadow: none;
+    outline: none; 
   }
 `
 const Button = styled.button`

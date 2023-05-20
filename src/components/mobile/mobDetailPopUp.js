@@ -77,7 +77,7 @@ const Background = styled.div`
   z-index: 1;
 `
 const ModalWrap = styled.div`
-  z-index: 2;
+  z-index: 20;
   @keyframes fadeInUp {
     0% {
       opacity: 0;
@@ -90,7 +90,7 @@ const ModalWrap = styled.div`
   }
   .detail_popup {
     width: 100%;
-    height: 34%;
+    height: 36%;
     background-color: #fff;
     position: absolute;
     position: fixed;
@@ -110,7 +110,7 @@ const ModalWrap = styled.div`
     border-bottom: 1px solid #f2f2f2;
   }
   .popup_item_info img {
-    width: 10%;
+    width: 16%;
     border-radius: 3px;
   }
   .popup_item_price {
@@ -118,11 +118,11 @@ const ModalWrap = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
   }
   .price span:last-child {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 400;
     color: #ccc;
     text-decoration: line-through;
@@ -132,7 +132,7 @@ const ModalWrap = styled.div`
     background-color: #fff;
   }
   .counter p {
-    font-size: 12px;
+    font-size: 14px;
   }
   .counter button {
     font-size: 18px;
@@ -140,9 +140,10 @@ const ModalWrap = styled.div`
 `
 const CartButton = styled.button`
   width: 92%;
-  height: 42px;
+  height: 46px;
   border: none;
   background-color: #2A6834;
   color: #fff;
   border-radius: 6px;
+  font-size: 16px;
 `

@@ -8,7 +8,8 @@ function mobReview({ reviewArr }) {
     <ReviewWrap>
       <Swiper
         slidesPerView={"auto"}
-        spaceBetween={6}>
+        spaceBetween={6}
+        >
         {reviewArr.map(i => (
           <SwiperSlide key={i}>
             <div className='review'>
@@ -26,7 +27,8 @@ export default mobReview;
 
 const ReviewWrap = styled.div`
   .swiper-wrapper {
-    width: calc(45% - 100px);
+    width: calc(48% - 100px);
+    transition-timing-function: linear;
   }
   .swiper-slide:first-child{
     margin-left: 20px;

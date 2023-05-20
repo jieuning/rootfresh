@@ -3,7 +3,7 @@ import "../mainPage/style.css"
 //component
 import Card from "../../components/Card";
 //responsive
-import { Pc, Mobile } from "../../components/mobile/responsive";
+import { Mobile } from "../../components/mobile/responsive";
 //mobile
 import MobSearchResultHeader from "../../components/mobile/mobSearchResultHeader";
 import styled from "styled-components";
@@ -56,10 +56,10 @@ const Container = styled.div`
   align-items: flex-start;
   gap: 20px;
   margin-top: 30px;
+  cursor: pointer;
   @media(max-width: 1229px) {
     padding-left: 20px; 
     .menu-item {
       width: calc(50% - 20px);
-      cursor: pointer;
     }
   `

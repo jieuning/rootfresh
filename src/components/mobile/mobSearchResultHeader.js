@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+//redux
+import { useSelector } from "react-redux";
 //data
 import { mHeader } from "../../dummy/contentOption";
 
@@ -8,6 +10,10 @@ import { mHeader } from "../../dummy/contentOption";
 function MobSearchResultHeader() {
 
   const navigate = useNavigate();
+
+  /* redux 데이터 */
+  const state = useSelector((state) => state);
+  const cartList = state.cart;
 
   const [keyword, setKeyword] = useState("");
 
@@ -41,6 +47,19 @@ function MobSearchResultHeader() {
             placeholder="원하시는 상품을 검색해주세요" />
         </form>
       </SearchWrap>
+      {/* 장바구니 버튼 */}
+      <div style={{ position: "relative" }}>
+        <Image
+          changeWidth={"22px"}
+          src={process.env.PUBLIC_URL + mHeader[2]}
+          alt="장바구니"
+          onClick={() => navigate('/cart')} />
+        <span className={cartList.length === 0 ?
+          "none" : "m_add-item-count"}
+          onClick={() => { navigate('/Cart') }}>
+          {cartList.length}
+        </span>
+      </div>
     </DetailHeader>
   )
 };
@@ -51,16 +70,30 @@ const DetailHeader = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
-  height: 42px;
+  height: 58px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #fff;
-  border-bottom: 1px solid #e5e5e5;
   z-index: 99;
+  .m_add-item-count {
+    position: absolute;
+    top: 13px;
+    left: 33px;
+    width: 14px;
+    height: 14px;
+    background: #BAE900;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 14px;
+    color: #fff;
+    cursor: pointer;
+  }
 `
 const Image = styled.img`
-  width: 14px;
+  width: ${props => props.changeWidth || '18px'};
   padding: 20px;
   cursor: pointer;
 `
@@ -68,14 +101,14 @@ const SearchWrap = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  height: 28px;
+  padding: 6px 0;
   border-radius: 6px;
   background-color: #f2f2f2;
   margin-right: 20px;
   .search-box {
     width: 170px;
     border: none;
-    font-size: 12px;
+    font-size: 14px;
     letter-spacing: -0.06em;
     margin-left: 5px;
   }

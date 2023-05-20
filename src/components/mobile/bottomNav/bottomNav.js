@@ -1,9 +1,9 @@
 import "./style.css"
-import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 //data
 import { mNavIcon } from "../../../dummy/contentOption";
+
 
 function BottomNav() {
 
@@ -14,7 +14,6 @@ function BottomNav() {
       behavior: 'smooth'
     });
   };
-  
 
   return (
     <NavWrap>
@@ -47,7 +46,7 @@ export default BottomNav;
 
 const NavWrap = styled.nav`.
   width: 100%;
-  height: 64px;
+  height: 66px;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -56,10 +55,10 @@ const NavWrap = styled.nav`.
   justify-content: space-between;
   align-items: flex-start;
   background-color: #fff;
-  padding: 10px 30px 0 30px;
+  padding: 15px 30px 0 30px;
   border-top: 1px solid #e5e5e5;
   z-index: 99;
 `
 const NavImage = styled.img`
-  width: 18px;
+  width: 22px;
 `

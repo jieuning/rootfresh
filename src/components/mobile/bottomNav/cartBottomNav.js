@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import "../../../pages/detailPage/style.css"
 //firebase
 import { firebaseAuth } from "../../../firebase"
 
@@ -22,7 +23,7 @@ export default CartBottomNav
 
 const NavWrap = styled.div`
   width: 100%;
-  height: 86px;
+  height: 88px;
   position: fixed;
   display: flex;
   justify-content: center;

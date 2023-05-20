@@ -32,6 +32,7 @@ export default mobBestItem;
 const BestContainer = styled.div`
   .swiper-wrapper {
     width: 40%;
+    transition-timing-function: linear;
   }
   .swiper-slide:first-child{
     margin-left: 20px;

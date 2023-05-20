@@ -9,6 +9,8 @@ import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+//image
+import slidePrev from "../../assets/prev.png"
 //responsive
 import { useMediaQuery } from "react-responsive"
 
@@ -35,7 +37,8 @@ function MainSlider() {
       speed={400}
       autoplay={{
         delay: 5000,
-        disableOnInteraction: false,
+        disableOnInteraction: false
+
       }}
       onBeforeInit={(swiper) => {
         swiper.params.navigation.prevEl = BannerPrevRef.current;
@@ -79,9 +82,9 @@ const SlideButton = styled.button`
   bottom: 0;
   margin: auto 0;
   transform: translateY(-50%);
-  z-index: 20;
+  z-index: 99;
   border: none;
-  background: url('image/prev.png');
+  background: url(${slidePrev});
   background-size: cover;
   transform: rotate(${props => props.arrowRotate ? "180deg" : "0deg"});
   transition: .4s;

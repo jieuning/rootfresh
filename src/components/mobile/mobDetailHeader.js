@@ -33,7 +33,7 @@ function MobDetailHeader({ findItem, category, name }) {
       {/* 장바구니 버튼 */}
       <div style={{ position: "relative" }}>
         <Image
-          changeWidth={"18px"}
+          changeWidth={"22px"}
           src={process.env.PUBLIC_URL + mHeader[2]}
           alt="장바구니"
           onClick={() => navigate('/cart')} />
@@ -53,7 +53,7 @@ const DetailHeader = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
-  height: 42px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -67,7 +67,7 @@ const DetailHeader = styled.div`
     width: 60%;
     height: 16px;
     line-height: 16px;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
     white-space: nowrap;
     overflow: hidden;
@@ -75,8 +75,8 @@ const DetailHeader = styled.div`
   }
   .m_add-item-count {
     position: absolute;
-    top: 12px;
-    left: 30px;
+    top: 13px;
+    left: 33px;
     width: 14px;
     height: 14px;
     background: #BAE900;
@@ -90,7 +90,7 @@ const DetailHeader = styled.div`
   }
 `
 const Image = styled.img`
-  width: ${props => props.changeWidth || '14px'};
+  width: ${props => props.changeWidth || '18px'};
   padding: 20px;
   cursor: pointer;
 `

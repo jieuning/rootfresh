@@ -17,13 +17,15 @@ function MobMenuHeader({ navigate, setModal, checkedList, handleAllCheck }) {
       <Header>
         <div  className={"menu-header"}>
           <div className="header-top">
+            {/* 닫기 버튼 */}
             <Image
               src={process.env.PUBLIC_URL + mHeader[4]}
-              alt="이전 페이지 버튼"
+              alt="닫기 버튼"
               onClick={() => navigate(-1)} />
+            {/* 타이틀 */}
             <span>장바구니</span>
           </div>
-          {/* 전체 선택 및 삭제*/}
+          {/* 전체 선택 및 선택 삭제*/}
           <div className="cart-wrap">
             <div className="cart-check">
               <div style={{ display: "flex", alignItems: "center" }}>
@@ -71,18 +73,18 @@ const Header = styled.div`
   .header-top {
     display: flex;
     align-items: center; 
-    margin: 30px 0 20px 0;
+    margin: 20px 0 20px 0;
   }
   span {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
   }
 `
 const Image = styled.img`
-  width: 12px;
+  width: 14px;
   padding: 5px;
   margin-left: 15px;
   cursor: pointer;
