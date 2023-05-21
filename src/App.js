@@ -64,7 +64,7 @@ function App() {
         {/* 모바일 */}
         <Route path="/m_category_nav" element={<MobCategoryNav/>} />
         <Route path="/m_category_nav/category/:category" element={<CateDetail items={items} setItems={setItems} />} />
-        <Route path="/m_search" element={<MobSearch/>} />
+        <Route path="/m_search" element={<MobSearch navigate={navigate}/>} />
         <Route path="/m_mypage" element={<MobMypage/>} />
         <Route path="/*" element={<NotFound navigate={navigate}/>} />
       </Routes>

@@ -100,6 +100,10 @@ const mNavIcon = [
   }
 ]
 
+const recoKeyword = [
+  "샐러드", "요거트", "우동", "귤", "레몬"
+]
+
 export {
   menu,
   userMenuAlt,
@@ -108,5 +112,6 @@ export {
   slideBanImg,
   snsImg,
   mHeader,
-  mNavIcon
+  mNavIcon,
+  recoKeyword
 }

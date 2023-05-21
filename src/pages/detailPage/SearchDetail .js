@@ -37,7 +37,7 @@ function SearchDetail({ items, navigate }) {
             ))}
           </Container>
           :
-          <div style={{ margin: "180px 0" }}>
+          <div style={{ margin: "180px 0", textAlign: "center" }}>
             <img src={process.env.PUBLIC_URL + '/image/search_icon_g.png'}
               alt="검색 아이콘" />
             <p style={{ color: "#ccc", marginTop: "20px" }}>검색된 상품이 없습니다.</p>
