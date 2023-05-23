@@ -27,19 +27,23 @@ const userMenuAlt = [
 const slideBanImg = [
   {
     pc: "/image/main_banner1.png",
-    mobile: "/image/mob_main_banner1.png"
+    mobile: "/image/mob_main_banner1.png",
+    alt: "뿌리부터 다른 신선함 내일 눈뜨면 도착"
   },
   {
     pc: "/image/main_banner2.png",
-    mobile: "/image/mob_main_banner2.png"
+    mobile: "/image/mob_main_banner2.png",
+    alt: "가장 많이 팔린 베스트 상품"
   },
   {
     pc: "/image/main_banner3.png",
-    mobile: "/image/mob_main_banner3.png"
+    mobile: "/image/mob_main_banner3.png",
+    alt: "집에서 간편하게 뚝딱 간편 밀키트"
   },
   {
     pc: "/image/main_banner4.png",
-    mobile: "/image/mob_main_banner4.png"
+    mobile: "/image/mob_main_banner4.png",
+    alt: "2022연말 홈 패키지"
   }
 ]
 

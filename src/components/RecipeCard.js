@@ -4,7 +4,8 @@ import styled from "styled-components";
 function RecipeCard({ data }) {
   return (
     <RecipeBox>
-      <img src={process.env.PUBLIC_URL + data.image} />
+      <img src={process.env.PUBLIC_URL + data.image} 
+      alt={data.title}/>
       <div className="recipe-content">
         <h4>{data.title}</h4>
         <p>{data.content}</p>

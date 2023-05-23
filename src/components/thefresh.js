@@ -21,14 +21,16 @@ function Thefresh({ items, navigate }) {
               더 보기
             </button>
           </div>
-          <img src={process.env.PUBLIC_URL + '/image/thefresh1.png'} />
+          <img src={process.env.PUBLIC_URL + '/image/thefresh1.png'} 
+            alt="감귤 이미지"/>
         </div>
         <ul className="fresh-item-wrap">
           {freshFruit.map((data, i) => (
             <li key={i} className="fresh-items"
               onClick={() => navigate(`/detail/${data.id}`)}>
               <div className="item-image-wrap">
-                <img src={process.env.PUBLIC_URL + data.image} />
+                <img src={process.env.PUBLIC_URL + data.image} 
+                  alt="대하 이미지"/>
               </div>
               <div className="fresh-txt-wrap">
                 <p>{CommaFormat(data.price)}<span>원</span></p>

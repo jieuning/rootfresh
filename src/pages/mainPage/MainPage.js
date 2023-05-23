@@ -104,7 +104,8 @@ function MainPage({ items }) {
             <ul className="cate-wrap">
               {cateData.map((ctdata, i) => (
                 <li key={i} onClick={() => navigate(`category/${cateData[i].title}`)}>
-                  <img src={process.env.PUBLIC_URL + ctdata.image} />
+                  <img src={process.env.PUBLIC_URL + ctdata.image} 
+                    alt={ctdata.title}/>
                   {ctdata.title}
                 </li>
               ))}

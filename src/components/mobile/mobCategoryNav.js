@@ -26,7 +26,7 @@ function MobCategoryNav() {
               <MenuButton>
                 {ctdata.title}
                 <img src={process.env.PUBLIC_URL + '/image/mob_right_arrow.png'}
-                alt="화살표"/>
+                alt="왼쪽 화살표"/>
               </MenuButton>
             </li>
           ))}

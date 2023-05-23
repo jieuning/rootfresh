@@ -21,7 +21,9 @@ function MobBestCategory({ navigate }) {
           {cateData.map((ctdata, i) => (
             <SwiperSlide key={i}>
               <li onClick={() => navigate(`category/${cateData[i].title}`)}>
-                <img src={process.env.PUBLIC_URL + ctdata.image} />
+                <img src={process.env.PUBLIC_URL + ctdata.image} 
+                  alt={ctdata.title}
+                />
                 {ctdata.title}
               </li>
             </SwiperSlide>

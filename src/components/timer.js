@@ -45,7 +45,7 @@ const Timer = ({ hh, mm, ss }) => {
   return (
     <TimerWrap>
         <img src={process.env.PUBLIC_URL + '/image/clock_icon.png'}
-          alt="검색 버튼" />
+          alt="타이머 이미지" />
         {hour} : {min} : {sec}
     </TimerWrap>
   )

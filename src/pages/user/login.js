@@ -7,7 +7,7 @@ import {
   signInWithEmailAndPassword,
 } from "../../firebase";
 //responsive
-import { Pc, Mobile } from "../../components/mobile/responsive";
+import { Mobile } from "../../components/mobile/responsive";
 
 
 function Login({ isLoggedIn }) {
@@ -43,9 +43,9 @@ function Login({ isLoggedIn }) {
       loggedIn(isLoggedIn);
 
       /* 로그인하기 */
-      let loginUser
-      loginUser = await signInWithEmailAndPassword(
+      let loginUser = await signInWithEmailAndPassword(
         firebaseAuth, email, password);
+        console.log(loginUser);
 
       /* 조건 일치하지 않을 시 에러 메세지 */
     } catch (err) {

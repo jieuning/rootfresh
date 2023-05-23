@@ -49,13 +49,13 @@ function MainSlider() {
           <SwiperSlide key={i}>
             <img className='banner-image'
               src={process.env.PUBLIC_URL + image.pc}
-              alt="메인 배너" />
+              alt={image.alt} />
           </SwiperSlide>
           :
           <SwiperSlide key={i}>
             <img className='banner-image'
               src={process.env.PUBLIC_URL + image.mobile}
-              alt="메인 배너" />
+              alt={image.alt} />
           </SwiperSlide>
       ))}
       <SlideButton
