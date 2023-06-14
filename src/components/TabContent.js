@@ -20,11 +20,10 @@ function Tab({ items, navigate }) {
   };
 
   const tabArr = [
-    /* 타임특가 */
     {
+      /* 타임특가 탭 버튼 */
       tabButton: (
-        <li className={currentTab === 0 ?
-          "tabButton focused" : "tabButton"}
+        <li className={currentTab === 0 ? "tabButton focused" : "tabButton"}
           onClick={() => handleTabClick(0)}>
           타임특가
         </li>
@@ -33,13 +32,18 @@ function Tab({ items, navigate }) {
         <>
           {/* 타이머 */}
           <TimerWrap>
+            <h2 className="hidden"> 타임특가 타이머</h2>
             < Timer hh="24" mm="00" ss="00" />
             <p>딱 24시간만 특가 할인중!</p>
           </TimerWrap>
+
+          {/* 타임특가 상품 */}
           <TapContainer>
             {timeItems.map((data, i) => (
               <div key={i} className="card-link"
-                onClick={() => navigate(`/detail/${data.id}`)}>
+                onClick={() => navigate(`/detail/${data.id}`)}
+              >
+                {/* 카드 컴포넌트 */}
                 <Card data={data}></Card>
               </div>
             ))}
@@ -47,11 +51,10 @@ function Tab({ items, navigate }) {
         </>
       )
     },
-    /* 한정특가 */
     {
+      /* 한정특가 탭 버튼 */
       tabButton: (
-        <li className={currentTab === 1 ?
-          "tabButton focused" : "tabButton"}
+        <li className={currentTab === 1 ? "tabButton focused" : "tabButton"}
           onClick={() => handleTabClick(1)}>
           한정특가
         </li>
@@ -62,10 +65,14 @@ function Tab({ items, navigate }) {
             <p>200개 한정</p>
             <p>정해진 수량이 얼마 남지 않았어요!</p>
           </TxtWrap>
+
+          {/*  한정특가 상품 */}
           <TapContainer>
             {limitedItems.map((data, i) => (
               <div key={i} className="card-link"
-                onClick={() => navigate(`/detail/${data.id}`)} >
+                onClick={() => navigate(`/detail/${data.id}`)}
+              >
+                {/* 카드 컴포넌트 */}
                 <Card data={data}></Card>
               </div>
             ))}
@@ -73,12 +80,12 @@ function Tab({ items, navigate }) {
         </>
       )
     },
-    /* 대박특가 */
     {
+      /* 대박특가 탭 버튼 */
       tabButton: (
-        <li className={currentTab === 2 ?
-          "tabButton focused" : "tabButton"}
-          onClick={() => handleTabClick(2)}>대박특가</li>
+        <li className={currentTab === 2 ? "tabButton focused" : "tabButton"}
+          onClick={() => handleTabClick(2)}>대박특가
+        </li>
       ),
       tabItems: (
         <>
@@ -86,10 +93,14 @@ function Tab({ items, navigate }) {
             <p>20%~50%</p>
             <p>대박 할인! 어머 이건 사야해!</p>
           </TxtWrap>
+
+          {/*  대박특가 상품 */}
           <TapContainer>
             {onlyItems.map((data, i) => (
               <div key={i} className="card-link"
-                onClick={() => navigate(`/detail/${data.id}`)} >
+                onClick={() => navigate(`/detail/${data.id}`)}
+              >
+                {/* 카드 컴포넌트 */}
                 <Card data={data}></Card>
               </div>
             ))}
@@ -100,15 +111,19 @@ function Tab({ items, navigate }) {
 
   return (
     <>
+      {/* 탭 버튼 */}
       <TabBtnWrap>
-        {tabArr.map((data, i) => 
-          <TabBtn key={i}>{data.tabButton}</TabBtn>
+        {tabArr.map((data, i) =>
+          <TabBtn key={i}>
+            {data.tabButton}
+          </TabBtn>
         )}
       </TabBtnWrap>
+
+      {/* 탭 메뉴 */}
       <div className="tap_menu">
         {tabArr[currentTab].tabItems}
       </div>
-
     </>
   )
 };
@@ -124,6 +139,7 @@ const TabBtnWrap = styled.div`
 const TabBtn = styled.ul`
   display: flex;
   justify-content: center;
+
   .tabButton {
     display: flex;
     margin: 0 5px;
@@ -133,6 +149,7 @@ const TabBtn = styled.ul`
     background-color: rgba(42, 104, 52, 0.25);
     cursor: pointer;
     transition: .2s;
+
     &:hover {
       background-color: rgba(42, 104, 52, 0.45);
       color: #2A6834;
@@ -141,6 +158,7 @@ const TabBtn = styled.ul`
   .focused {
     background: #2A6834;
     color: #fff;
+
     &:hover {
       background: #2A6834;
       color: #fff;
@@ -155,10 +173,12 @@ justify-content: center;
 align-items: flex-start;
 gap: 20px;
 margin-top: 30px;
+
 .card-link {
   position: relative;
   cursor: pointer;
 }
+
 @media(max-width: 1229px) {
   flex-wrap: nowrap;
   justify-content: flex-start;
@@ -169,6 +189,7 @@ const TimerWrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+
   p {
     color: #b1b1b1;
     font-size: 14px;

@@ -20,25 +20,25 @@ function MobDetailHeader({ findItem, category, name }) {
     <DetailHeader>
       {/* 이전 버튼 */}
       <Image
-        src={process.env.PUBLIC_URL + mHeader[3]}
-        alt="이전 페이지 버튼"
-        onClick={() => navigate(-1)} />
+        src={process.env.PUBLIC_URL + mHeader[3]} alt="이전 페이지 버튼"
+        onClick={() => navigate(-1)}
+      />
+
       {/* 카테고리, 카테고리메뉴 , 메인메뉴, 검색, 마이페지이 타이틀 */}
-      {findItem ?
-        <p>{findItem.title}</p>
-        : <MobHeaderTitle />
-      }
+      {/* 상품이 아니면 다른 타이틀로 대체(카테고리, 검색등 헤더 재사용 목적) */}
+      {findItem ? <p>{findItem.title}</p> : <MobHeaderTitle />}
       <p>{category}</p>
       <p>{name}</p>
+
       {/* 장바구니 버튼 */}
       <div style={{ position: "relative" }}>
-        <Image
-          changeWidth={"22px"}
-          src={process.env.PUBLIC_URL + mHeader[2]}
-          alt="장바구니"
-          onClick={() => navigate('/cart')} />
-        <span className={cartList.length === 0 ?
-          "none" : "m_add-item-count"}
+        <Image changeWidth={"22px"}
+          src={process.env.PUBLIC_URL + mHeader[2]} alt="장바구니 버튼"
+          onClick={() => navigate('/cart')}
+        />
+
+        {/* 장바구니에 담긴 수량 아이콘 */}
+        <span className={cartList.length === 0 ? "none" : "m_add-item-count"}
           onClick={() => { navigate('/Cart') }}>
           {cartList.length}
         </span>
@@ -60,6 +60,7 @@ const DetailHeader = styled.div`
   background-color: #fff;
   border-bottom: 1px solid #e5e5e5;
   z-index: 99;
+
   p {
     position: absolute;
     left: 50%;

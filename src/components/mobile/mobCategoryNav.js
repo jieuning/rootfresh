@@ -8,7 +8,6 @@ import { Mobile } from "./responsive";
 //mobile
 import MobDetailHeader from "./mobDetailHeader";
 
-
 function MobCategoryNav() {
 
   const [cateData] = useState(categorydata);
@@ -17,16 +16,23 @@ function MobCategoryNav() {
 
   return (
     <Mobile>
-      <MobDetailHeader/>
+      {/* 카테고리 헤더 */}
+      <MobDetailHeader />
+
+      {/* 카테고리 메뉴 */}
       <NavMenuContainer>
         <ul>
           {cateData.map((ctdata, i) => (
             <li onClick={() => navigate(`category/${cateData[i].title}`)}
               key={i} >
               <MenuButton>
+                {/* 메뉴 타이틀 */}
                 {ctdata.title}
+
+                {/* 바로가기 아이콘 */}
                 <img src={process.env.PUBLIC_URL + '/image/mob_right_arrow.png'}
-                alt="왼쪽 화살표"/>
+                  alt={cateData[i].title + " " + "바로가기 아이콘"}
+                />
               </MenuButton>
             </li>
           ))}
@@ -64,6 +70,7 @@ const MenuButton = styled.button`
   align-items: center;
   justify-content: space-between;
   font-size: 16px;
+
   img {
     width: 14px;
   }

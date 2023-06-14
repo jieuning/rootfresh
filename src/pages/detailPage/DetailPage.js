@@ -13,7 +13,6 @@ import DetailBottomNav from "../../components/mobile/bottomNav/detailBottomNav";
 //responsive
 import { Pc, Mobile } from "../../components/mobile/responsive";
 
-
 function DetailPage({ items }) {
 
   /* url파라미터 가져오기 */
@@ -35,7 +34,7 @@ function DetailPage({ items }) {
   const indexFind = cartData.findIndex((i) => { return i.id === findItem.id });
   const findItemId = findItem.id;
 
-  /* 중복된 아이템 제외, redux에 데이터 담기 */
+  /* redux에 데이터 담기 */
   const sameItemFind = () => {
     indexFind < 0 ?
       dispatch(addItem({
@@ -46,7 +45,7 @@ function DetailPage({ items }) {
         count: count,
         checked: true,
       }))
-      : dispatch(increase(findItemId))
+      : dispatch(increase(findItemId)) // 이미 담긴 중복된 상품은 수량만 증가
   };
 
   /* 구매 수량 카운터 */
@@ -69,20 +68,27 @@ function DetailPage({ items }) {
         {/* 모바일 상단 고정 헤더 */}
         <MobDetailHeader findItem={findItem} />
       </Mobile>
+
       <div className="detail-container">
         {/* 상품 이미지 */}
         <div className="detail-image">
-          <img src={process.env.PUBLIC_URL + findItem.image} />
+          <img src={process.env.PUBLIC_URL + findItem.image} alt={findItem.alt} />
         </div>
+
+        {/* 상품 정보 */}
         <div className="item-info-wrap">
-          {/* 상품 타이틀 */}
           <div className="title-wrap">
+            {/* 상품 타이틀 */}
             <h4 className="detail-title">{findItem.title}</h4>
+            {/* 할인률 */}
             <p className="discount-rate">{findItem.discount_rate}</p>
+            {/* 가격 */}
             <p>{CommaFormat(findItem.price)}<span className="won">원</span></p>
+            {/* 할인 전 가격 */}
             <p className="detail-dimmed-price">{findItem.dimmed_price}</p>
           </div>
-          {/* 상품 정보 */}
+
+          {/* 상품 세부 정보 */}
           <dl className="item-info">
             <div>
               <dt>판매단위</dt>
@@ -100,37 +106,57 @@ function DetailPage({ items }) {
               <dt>유통기한</dt>
               <dd>출고일 기준, 1년 이상 남은 상품을 배송해 드립니다.</dd>
             </div>
+
             <Pc>
+              {/* 구매 수량 카운터 */}
               <div>
                 <dt>구매수량</dt>
                 <dd>
                   <div className="counter">
-                    <button onClick={onDecrease}>-</button>
+                    {/* 수량 빼기 */}
+                    <button onClick={onDecrease}>
+                      <h2 className="hidden">수량 빼기 버튼</h2>
+                      -
+                    </button>
+                    {/* 수량 */}
                     <p>{count}</p>
-                    <button onClick={onIncrease}>+</button>
+                    {/* 수량 더하기 */}
+                    <button onClick={onIncrease}>
+                      <h2 className="hidden">수량 더하기 버튼</h2>
+                      +
+                    </button>
                   </div>
                 </dd>
               </div>
             </Pc>
           </dl>
+          
           <Pc>
             {/* 상품 가격 총 합계 */}
             <div className="amount-wrap">
               <div className="amount-price">
                 <span className="amount-title">총 상품 금액: </span>
-                {CommaFormat(count * findItem.price)}<span className="won">원</span>
+                {CommaFormat(count * findItem.price)}
+                <span className="won">원</span>
               </div>
+
               {/* 장바구니 담기 버튼 */}
               <button className="cart-btn"
                 onClick={() => {
                   sameItemFind()
                   setModal(true)
-                }}>장바구니 담기</button>
+                }}>
+                <h2 className="hidden">장바구니 담기 버튼</h2>
+                장바구니 담기
+              </button>
+              
+              {/* 장바구니에 상품이 담겼을때 모달 */}
               {modal === true ? <CartModal /> : null}
             </div>
           </Pc>
         </div>
       </div>
+
       <Mobile>
         {/* 모바일 하단 고정 네비게이션(구매하기 버튼) */}
         <DetailBottomNav

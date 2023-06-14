@@ -9,6 +9,7 @@ function footer() {
   return (
     <FooterContainer>
       <Pc>
+        {/* 푸터 탑 메뉴 */}
         <FooterMenu>
           <li>루트프레시소개</li>
           <li>매장안내</li>
@@ -20,14 +21,16 @@ function footer() {
           <li>인재채용</li>
         </FooterMenu>
       </Pc>
+
       <div className="footer-content">
         <Mobile>
           <div className="m-footer-menu">
             <span>루트프레시소개</span>
             <span>이용약관</span>
-            <span style={{fontWeight: "500"}}>개인정보처리방침</span>
+            <span style={{ fontWeight: "500" }}>개인정보처리방침</span>
           </div>
         </Mobile>
+
         <FtCsCenter>
           <div className="cscenter-info">
             <p className="cecenter-number">
@@ -38,14 +41,18 @@ function footer() {
             <p>점심시간: 12:00 ~ 13:00</p>
             <p>email: rootfresh@fresh.co.kr</p>
           </div>
+          
+          {/* sns 바로가기 */}
           <div className="sns">
             {snsImg.map((data, i) => (
               <img src={process.env.PUBLIC_URL + data.image}
-                alt={data.alt} 
-                key={i} />
+                alt={data.alt}
+                key={i}
+              />
             ))}
           </div>
         </FtCsCenter>
+
         <FtcompanyInfo>
           <span className="company-name">(주)루트프레시</span><br />
           <span>주소: 서울특별시 광진구 화양동</span><br />

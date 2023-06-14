@@ -15,8 +15,8 @@ import { userMenuAlt } from "../../dummy/contentOption";
 
 function Header({ items, isLoggedIn }) {
 
-  const [scrollHeader, setScrollHeader] = useState(0);
-  const [mouseOver, setMouseOver] = useState(false);
+  const [fixedHeader, setFixedHeader] = useState(0); //헤더 픽스
+  const [mouseOver, setMouseOver] = useState(false); // 카테고리 메뉴
 
   const navigate = useNavigate();
 
@@ -26,9 +26,10 @@ function Header({ items, isLoggedIn }) {
 
   /* 스크롤시 헤더 고정 */
   const updateScroll = () => {
-    setScrollHeader(window.scrollY ||
+    setFixedHeader(window.scrollY ||
       document.documentElement.scrollTop)
   };
+
   /* clean-up */
   useEffect(() => {
     window.addEventListener('scroll', updateScroll);
@@ -38,11 +39,10 @@ function Header({ items, isLoggedIn }) {
   });
 
   return (
-    <header className={scrollHeader > 10 ?
-      "main-header fixed-header" : "main-header"}>
-      {/* 헤더 탑 배너 */}
-      <div className={scrollHeader > 10 ?
-        "fixed-top-banner" : "top-banner"}>
+    <header className={fixedHeader > 10 ? "main-header fixed-header" : "main-header"}>
+
+      {/* 탑 배너 */}
+      <div className={fixedHeader > 10 ? "fixed-top-banner" : "top-banner"}>
         <Link className="top-banner-btn" to='#'>
           지금 가입하면 첫 주문&nbsp;
           <span>100원</span>
@@ -50,69 +50,89 @@ function Header({ items, isLoggedIn }) {
         </Link>
       </div>
 
-      <div className={scrollHeader > 10 ?
-        "fixed-header-container" : "header-container"}>
+      {/* 헤더 */}
+      <div className={fixedHeader > 10 ? "fixed-header-container" : "header-container"}>
+
         {/* 유저 메뉴(로그아웃 기능 위치)*/}
-        <div className={scrollHeader > 10 ?
-          "fixed-login-menu" : "login-menu"}>
+        <div className={fixedHeader > 10 ? "fixed-login-menu" : "login-menu"}>
           <UserNav isLoggedIn={isLoggedIn} />
         </div>
-        <div className={scrollHeader > 10 ?
-          "fixed-logo-search-menu" : "logo-search-menu"}>
+
+        {/* 로고, 배송 안내, 검색바 */}
+        <div className={fixedHeader > 10 ? "fixed-logo-search-menu" : "logo-search-menu"}>
+
           {/* 로고 */}
-          <h1 className="logo">
+          <h2 className="logo">
+            <h2 className="hidden">로고</h2>
             <img style={{ cursor: 'pointer' }}
               src={Logo} onClick={() => { navigate('/') }}
               alt="로고" />
-          </h1>
+          </h2>
+
+          {/* 배송 안내 버튼 */}
           <button className="delivery-info">
+            <h2 className="hidden">배송 안내 버튼</h2>
             <span>루트</span>배송 안내
           </button>
+
           {/* 검색 바 */}
+          <h2 className="hidden">검색바</h2>
           <SearchBar items={items} />
         </div>
 
         <div className="menu-wrap">
-          {/* 장바구니 외 유저 편의 메뉴 */}
-          <ul className={scrollHeader > 10 ?
-            "fixed-user-menu" : "user-menu"}>
+          {/* 유저 편의 메뉴 */}
+          <ul className={fixedHeader > 10 ? "fixed-user-menu" : "user-menu"}>
+            {/* 배송 확인, 마이페이지, 찜하기 메뉴 */}
             {[1, 2, 3].map((i) => (
               <li key={i}>
+                <h2 className="hidden">{userMenuAlt[i]}</h2>
                 <img className="user-menu-icon"
                   src={process.env.PUBLIC_URL + '/image/header_icon' + i + '.png'}
-                  alt={userMenuAlt[i]} />
+                  alt={userMenuAlt[i]}
+                />
               </li>
             ))}
-            {/* 장바구니 */}
+
+            {/* 장바구니(담긴 상품 수량 표시 아이콘 때문에 따로 작성 ) */}
             <li>
+              <h2 className="hidden">장바구니</h2>
               <img className="user-menu-icon"
-                src={process.env.PUBLIC_URL + '/image/header_icon4.png'}
+                src={process.env.PUBLIC_URL + '/image/header_icon4.png'} alt="장바구니"
                 onClick={() => { navigate('/Cart') }}
-                alt="장바구니" />
-              <span className={cartList.length === 0 ?
-                "none" : "add-item-count"}
+              />
+              {/* 장바구니에 상품이 없으면 아이콘 제거 */}
+              <span className={cartList.length === 0 ? "none" : "add-item-count"}
                 onClick={() => { navigate('/Cart') }}>
                 {cartList.length}
               </span>
             </li>
           </ul>
+
           <div className="main-menu">
+
             {/* 카테고리 */}
-            <div className={scrollHeader > 10 ?
-              "fixed-category" : "category"}>
+            <div className={fixedHeader > 10 ? "fixed-category" : "category"}>
+              <h2 className="hidden">전체상품 보기</h2>
               <div className="category-btn"
+                // 마우스 오버시 카테고리 메뉴 등장
                 onMouseOver={() => setMouseOver(true)}
-                onMouseOut={() => setMouseOver(false)}>
+                // 마우스 아웃시 카테고리 메뉴 제거
+                onMouseOut={() => setMouseOver(false)}
+              >
                 전체상품 보기
+                {/* state가 true면 카테고리 메뉴 등장 */}
                 {mouseOver === true ?
-                  <CategoryNavBar scrollHeader={scrollHeader} />
-                  : null}
+                  <CategoryNavBar fixedHeader={fixedHeader} /> : null}
               </div>
             </div>
+
             {/* 메인 메뉴 */}
             <Menu items={items} navigate={navigate} />
-            <button className={scrollHeader > 10 ?
-              "fixed-address" : "address"}>
+
+            {/* 배송지 입력 버튼 */}
+            <button className={fixedHeader > 10 ? "fixed-address" : "address"}>
+              <h2 className="hidden">배송지 입력하기 버튼</h2>
               배송지 입력하기
             </button>
           </div>

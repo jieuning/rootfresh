@@ -4,7 +4,7 @@ section {
   margin: 0 auto;
 }
 
-h2 {
+.main-title {
   margin-top: 90px;
   font-size: 26px;
   font-weight: 400;
@@ -31,7 +31,8 @@ h2 {
   .mob-margin-cancle {
     margin-left: 0;
   }
-  h2 {
+
+  .main-title {
     margin-top: 50px;
     font-size: 18px;
     font-weight: 500;

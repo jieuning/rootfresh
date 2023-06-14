@@ -16,29 +16,40 @@ function MobHeader({ navigate }) {
     <>
       <HeaderTop>
         {/* 카테고리 버튼 */}
+        <h2 className="hidden">카테고리 버튼</h2>
         <Image changeWidth={"20px"} style={{ marginLeft: "20px" }}
-          src={process.env.PUBLIC_URL + mHeader[0]}
-          alt="카테고리 버튼"
-          onClick={() => navigate('/m_category_nav')} />
+          src={process.env.PUBLIC_URL + mHeader[0]} alt="카테고리 버튼"
+          onClick={() => navigate('/m_category_nav')}
+        />
+
         {/* 로고 */}
         <LogoImage src={Logo} alt="로고" />
+
         {/* 유저 편의 메뉴 */}
         <div className="m-user-menu">
-          <Image src={process.env.PUBLIC_URL + mHeader[1]}
-            alt="주소지입력" />
-          <div>
-            <Image src={process.env.PUBLIC_URL + mHeader[2]}
-              alt="장바구니"
-              onClick={() => navigate('/cart')} />
-            <span className={cartList.length === 0 ?
-              "none" : "add-item-count"}
-              onClick={() => { navigate('/Cart') }}>
+
+          {/* 주소지 입력 */}
+          <Image src={process.env.PUBLIC_URL + mHeader[1]} alt="주소지 입력 아이콘" />
+
+          {/* 장바구니 */}
+          <>
+            <Image src={process.env.PUBLIC_URL + mHeader[2]} alt="장바구니 아이콘"
+              onClick={() => navigate('/cart')}
+            />
+
+            {/* 장바구니에 담기 상품 수량 아이콘 */}
+            <span className={cartList.length === 0 ? "none" : "add-item-count"}
+              onClick={() => { navigate('/Cart') }}
+            >
               {cartList.length}
             </span>
-          </div>
+          </>
         </div>
       </HeaderTop>
+
+      {/* 메인 메뉴 */}
       <Menu>
+        <h2 className="hidden">메인 메뉴</h2>
         {menu.map((data, i) =>
           <li key={i} onClick={() => navigate(`/menu/${menu[i].name}`)}>
             {data.name}

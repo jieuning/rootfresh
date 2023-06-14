@@ -10,15 +10,17 @@ function MobDetailPopUp({ items, setPopUp, modal, setModal, sameItemFind }) {
   /* url파라미터 가져오기 */
   const { id } = useParams();
 
-  /* items데이터의 id와 url파라미터가 같은 데이터를 찾아줌*/
+  /* items데이터의 id와 url파라미터가 같은 데이터*/
   const findItem = items.find((data) => data.id == id);
 
   const [count, setCount] = useState(1);
 
-  /* 구매 수량 카운터 */
+  /* 구매 수량 증가 */
   const onIncrease = () => {
     setCount(count + 1)
   };
+
+  /* 구매 수량 감소 */
   const onDecrease = () => {
     count === 1 ? alert('1개 이상부터 구매 가능합니다')
       : setCount(count - 1)
@@ -26,36 +28,56 @@ function MobDetailPopUp({ items, setPopUp, modal, setModal, sameItemFind }) {
 
   return (
     <>
-      {/* 장바구니 담기 버튼 클릭시 모달 */}
-      {modal === true ? <CartModal/> : null}
-      {/* 배경 및 팝업 닫기 */}
-      <Background  onClick={() => setPopUp(false)} />
+      {/* 장바구니 담기 버튼 클릭시 모달 등장 */}
+      {modal === true ? <CartModal /> : null}
+
+      {/* 배경 클릭시 팝업 닫기 */}
+      <Background onClick={() => setPopUp(false)} />
+
       {/* 팝업 */}
       <ModalWrap>
         <div className="detail_popup">
-          <span></span>
+
+          {/* 아이템 이미지, 상품명 */}
           <div className="popup_item_info">
-            <img src={process.env.PUBLIC_URL + findItem.image} />
+            <img src={process.env.PUBLIC_URL + findItem.image} alt={findItem.alt} />
             <p>{findItem.title}</p>
           </div>
+          {/* 아이템 가격, 카운터 */}
           <div className="popup_item_price">
             <div className="price">
               <span>{CommaFormat(count * findItem.price)}원</span>
               <span>{findItem.dimmed_price}</span>
             </div>
+
+            {/* 구매 수량 카운터 */}
             <div className="counter">
-              <button onClick={onDecrease}>-</button>
+              {/* 빼기 */}
+              <button onClick={onDecrease}>
+                <h2 className="hidden">수량 빼기 버튼</h2>
+                -
+              </button>
+
+              {/* 수량 */}
               <p>{count}</p>
-              <button onClick={onIncrease}>+</button>
+
+              {/* 더하기 */}
+              <button onClick={onIncrease}>
+                <h2 className="hidden">수량 더하기 버튼</h2>
+                +
+              </button>
             </div>
           </div>
+
           {/* 장바구니 담기 버튼 */}
           <CartButton onClick={() => {
-            setModal(true)
-            sameItemFind()
+            setModal(true);
+            sameItemFind();
           }}>
-            {CommaFormat(count * findItem.price)}
-            원 장바구니 담기</CartButton>
+            <h2 className="hidden">장바구니 담기 버튼</h2>
+            {CommaFormat(count * findItem.price)} {/* 카운터 적용된 가격 */}
+            원 장바구니 담기
+          </CartButton>
         </div>
       </ModalWrap>
     </>
@@ -78,16 +100,18 @@ const Background = styled.div`
 `
 const ModalWrap = styled.div`
   z-index: 20;
+
   @keyframes fadeInUp {
     0% {
       opacity: 0;
       transform: translate3d(0, 100%, 0);
     }
-    to {
+    100% {
       opacity: 1;
       transform: translateZ(0);
     }
   }
+
   .detail_popup {
     width: 100%;
     height: 36%;

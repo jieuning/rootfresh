@@ -4,8 +4,7 @@ import styled from "styled-components";
 function RecipeCard({ data }) {
   return (
     <RecipeBox>
-      <img src={process.env.PUBLIC_URL + data.image} 
-      alt={data.title}/>
+      <img src={process.env.PUBLIC_URL + data.image} alt={data.alt}/>
       <div className="recipe-content">
         <h4>{data.title}</h4>
         <p>{data.content}</p>
@@ -21,6 +20,7 @@ const RecipeBox = styled.div`
   height: 308px;
   background-color: #fff;
   border-radius: 8px;
+
   img {
     width: 100%;
     height: 174px;

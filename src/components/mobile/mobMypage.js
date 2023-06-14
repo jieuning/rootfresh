@@ -11,31 +11,43 @@ function MobMypage() {
   const navigate = useNavigate();
 
   /* firebase 로그아웃 */
-  const onLogOutClick = () =>
-    firebaseAuth.signOut();
+  const onLogOutClick = () => firebaseAuth.signOut();
 
-  /* firebase profile정보 가져옴 */
+  /* firebase profile정보 */
   const auth = firebaseAuth;
   const user = auth.currentUser;
 
   return (
     <MypageContainer>
       <MobDetailHeader />
+      {/* 유저 정보가 있으면 로그아웃, 없으면 로그인 */}
       {user !== null ?
+      
+        // 로그아웃
         <div className="logout-btn">
+          {/* 유저 이름 */}
           <p>{user.displayName} 님<br />환영합니다.</p>
+
           <Button changeBorder changeBackground changeColor
-            onClick={onLogOutClick}>
+            onClick={onLogOutClick}
+          >
+            <h2 className="hidden">로그아웃 버튼</h2>
             로그아웃
           </Button>
         </div>
-        : <div className="login-btn">
+        :
+        // 로그인
+        <div className="login-btn">
           <p>회원가입하고<br />다양한 혜택을 받아보세요!</p>
+
           <Button onClick={() => navigate('/login')}>
+            <h2 className="hidden">로그인 회원가입 버튼</h2>
             로그인/회원가입
           </Button>
         </div>
       }
+
+      {/* 하단 네비게이션 */}
       <BottomNav />
     </MypageContainer>
   )
@@ -46,6 +58,7 @@ export default MobMypage;
 const MypageContainer = styled.div`
   padding-top: 43px;
   padding-bottom: 75px;
+
   .login-btn {
     font-size: 16px;
     line-height: 1.4;

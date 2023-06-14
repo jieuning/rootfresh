@@ -10,8 +10,7 @@ function Card({ data }) {
     <CardWrap>
       <li>
         <div className="img-wrap">
-          <Image src={process.env.PUBLIC_URL + data.image}
-            alt={data.title} />
+          <Image src={process.env.PUBLIC_URL + data.image} alt={data.alt} />
         </div>
         <div className="card-info">
           <h4 className="item-title">{data.title}</h4>
@@ -33,6 +32,7 @@ export default Card;
 
 const CardWrap = styled.ul`
   margin-bottom: 20px;
+
   .img-wrap {
     border-radius: 10px;
     overflow: hidden;
@@ -65,8 +65,10 @@ const CardWrap = styled.ul`
     color: #b5b5b5;
     text-decoration: line-through;
   }
+
   @media (max-width: 1229px) {
     margin-bottom: 0;
+    
     .img-wrap {
       width: 100%;
       text-align: center;
@@ -96,9 +98,11 @@ const CardWrap = styled.ul`
 const Image = styled.img`
   width: 285px;
   transition: .4s;
+
   &:hover {
     transform: scale(105%);
   }
+
   @media (max-width: 1229px) {
     width: 100%;
     height: auto;

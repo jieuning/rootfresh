@@ -1,5 +1,6 @@
 function NotFound({navigate}) {
   return (
+    // 404페이지
     <div style={{padding: "90px 0 300px 0"}}>
       <div style={{fontSize: "22px", fontWeight: "600"}}>
         해당 페이지를 찾지 못했습니다.</div>

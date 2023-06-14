@@ -4,42 +4,50 @@ import arrow from "../../assets/arrow.png"
 //firebase
 import { firebaseAuth } from "../../firebase";
 
-
 function UserNav() {
 
   /* firebase 로그아웃 */
   const onLogOutClick = () =>
     firebaseAuth.signOut();
 
-  /* firebase profile정보 가져옴 */
+  /* firebase profile정보 */
   const auth = firebaseAuth;
   const user = auth.currentUser;
 
   return (
     <>
-      {/* 로그인, 로그아웃시 보여질 nav */}
       {user !== null ?
-        <UserMenu> 
+        // 로그인시 보여질 메뉴
+        <UserMenu>
+          {/* 로그인된 유저 이름 */}
           <UserName>
             {user.displayName} 님
             <LogoutModal
-              style={{ 
-                cursor: "pointer", 
-                marginTop: "4px" }}
+              style={{
+                cursor: "pointer",
+                marginTop: "4px"
+              }}
               onClick={onLogOutClick}>
               로그아웃
             </LogoutModal>
           </UserName>
+
+          {/* 구분선 */}
           <Line />
+
+          {/* 고객센터 */}
           <li><Link to='#'>고객센터</Link></li>
         </UserMenu>
         :
+        // 로그아웃시 보여질 메뉴
         <UserMenu>
           <li style={{ fontWeight: '600' }}>
             <Link to='/sign-up'>회원가입</Link>
           </li>
+          {/* 구분선 */}
           <Line />
           <li><Link to='/login'>로그인</Link></li>
+          {/* 구분선 */}
           <Line />
           <li><Link to='#'>고객센터</Link></li>
         </UserMenu>

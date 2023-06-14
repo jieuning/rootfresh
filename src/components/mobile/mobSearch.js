@@ -12,9 +12,11 @@ function MobSearch({ navigate }) {
     <>
       <MobDetailHeader />
       <SearchBarWrap>
-        <SearchBar />
+        <SearchBar /> {/* 검색바 컴포넌트 */}
         <RecommendWord>
           <p>추천 검색어</p>
+
+          {/* 추천 검색어 */}
           <div>
             {recoKeyword.map((keyword, i) =>
               <button key={i} onClick={() => 

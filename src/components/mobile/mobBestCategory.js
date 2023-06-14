@@ -5,14 +5,15 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 //data
 import CategoryData from "../../dummy/categorydata.json";
 
-
 function MobBestCategory({ navigate }) {
 
   /* 카테고리 데이터 */
   const [cateData] = useState(CategoryData);
 
   return (
+    // 인기 카테고리 모음
     <BestCateContainer>
+      {/* 스와이퍼 */}
       <Swiper
         slidesPerView={"auto"}
         spaceBetween={15}
@@ -21,9 +22,10 @@ function MobBestCategory({ navigate }) {
           {cateData.map((ctdata, i) => (
             <SwiperSlide key={i}>
               <li onClick={() => navigate(`category/${cateData[i].title}`)}>
-                <img src={process.env.PUBLIC_URL + ctdata.image} 
-                  alt={ctdata.title}
-                />
+                {/* 이미지 */}
+                <img src={process.env.PUBLIC_URL + ctdata.image} alt={ctdata.alt} />
+
+                {/* 타이틀 */}
                 {ctdata.title}
               </li>
             </SwiperSlide>
@@ -38,6 +40,7 @@ export default MobBestCategory;
 
 const BestCateContainer = styled.div`
   margin-top: 30px;
+
   .swiper-wrapper {
     width: 18%;
   }

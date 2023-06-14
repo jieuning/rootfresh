@@ -2,9 +2,9 @@ import { configureStore } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
 import { combineReducers } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
-
 import cart from "./cartSlice";
 
+// cart state에만 persist적용
 const persistConfig = {
   key: "root",
   storage,

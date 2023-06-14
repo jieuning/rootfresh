@@ -13,45 +13,55 @@ function MobMenuHeader({ navigate, setModal, checkedList, handleAllCheck }) {
   const cartList = state.cart;
 
   return (
-    <>
-      <Header>
-        <div  className={"menu-header"}>
-          <div className="header-top">
-            {/* 닫기 버튼 */}
-            <Image
-              src={process.env.PUBLIC_URL + mHeader[4]}
-              alt="닫기 버튼"
-              onClick={() => navigate(-1)} />
-            {/* 타이틀 */}
-            <span>장바구니</span>
-          </div>
-          {/* 전체 선택 및 선택 삭제*/}
-          <div className="cart-wrap">
-            <div className="cart-check">
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <input
-                  id="check"
-                  type="checkbox"
-                  checked={checkedList.length === cartList.length}
-                  onChange={(e) => {
-                    handleAllCheck(e.target.checked)
-                  }}
-                />
-                <label htmlFor="check">
-                  전체선택
-                  &#40;{checkedList.length}/{cartList.length}&#41;
-                </label>
-              </div>
-              <div className="select-remove" onClick={() =>
-                checkedList === 0 ?
-                  setModal(false) : setModal(true)}>
-                선택삭제
-              </div>
+    <Header>
+      <div className={"menu-header"}>
+        <div className="header-top">
+
+          {/* 닫기 버튼 */}
+          <Image
+            src={process.env.PUBLIC_URL + mHeader[4]}
+            alt="닫기 버튼"
+            onClick={() => navigate(-1)}
+          />
+
+          {/* 타이틀 */}
+          <span>장바구니</span>
+        </div>
+
+        {/* 전체 선택 및 선택 삭제*/}
+        <div className="cart-wrap">
+          <div className="cart-check">
+            <div style={{ display: "flex", alignItems: "center" }}>
+
+              {/* 체크 박스 */}
+              <input
+                id="check"
+                type="checkbox"
+                checked={checkedList.length === cartList.length}
+                onChange={(e) => {
+                  handleAllCheck(e.target.checked)
+                }}
+              />
+              <label htmlFor="check">
+                <h2 className="hidden">전체 선택</h2>
+                전체선택
+
+                {/* 선택된 수량 */}
+                &#40;{checkedList.length}/{cartList.length}&#41;
+              </label>
+            </div>
+
+            {/* 선택 삭제 버튼 */}
+            <div className="select-remove" onClick={() => checkedList === 0 ?
+              setModal(false) : setModal(true)}
+            >
+              <h2 className="hidden">선택 삭제 버튼</h2>
+              선택삭제
             </div>
           </div>
         </div>
-      </Header>
-    </>
+      </div>
+    </Header>
   )
 };
 

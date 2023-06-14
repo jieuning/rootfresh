@@ -7,6 +7,7 @@ import styled from "styled-components";
 function mobBestItem({ bestItems, navigate }) {
   return (
     <BestContainer>
+      {/* 스와이퍼 */}
       <Swiper
         slidesPerView={"auto"}
         spaceBetween={10}
@@ -15,8 +16,11 @@ function mobBestItem({ bestItems, navigate }) {
           <SwiperSlide key={i}>
             <div className="container">
               <div className="card"
-                onClick={() => navigate(`/detail/${data.id}`)}>
+                onClick={() => navigate(`/detail/${data.id}`)}
+              >
                 <Card data={data}></Card>
+
+                {/* 베스트 상품 순위 */}
                 <span className="rank">{data.rank}</span>
               </div>
             </div>

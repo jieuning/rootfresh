@@ -5,30 +5,36 @@ import styled from "styled-components";
 //component
 import MobDetailPopUp from "../mobDetailPopUp";
 
-
 function DetailBottomNav({ sameItemFind, items, modal, setModal }) {
 
   const [popUp, setPopUp] = useState(false);
 
   /* pathname 불러오기 */
   const location = useLocation();
+
   useEffect(() => {
     console.log(location)
-  }, [location])
+  }, [location]);
 
   return (
     <NavWrap>
-      <button className="cart-btn"
-        onClick={() => {
-          setPopUp(true)
-        }}>구매하기</button>
+      {/* 구매하기 버튼 */}
+      <button className="cart-btn" onClick={() => { setPopUp(true) }}>
+        <h2 className="hidden">구매하기 버튼</h2>
+        구매하기
+      </button>
+
       {/* 장바구니 담기 팝업 */}
-      {popUp === true ? <MobDetailPopUp
-        setPopUp={setPopUp}
-        items={items}
-        modal={modal}
-        setModal={setModal}
-        sameItemFind={sameItemFind} /> : null}
+      {popUp === true ?
+        <MobDetailPopUp
+          setPopUp={setPopUp}
+          items={items}
+          modal={modal}
+          setModal={setModal}
+          sameItemFind={sameItemFind}
+        />
+        : null
+      }
     </NavWrap>
   )
 };

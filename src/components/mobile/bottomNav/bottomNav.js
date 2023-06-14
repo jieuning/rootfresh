@@ -7,7 +7,7 @@ import { mNavIcon } from "../../../dummy/contentOption";
 
 function BottomNav() {
 
-  /* scroll을 맨 위로 */
+  /* 홈 아이콘 클릭시 scroll을 맨 위로 부드럽게 이동 */
   const scrollToTop = () => {
     window.scroll({
       top: 0,
@@ -17,26 +17,29 @@ function BottomNav() {
 
   return (
     <NavWrap>
-      <NavLink to='/' 
+      {/* 아이콘 리프레시 후에도 고정 */}
+      <NavLink to='/'
         onClick={scrollToTop}
-        className={({isActive}) => 
-        (isActive? "active1" : "nav_image1")}>
+        className={({ isActive }) => (isActive ? "active1" : "nav_image1")}
+      >
+        <h2 className="hidden">홈 버튼</h2>
       </NavLink>
       <Link>
-        <NavImage src={process.env.PUBLIC_URL + mNavIcon[1].image}
-          alt="배송조회" />
+        <h2 className="hidden">배송조회 버튼</h2>
+        <NavImage src={process.env.PUBLIC_URL + mNavIcon[1].image} alt="배송조회" />
       </Link>
       <Link>
-        <NavImage src={process.env.PUBLIC_URL + mNavIcon[2].image}
-          alt="찜하기" />
+        <h2 className="hidden">찜하기 버튼</h2>
+        <NavImage src={process.env.PUBLIC_URL + mNavIcon[2].image} alt="찜하기" />
       </Link>
       <NavLink to='/m_search'
-        className={({isActive}) =>
-        (isActive ? "active2" : "nav_image2")}>
+        className={({ isActive }) => (isActive ? "active2" : "nav_image2")}
+      >
       </NavLink>
       <NavLink to='/m_mypage'
-        className={({isActive}) =>
-        (isActive ? "active3" : "nav_image3")}>
+        className={({ isActive }) => (isActive ? "active3" : "nav_image3")}
+      >
+        <h2 className="hidden">마이페이지 버튼</h2>
       </NavLink>
     </NavWrap>
   )

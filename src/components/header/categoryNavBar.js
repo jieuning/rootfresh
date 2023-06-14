@@ -5,18 +5,18 @@ import styled from "styled-components";
 import categorydata from "../../dummy/categorydata.json"
 
 
-function CategoryNavBar({ scrollHeader }) {
+function CategoryNavBar({ fixedHeader }) {
 
-  const [cateData] = useState(categorydata);
+  const [cateData] = useState(categorydata); // 카테고리 데이터
 
   const navigate = useNavigate();
 
   return (
     <NavMenuContainer>
-      <ul className={scrollHeader > 10 ? // 헤더 픽스 시 
-        "fixed-navmenu-wrap" : "navmenu-wrap"}>
+      {/* 카테고리 메뉴 */}
+      <ul className={fixedHeader > 10 ? "fixed-navmenu-wrap" : "navmenu-wrap"}> {/* 헤더 픽스. 스크롤 탑값이 10보다 클때 */}
         {cateData.map((ctdata, i) => (
-          <li key={i} className="navmanu"
+          <li key={i} className="navmenu"
             onClick={() => navigate(`category/${cateData[i].title}`)}>
             <MenuButton>{ctdata.title}</MenuButton>
           </li>
@@ -50,13 +50,14 @@ const NavMenuContainer = styled.div`
     flex-direction: column;
     border: 1px solid #ccc;
   }
-  .navmanu {
+  .navmenu {
     width: 226px;
     height: 45px;
     line-height: 45px;
     background-color: #fff;
   }
 `
+
 const MenuButton = styled.button`
   width: 100%;
   background: none;
@@ -65,6 +66,7 @@ const MenuButton = styled.button`
   text-align: left;
   line-height: 45px;
   transition: all .1s;
+
   &:hover {
     background-color: #f0f0f0; 
     color: #2A6834;

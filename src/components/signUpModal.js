@@ -7,15 +7,24 @@ function SignUpModal() {
   const navigate = useNavigate();
 
   return (
+    // 회원가입 완료 모달
     <ModalContainer>
       <div className="modal-container modal-background">
         <div className="modal-container delete-modal">
           <h3>가입이 완료되었습니다!</h3>
+          
           <ButtonWrap>
-            <button className="cancle-button"
-              onClick={() => navigate('/')}>홈</button>
-            <button className="ok-button"
-              onClick={() => navigate('/login')}>로그인하기</button>
+            {/* 홈 버튼 */}
+            <button className="cancle-button" onClick={() => navigate('/')}>
+              <h2 className="hidden">홈으로 가기 버튼</h2>
+              홈
+            </button>
+
+            {/* 로그인 버튼 */}
+            <button className="ok-button" onClick={() => navigate('/login')}>
+              <h2 className="hidden">로그인하기 버튼</h2>
+              로그인하기
+            </button>
           </ButtonWrap>
         </div>
       </div>

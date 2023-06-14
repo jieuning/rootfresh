@@ -21,8 +21,7 @@ function Thefresh({ items, navigate }) {
               더 보기
             </button>
           </div>
-          <img src={process.env.PUBLIC_URL + '/image/thefresh1.png'} 
-            alt="감귤 이미지"/>
+          <img src={process.env.PUBLIC_URL + '/image/thefresh1.png'} alt="감귤 이미지"/>
         </div>
         <ul className="fresh-item-wrap">
           {freshFruit.map((data, i) => (

@@ -6,10 +6,13 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 function mobReview({ reviewArr }) {
   return (
     <ReviewWrap>
+      {/* 스와이퍼 */}
       <Swiper
         slidesPerView={"auto"}
         spaceBetween={6}
         >
+          
+        {/* 리뷰 이미지 */}
         {reviewArr.map(i => (
           <SwiperSlide key={i}>
             <div className='review'>

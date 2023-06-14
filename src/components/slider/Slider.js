@@ -26,45 +26,51 @@ function MainSlider() {
 
   return (
     <StyledSwiper
+      // 슬라이드 설정
       slidesPerView={1}
-      /* 커스텀 네비게이션 버튼 */
-      navigation={{
-        prevEl: BannerPrevRef.current,
-        nextEl: BannerNextRef.current
-      }}
       pagination={{ type: "fraction" }}
-      loop={true}
+      loop={true} //무한 재생
       speed={400}
       autoplay={{
         delay: 5000,
         disableOnInteraction: false
-
       }}
+
+      // 커스텀 네비게이션 버튼
+      navigation={{
+        prevEl: BannerPrevRef.current,
+        nextEl: BannerNextRef.current
+      }}
+
+      // 커스텀 네이게이션으로 초기화 작업
       onBeforeInit={(swiper) => {
         swiper.params.navigation.prevEl = BannerPrevRef.current;
         swiper.params.navigation.nextEl = BannerNextRef.current;
-      }}>
+      }}
+    >
       {slideBanImg.map((image, i) => (
+        // 모바일, 데스크탑 구분
         isMobile === false ?
+          // 모바일
           <SwiperSlide key={i}>
             <img className='banner-image'
               src={process.env.PUBLIC_URL + image.pc}
-              alt={image.alt} />
+              alt={image.alt}
+            />
           </SwiperSlide>
           :
+          // 데스크탑
           <SwiperSlide key={i}>
             <img className='banner-image'
               src={process.env.PUBLIC_URL + image.mobile}
-              alt={image.alt} />
+              alt={image.alt}
+            />
           </SwiperSlide>
       ))}
-      <SlideButton
-        style={{ left: "20%" }}
-        ref={BannerPrevRef} />
-      <SlideButton
-        arrowRotate
-        style={{ right: "20%" }}
-        ref={BannerNextRef} />
+      {/* 커스텀 이전 버튼 */}
+      <SlideButton style={{ left: "20%" }} ref={BannerPrevRef} />
+      {/* 커스텀 다음 버튼 */}
+      <SlideButton arrowRotate style={{ right: "20%" }} ref={BannerNextRef} />
     </StyledSwiper>
   );
 };
@@ -89,6 +95,7 @@ const SlideButton = styled.button`
   transform: rotate(${props => props.arrowRotate ? "180deg" : "0deg"});
   transition: .4s;
   opacity: 0;
+
   ${StyledSwiper}:hover & {
     opacity: 1;
   }

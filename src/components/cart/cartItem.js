@@ -20,84 +20,111 @@ function CartItem({ item }) {
     <CartItemWrap>
       <Pc>
         {/* 체크박스 */}
-        <dd>
+        <th>
+          <h2 className="hidden">체크 박스</h2>
           <input
             type="checkbox"
             checked={item.checked}
             onChange={() => dispatch(checkedChange(item.id))}
           />
-        </dd>
+        </th>
+
         {/* 상품 이미지 */}
-        <dd>
-          <img className="add-item-image" src={process.env.PUBLIC_URL + item.image}
-            alt="상품 이미지" />
-        </dd>
+        <th>
+          <img className="add-item-image" src={process.env.PUBLIC_URL + item.image} alt={item.alt} />
+        </th>
+
         {/* 상품명 */}
-        <dd className="item-name">{item.name}</dd>
+        <th className="item-name">{item.name}</th>
+
         {/* 상품 수량 카운터 */}
-        <dd className="count-button">
+        <th className="count-button">
+          <h2 className="hidden">상품 수량 변경 버튼</h2>
+          {/* 빼기 버튼 */}
           <Button onClick={() =>
-            item.count === 1 ? alert('1개 이상부터 구매 가능합니다')
-              : dispatch(decrease(item.id))}>-</Button>
-          <p>{item.count}</p>
-          <Button onClick={() => { dispatch(increase(item.id)) }}>+</Button>
-        </dd>
-        {/* 상품 가격 */}
-        <dd className="item-price">
-          {CommaFormat(item.count * item.price)}<span>원</span>
-        </dd>
-        {/* 상품 개별 삭제 */}
-        <dd className="item-cancle">
-          <Button onClick={() => {
-            dispatch(removeItem(item.id))
-          }}>
-            <img src={process.env.PUBLIC_URL + '/image/item_cancle.png'}
-              alt="장바구니 상품 삭제 버튼" />
+            item.count === 1 ? alert('1개 이상부터 구매 가능합니다') : dispatch(decrease(item.id))}>
+            <h2 className="hidden">수량 빼기 버튼</h2>
+            -
           </Button>
-        </dd>
+          {/* 상품 수량 */}
+          <p>{item.count}</p>
+          {/* 더하기 버튼 */}
+          <Button onClick={() => { dispatch(increase(item.id)) }}>
+            <h2 className="hidden">수량 더하기 버튼</h2>
+            +
+          </Button>
+        </th>
+
+        {/* 상품 가격 */}
+        <th className="item-price">
+          {CommaFormat(item.count * item.price)}<span>원</span>
+        </th>
+
+        {/* 상품 개별 삭제 */}
+        <th className="item-cancle">
+          <h2 className="hidden">상품 개별 삭제 버튼</h2>
+          <Button onClick={() => { dispatch(removeItem(item.id)) }}>
+            <img src={process.env.PUBLIC_URL + '/image/item_cancle.png'} alt="상품 개별 삭제 버튼" />
+          </Button>
+        </th>
       </Pc>
+
       <Mobile>
         <MCartItemWrap>
+          {/* 체크박스 */}
           <div className="check-box">
-            {/* 체크박스 */}
+            <h2 className="hidden">체크 박스</h2>
             <input
               type="checkbox"
               checked={item.checked}
               onChange={() => dispatch(checkedChange(item.id))}
             />
           </div>
-          <div>
-              <div className="item-name">
-                {/* 상품명 */}
-                {item.name}
-              </div>
-            <div className="m-item-bottom">
+
+          {/* 상품 정보 */}
+          <div className="item-info-wrap">
+            {/* 상품명 */}
+            <div className="item-name">
+              {item.name}
+            </div>
+
+            <div className="m-item-info">
               {/* 상품 이미지 */}
-              <img className="add-item-image" src={process.env.PUBLIC_URL + item.image}
-                alt="상품 이미지" />
-              <div style={{marginLeft: "10px"}}>
+              <img className="add-item-image" src={process.env.PUBLIC_URL + item.image} alt={item.alt} />
+
+              <div style={{ marginLeft: "10px" }}>
                 {/* 상품 가격 */}
                 <div className="item-price">
-                  {CommaFormat(item.count * item.price)}<span>원</span>
+                  {CommaFormat(item.count * item.price)}
+                  <span>원</span>
                 </div>
+
                 {/* 상품 수량 카운터 */}
                 <div className="count-button">
+                  <h2 className="hidden">상품 수량 변경 버튼</h2>
+                  {/* 빼기 버튼 */}
                   <Button onClick={() =>
-                    item.count === 1 ? alert('1개 이상부터 구매 가능합니다')
-                      : dispatch(decrease(item.id))}>-</Button>
+                    item.count === 1 ? alert('1개 이상부터 구매 가능합니다') : dispatch(decrease(item.id))}>
+                    <h2 className="hidden">수량 빼기 버튼</h2>
+                    -
+                  </Button>
+                  {/* 수량 */}
                   <p>{item.count}</p>
-                  <Button onClick={() => { dispatch(increase(item.id)) }}>+</Button>
+                  {/* 더하기 버튼 */}
+                  <Button onClick={() => { dispatch(increase(item.id)) }}>
+                    <h2 className="hidden">수량 더하기 버튼</h2>
+                    +
+                  </Button>
                 </div>
               </div>
             </div>
           </div>
+
           {/* 상품 개별 삭제 */}
           <div className="item-cancle">
-            <Button onClick={() => {
-              dispatch(removeItem(item.id))
-            }}>
-              <img src={process.env.PUBLIC_URL + '/image/item_cancle.png'}
-                alt="장바구니 상품 삭제 버튼" />
+            <h2 className="hidden">상품 개별 삭제 버튼</h2>
+            <Button onClick={() => { dispatch(removeItem(item.id)) }}>
+              <img src={process.env.PUBLIC_URL + '/image/item_cancle.png'} alt="상품 개별 삭제 버튼" />
             </Button>
           </div>
         </MCartItemWrap>
@@ -108,12 +135,14 @@ function CartItem({ item }) {
 
 export default CartItem;
 
-const CartItemWrap = styled.dl`
+// pc
+const CartItemWrap = styled.tr`
   border-bottom: 1px solid #f2f2f2;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px 0;
+  
   .add-item-image {
     width: 86px;
     margin-left: 10px;
@@ -123,6 +152,7 @@ const CartItemWrap = styled.dl`
     margin: 0 20px; 
     line-height: 1.2;
     text-align: left;
+    font-weight: 400;
   }
   .count-button {
     width: 125px;
@@ -145,9 +175,12 @@ const CartItemWrap = styled.dl`
     width: 16px;
     display: block;
   }
+
   @media(max-width: 1229px) {
     display: block;
-    padding: 20px 0 20px 20px;
+    padding: 20px;
+    box-sizing: border-box;
+
     .item-name {
       width: 100%;
       font-size: 14px;
@@ -176,15 +209,17 @@ const CartItemWrap = styled.dl`
     }
   }
 `
+// mobile
 const MCartItemWrap = styled.div`
   display: flex;
   align-items: center;
+
   .check-box {
     display: flex;
     align-items: center;
     height: 100%;
   }
-  .m-item-bottom {
+  .m-item-info {
     display: flex;
     margin-left: 10px;
   }
@@ -192,6 +227,7 @@ const MCartItemWrap = styled.div`
     width: 80px;
   }
 `
+// 버튼 공통
 const Button = styled.button`
   width: 26px;
   height: 26px;
@@ -199,6 +235,7 @@ const Button = styled.button`
   background: #fff;
   border-radius: 3px;
   text-align: center;
+
   @media(max-width: 1229px) {
     width: 32px;
     height: 32px;

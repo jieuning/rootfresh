@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-
 function cartModal() {
   return (
+    // 디테일 페이지에서 장바구니에 상품 담았을때 등장하는 모달
     <CartModal>
       <p>장바구니에 상품을 담았습니다</p>
     </CartModal>
@@ -24,6 +24,7 @@ const CartModal = styled.div`
   border-radius: 6px;
   line-height: 56px;
   z-index: 99;
+
   @media(max-width: 1229px) {
     font-size: 14px;
     top: -400px;

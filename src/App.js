@@ -16,7 +16,7 @@ import SignUp from "./pages/user/signUp";
 import SearchDetail from "./pages/detailPage/SearchDetail ";
 import CateDetail from "./pages/detailPage/CateDetail";
 import NotFound from "./components/notFound";
-//mobile page
+//mobile pages
 import MobCategoryNav from "./components/mobile/mobCategoryNav";
 import MobSearch from "./components/mobile/mobSearch";
 import MobMypage from "./components/mobile/mobMypage";
@@ -33,9 +33,6 @@ function App() {
   const [items, setItems] = useState(ItemData);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const obj = { items }
-  localStorage.setItem('data', JSON.stringify(obj))
-
   /* 현재 로그인한 유저 데이터 저장 */
   useEffect(() => {
     onAuthStateChanged(firebaseAuth, (user) => {
@@ -50,23 +47,49 @@ function App() {
   return (
     <div id="app">
       <Pc>
-        <Header items={items} isLoggedIn={isLoggedIn}/>
+        <Header items={items} isLoggedIn={isLoggedIn} />
       </Pc>
       <Routes>
-        <Route path="/" element={<MainPage items={items} />} />
-        <Route path="/detail/:id" element={<DetailPage items={items} />} />
-        <Route path="/cart" element={<Cart/>} />
-        <Route path="/menu/:name" element={<MenuDetail items={items} setItems={setItems} navigate={navigate} />} />
-        <Route path="/category/:category" element={<CateDetail items={items} setItems={setItems} />} />
-        <Route path="/login" element={<Login isLoggedIn={isLoggedIn} />} />
-        <Route path="/sign-up" element={<SignUp/>} />
-        <Route path="/search" element={<SearchDetail items={items} navigate={navigate} />} />
+        <Route path="/"
+          element={<MainPage items={items} />}
+        />
+        <Route path="/detail/:id"
+          element={<DetailPage items={items} />}
+        />
+        <Route path="/cart"
+          element={<Cart />}
+        />
+        <Route path="/menu/:name"
+          element={<MenuDetail items={items} setItems={setItems} navigate={navigate} />}
+        />
+        <Route path="/category/:category"
+          element={<CateDetail items={items} setItems={setItems} />}
+        />
+        <Route path="/login"
+          element={<Login isLoggedIn={isLoggedIn} />}
+        />
+        <Route path="/sign-up"
+          element={<SignUp />}
+        />
+        <Route path="/search"
+          element={<SearchDetail items={items} navigate={navigate} />}
+        />
         {/* 모바일 */}
-        <Route path="/m_category_nav" element={<MobCategoryNav/>} />
-        <Route path="/m_category_nav/category/:category" element={<CateDetail items={items} setItems={setItems} />} />
-        <Route path="/m_search" element={<MobSearch navigate={navigate}/>} />
-        <Route path="/m_mypage" element={<MobMypage/>} />
-        <Route path="/*" element={<NotFound navigate={navigate}/>} />
+        <Route path="/m_category_nav"
+          element={<MobCategoryNav />}
+        />
+        <Route path="/m_category_nav/category/:category"
+          element={<CateDetail items={items} setItems={setItems} />}
+        />
+        <Route path="/m_search"
+          element={<MobSearch navigate={navigate} />}
+        />
+        <Route path="/m_mypage"
+          element={<MobMypage />}
+        />
+        <Route path="/*"
+          element={<NotFound navigate={navigate} />}
+        />
       </Routes>
       <Pc>
         <Footer />

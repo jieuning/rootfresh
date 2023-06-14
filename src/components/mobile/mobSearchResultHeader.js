@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 //data
 import { mHeader } from "../../dummy/contentOption";
 
-
 function MobSearchResultHeader() {
 
   const navigate = useNavigate();
@@ -34,12 +33,14 @@ function MobSearchResultHeader() {
       <Image
         src={process.env.PUBLIC_URL + mHeader[3]}
         alt="이전 페이지 버튼"
-        onClick={() => navigate('/')} />
+        onClick={() => navigate('/')}
+      />
+
       {/* 검색 바 */}
       <SearchWrap>
+        <h2 className="hidden">검색바</h2>
         <form onSubmit={onSubmitHandler}>
-          <img src={process.env.PUBLIC_URL + '/image/mob_search_icon.png'}
-            alt="검색 아이콘" />
+          <img src={process.env.PUBLIC_URL + '/image/mob_search_icon.png'} alt="검색 아이콘" />
           <input className="search-box"
             type="text"
             value={keyword}
@@ -47,16 +48,18 @@ function MobSearchResultHeader() {
             placeholder="원하시는 상품을 검색해주세요" />
         </form>
       </SearchWrap>
+
       {/* 장바구니 버튼 */}
       <div style={{ position: "relative" }}>
-        <Image
-          changeWidth={"22px"}
-          src={process.env.PUBLIC_URL + mHeader[2]}
-          alt="장바구니"
-          onClick={() => navigate('/cart')} />
+        <Image changeWidth={"22px"}
+          src={process.env.PUBLIC_URL + mHeader[2]} alt="장바구니"
+          onClick={() => navigate('/cart')}
+        />
+        {/* 장바구니에 담긴 상품 수량 아이콘 */}
         <span className={cartList.length === 0 ?
           "none" : "m_add-item-count"}
           onClick={() => { navigate('/Cart') }}>
+          {/* 수량 */}
           {cartList.length}
         </span>
       </div>
@@ -76,6 +79,7 @@ const DetailHeader = styled.div`
   justify-content: space-between;
   background-color: #fff;
   z-index: 99;
+
   .m_add-item-count {
     position: absolute;
     top: 13px;
@@ -105,6 +109,7 @@ const SearchWrap = styled.div`
   border-radius: 6px;
   background-color: #f2f2f2;
   margin-right: 20px;
+
   .search-box {
     width: 170px;
     border: none;

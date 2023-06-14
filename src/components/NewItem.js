@@ -14,14 +14,15 @@ SwiperCore.use([Navigation]);
 
 
 function NewItem({ items, navigate }) {
-  const NewItems = items.filter(data =>
-    data.menu === "신상품");
+
+  const NewItems = items.filter(data => data.menu === "신상품");
 
   return (
     <NewItemContainer>
       <Swiper
         slidesPerView={"auto"}
         spaceBetween={10}
+        // 1230px 이상에서만 
         breakpoints={{
           1230: {
             slidesPerView: 4,
@@ -38,13 +39,20 @@ function NewItem({ items, navigate }) {
           <SwiperSlide key={i}>
             <div className="container"
               onClick={() => navigate(`/detail/${data.id}`)}>
+              {/* 카드 컴포넌트 */}
               <Card data={data}></Card>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
-      <button className="swiper-button-prev"></button>
-      <button className="swiper-button-next"></button>
+      {/* 이전 버튼 */}
+      <button className="swiper-button-prev">
+        <h2 className="hidden">이전 상품 버튼</h2>
+      </button>
+      {/* 다음 버튼 */}
+      <button className="swiper-button-next">
+        <h2 className="hidden">다음 상품 버튼</h2>
+      </button>
     </NewItemContainer>
   )
 }
@@ -53,6 +61,7 @@ export default NewItem;
 
 const NewItemContainer = styled.div`
   position: relative;
+
   .swiper-button-prev {
     width: 40px;
     height: 40px;
@@ -86,6 +95,7 @@ const NewItemContainer = styled.div`
     {
       display: none
     }
+    
   @media(max-width: 1229px) {
     .swiper-button-prev {
       display: none;

@@ -53,7 +53,7 @@ function MainPage({ items }) {
 
         {/* 신상품 */}
         <section>
-          <h2>신상품</h2>
+          <h4 className="main-title">신상품</h4>
           <NewItem items={items} navigate={navigate} />
         </section>
 
@@ -61,19 +61,19 @@ function MainPage({ items }) {
         <BannerPc>
           <div className="sub-banner">
             <img src={process.env.PUBLIC_URL + '/image/sub_banner.png'}
-              alt="배너 이미지" />
+              alt="이불 속에서 까먹는 새콤달콤 감귤 배너 이미지" />
           </div>
         </BannerPc>
         <BannerMobile>
           <div className="sub-banner">
             <img src={process.env.PUBLIC_URL + '/image/mob_sub_banner.png'}
-              alt="배너 이미지" />
+              alt="이불 속에서 까먹는 새콤달콤 감귤 배너 이미지" />
           </div>
         </BannerMobile>
         {/* 특가 */}
         <section>
           <Pc>
-            <h2>특별한 특가</h2>
+            <h4 className="main-title">특별한 특가</h4>
             <TabContent items={items} navigate={navigate} />
           </Pc>
           <Mobile>
@@ -89,9 +89,7 @@ function MainPage({ items }) {
                 <h3>비밀 레시피<br />한 눈에 보기</h3>
               </div>
               <div className="recipe-box">
-                {recipe.map((data, i) => (
-                  <RecipeCard key={i} data={data} />
-                ))}
+                {recipe.map((data, i) => (<RecipeCard key={i} data={data} />))}
               </div>
             </div>
           </div>
@@ -99,26 +97,27 @@ function MainPage({ items }) {
 
         {/* 인기 카테고리 */}
         <section>
-          <h2>인기 카테고리 모음</h2>
+          <h4 className="main-title">인기 카테고리 모음</h4>
           <Pc>
             <ul className="cate-wrap">
               {cateData.map((ctdata, i) => (
                 <li key={i} onClick={() => navigate(`category/${cateData[i].title}`)}>
-                  <img src={process.env.PUBLIC_URL + ctdata.image} 
-                    alt={ctdata.title}/>
+                  <img src={process.env.PUBLIC_URL + ctdata.image}
+                    alt={ctdata.title}
+                  />
                   {ctdata.title}
                 </li>
               ))}
             </ul>
           </Pc>
           <Mobile>
-            <MobBestCategory cateData={cateData} navigate={navigate}/>
+            <MobBestCategory cateData={cateData} navigate={navigate} />
           </Mobile>
         </section>
 
         {/* 베스트 상품 */}
         <section>
-          <h2>베스트</h2>
+          <h4 className="main-title">베스트</h4>
           <Pc>
             <div className="container">
               {bestItems.map((data, i) => (
@@ -141,8 +140,8 @@ function MainPage({ items }) {
 
         {/* THE신선 */}
         <section className="mob-margin">
-          <h2 className="mob-margin-cancle">
-            오늘 수확, THE신선</h2>
+          <h4 className="mob-margin-cancle main-title">
+            오늘 수확, THE신선</h4>
           <TheFresh
             onClick={() => navigate('/')}
             items={items}
@@ -151,13 +150,14 @@ function MainPage({ items }) {
 
         {/* 후기 */}
         <section>
-          <h2>고객 후기</h2>
+          <h4 className="main-title">고객 후기</h4>
           <Pc>
             <div className="review">
               {reviewArr.map(i => (
                 <img src={process.env.PUBLIC_URL + '/image/review' + i + '.png'}
                   alt="리뷰 이미지"
-                  key={i} />
+                  key={i}
+                />
               ))}
             </div>
           </Pc>

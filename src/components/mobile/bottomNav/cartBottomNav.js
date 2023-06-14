@@ -11,6 +11,8 @@ function CartBottomNav() {
 
   return (
     <NavWrap>
+      {/* 로그인이 되있다면 결제하기 버튼 활성화 */}
+      {/* 로그인이 안되있다면 결제하기 버튼 비활성화 */}
       {user !== null ?
         <button className="cart-btn">결제하기</button>
         : <button className="cart-btn-disable">로그인 후 이용 가능합니다.</button>

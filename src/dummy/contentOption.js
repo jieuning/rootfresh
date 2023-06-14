@@ -21,7 +21,7 @@ const specialMenu = [
 ]
 
 const userMenuAlt = [
-  "장바구니", "주문/배송", "마이페이지", "찜하기"
+  "주문/배송", "마이페이지", "찜하기"
 ]
 
 const slideBanImg = [
