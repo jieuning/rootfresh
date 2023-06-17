@@ -18,7 +18,7 @@ function Login({ isLoggedIn }) {
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
-  /* isLoggedIn가 true면 홈으로 */
+  // isLoggedIn가 true면 홈으로
   const loggedIn = () => {
     if (isLoggedIn === true) {
       return navigate('/')
@@ -36,19 +36,19 @@ function Login({ isLoggedIn }) {
 
   const handleOnSubmit = async (e) => {
     try {
-      /* 이벤트 기본 동작 막기 */
+      // 이벤트 기본 동작 막기
       e.preventDefault();
 
       setErrorMsg("");
       loggedIn(isLoggedIn);
 
-      /* 로그인하기 */
+      // 로그인하기
       let loginUser = await signInWithEmailAndPassword(
         firebaseAuth, email, password);
-        console.log(loginUser);
-
-      /* 조건 일치하지 않을 시 에러 메세지 */
-    } catch (err) {
+      console.log(loginUser);
+    }
+    // 조건 일치하지 않을 시 에러 메세지
+    catch (err) {
       console.log(err.code);
       switch (err.code) {
         case 'auth/wrong-password':
@@ -64,12 +64,18 @@ function Login({ isLoggedIn }) {
   return (
     <LoginWrap>
       <Mobile>
+        {/* 모바일 닫기 버튼 */}
         <img src={process.env.PUBLIC_URL + "/image/mob_cancle_btn.png"}
-          onClick={() => navigate('/')}
-          alt="닫기버튼" />
+          onClick={() => navigate('/')} alt="닫기 버튼"
+        />
       </Mobile>
-      <h2 style={{ margin: "50px 0 0 0" }}>로그인</h2>
+
+      {/* 타이틀 */}
+      <h2 className="main-title" style={{ margin: "50px 0 0 0" }}>로그인</h2>
+
       <LoginForm onSubmit={handleOnSubmit}>
+        {/* 이메일 입력칸 */}
+        <h2 className="hidden">이메일 입력칸</h2>
         <LoginInput
           type="email"
           name="email"
@@ -78,6 +84,9 @@ function Login({ isLoggedIn }) {
           placeholder="이메일을 입력해주세요"
           required
         />
+
+        {/* 비밀번호 입력칸 */}
+        <h2 className="hidden">비밀번호 입력칸</h2>
         <LoginInput
           type="password"
           name="password"
@@ -86,12 +95,20 @@ function Login({ isLoggedIn }) {
           placeholder="비밀번호를 입력해주세요"
           required
         />
-        <p className="errMsg">{errorMsg}</p>{/* 에러 메세지 출력 */}
-        <Button changeBackground
-          type="submit">로그인</Button>
+
+        {/* 에러 메세지 출력 */}
+        <p className="errMsg">{errorMsg}</p>
+
+        {/* 로그인 버튼 */}
+        <Button changeBackground type="submit">
+          <h2 className="hidden">로그인 버튼</h2>
+          로그인
+        </Button>
       </LoginForm>
-      <Button changeColor changeMargin
-        onClick={() => navigate('/sign-up')}>
+
+      {/* 회원가입 버튼 */}
+      <Button changeColor changeMargin onClick={() => navigate('/sign-up')}>
+        <h2 className="hidden">간편 회원가입 버튼</h2>
         간편 회원가입
       </Button>
     </LoginWrap>
@@ -103,6 +120,7 @@ export default Login;
 const LoginWrap = styled.div`
 @media(max-width: 1229px) {
   padding: 0 20px;
+
   img {
     position: absolute;
     left: 0;
@@ -118,6 +136,7 @@ const LoginForm = styled.form`
   align-items: center;
   gap: 10px;
   margin-top: 30px;
+
   .errMsg {
     font-size: 14px;
     font-weight: 500;
@@ -130,9 +149,11 @@ const LoginInput = styled.input`
   border-radius: 4px;
   border: 1px solid #ccc;
   padding: 0 10px;
+
   &::placeholder {
     color: #ccc;
   }
+
   @media(max-width: 1229px) {
     width: calc(100% - 20px);
     font-size: 14px;
@@ -146,10 +167,12 @@ const Button = styled.button`
   border: none;
   border-radius: 4px;
   font-size: 16px;
+
   @media(max-width: 1229px) {
     width: 100%;
     padding: 0 10px;
   }
+  
   background-color: ${props => props.changeBackground ? "#2A6834" : "#fff"};
   color: ${props => props.changeColor ? "#2A6834" : "#fff"};
   border: 1px solid #2A6834;

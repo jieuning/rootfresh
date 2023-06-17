@@ -7,20 +7,20 @@ import CartModal from "../cart/CartModal";
 
 function MobDetailPopUp({ items, setPopUp, modal, setModal, sameItemFind }) {
 
-  /* url파라미터 가져오기 */
+  // url파라미터 가져오기
   const { id } = useParams();
 
-  /* items데이터의 id와 url파라미터가 같은 데이터*/
+  // items데이터의 id와 url파라미터가 같은 데이터
   const findItem = items.find((data) => data.id == id);
 
   const [count, setCount] = useState(1);
 
-  /* 구매 수량 증가 */
+  // 구매 수량 증가
   const onIncrease = () => {
     setCount(count + 1)
   };
 
-  /* 구매 수량 감소 */
+  // 구매 수량 감소
   const onDecrease = () => {
     count === 1 ? alert('1개 이상부터 구매 가능합니다')
       : setCount(count - 1)

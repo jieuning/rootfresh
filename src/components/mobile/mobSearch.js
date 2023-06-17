@@ -1,9 +1,9 @@
 //component
 import styled from "styled-components";
 import SearchBar from "../header/searchBar";
-import BottomNav from "./bottomNav/bottomNav";
+import BottomNav from "./Nav/bottomNav";
 //mobile
-import MobDetailHeader from "./mobDetailHeader";
+import MobDetailHeader from "./header/mobDetailHeader";
 //data
 import { recoKeyword } from "../../dummy/contentOption";
 
@@ -43,6 +43,7 @@ const RecommendWord = styled.div`
   align-items: flex-start;
   gap: 10px;
   margin-top: 20px;
+  
   p {
     font-size: 14px;
   }

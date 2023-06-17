@@ -7,7 +7,7 @@ import CategoryData from "../../dummy/categorydata.json";
 
 function MobBestCategory({ navigate }) {
 
-  /* 카테고리 데이터 */
+  // 카테고리 데이터
   const [cateData] = useState(CategoryData);
 
   return (

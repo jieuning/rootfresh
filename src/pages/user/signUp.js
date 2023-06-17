@@ -35,7 +35,7 @@ function SignUp() {
     }
   };
 
-  /* 비밀번호 확인 */
+  // 비밀번호 확인
   const isPasswordConfirmed = (password, confirmPassword) => {
     if (password === confirmPassword)
       return true;
@@ -45,26 +45,26 @@ function SignUp() {
     try {
       setErrorMsg("");
 
-      /* 비밀번호 확인 불일치시 에러 */
+      // 비밀번호 확인 불일치시 에러 
       if (!isPasswordConfirmed(password, confirmPassword)) {
         setErrorMsg("비밀번호가 일치하지 않습니다")
         return;
       };
 
-      /* firebase authentication에 이메일 비밀번호 저장 */
+      // firebase authentication에 이메일 비밀번호 저장
       const createUser = await createUserWithEmailAndPassword(
         firebaseAuth, email, password, confirmPassword);
       console.log(createUser);
 
-      /* firebase profile에 이름 저장 */
+      // firebase profile에 이름 저장
       const createUserName = await updateProfile(
         firebaseAuth.currentUser, { displayName: name });
       console.log(createUserName);
 
-      /* 가입 성공시 모달 */
+      // 가입 성공시 모달
       setSignUpModal(true);
 
-      /* 조건 일치하지 않을 시 에러 메세지 */
+      // 조건 일치하지 않을 시 에러 메세지
     } catch (err) {
       console.log(err.code);
       switch (err.code) {
@@ -91,12 +91,19 @@ function SignUp() {
   return (
     <SignUpContainer>
       <Mobile>
+        {/* 모바일 닫기 버튼 */}
         <img src={process.env.PUBLIC_URL + "/image/mob_cancle_btn.png"}
-          onClick={() => navigate(-1)}
-          alt="닫기버튼" />
+          onClick={() => navigate(-1)} alt="닫기버튼"
+        />
       </Mobile>
-      <h2 style={{ margin: "50px 0 0 0" }}>회원가입</h2>
-      {signUpModal === true ? <SignUpModal /> : null}{/* 회원가입 성공시 모달 */}
+
+      {/* 타이틀 */}
+      <h2 className="main-title" style={{ margin: "50px 0 0 0" }}>회원가입</h2>
+
+      {/* 회원가입 성공시 모달 등장 */}
+      {signUpModal === true ? <SignUpModal /> : null}
+
+      {/* input form */}
       <SignUpForm onSubmit={handleOnSubmit}>
         <label>이름</label>
         <SignUpInput
@@ -104,30 +111,44 @@ function SignUp() {
           name="name"
           value={name}
           onChange={handleOnChange}
-          placeholder="이름을 입력해주세요" />
+          placeholder="이름을 입력해주세요"
+        />
+
         <label>이메일</label>
         <SignUpInput
           type="email"
           name="email"
           value={email}
           onChange={handleOnChange}
-          placeholder="이메일을 입력해주세요" />
+          placeholder="이메일을 입력해주세요"
+        />
+
         <label>비밀번호</label>
         <SignUpInput
           type="password"
           name="password"
           value={password}
           onChange={handleOnChange}
-          placeholder="비밀번호를 입력해주세요 (6자리 이상)" />
+          placeholder="비밀번호를 입력해주세요 (6자리 이상)"
+        />
+
         <label>비밀번호 확인</label>
         <SignUpInput
           type="password"
           name="confirmPassword"
           value={confirmPassword}
           onChange={handleOnChange}
-          placeholder="비밀번호를 한번 더 입력해주세요 (6자리 이상)" />
-        <p className="errMsg">{errorMsg}</p>{/* 에러 메세지 출력 */}
-        <Button type="submit" >가입하기</Button>
+          placeholder="비밀번호를 한번 더 입력해주세요 (6자리 이상)"
+        />
+
+        {/* 에러 메세지 출력 */}
+        <p className="errMsg">{errorMsg}</p>
+
+        {/* 가입하기 버튼 */}
+        <Button type="submit" >
+          <h2 className="hidden">가입하기 버튼</h2>
+          가입하기
+        </Button>
       </SignUpForm>
     </SignUpContainer>
   )
@@ -139,8 +160,10 @@ const SignUpContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   @media(max-width: 1229px) {
     padding: 0 20px;
+
     img {
       position: absolute;
       left: 0;
@@ -156,6 +179,7 @@ const SignUpForm = styled.form`
   align-items: flex-start;
   gap: 10px;
   margin: 30px 0;
+
   label {
     font-size: 14px;
     font-weight: 500;
@@ -165,6 +189,7 @@ const SignUpForm = styled.form`
     font-weight: 500;
     color: #D70F0F;
   }
+
   @media(max-width: 1229px) {
     width: 100%;
   }
@@ -175,9 +200,11 @@ const SignUpInput = styled.input`
   border-radius: 4px;
   border: 1px solid #ccc;
   padding: 0 10px;
+
   &::placeholder {
     color: #ccc;
   }
+
   @media(max-width: 1229px) {
     width: calc(100% - 20px);
     font-size: 14px;
@@ -195,6 +222,7 @@ const Button = styled.button`
   color: #fff;
   border: 1px solid #2A6834;
   margin-top: 20px;
+  
   @media(max-width: 1229px) {
     width: 100%;
   }

@@ -4,22 +4,29 @@ import CommaFormat from "./CommaFormat";
 //responsive
 import { Pc, Mobile } from "./mobile/responsive";
 
-
 function Card({ data }) {
   return (
     <CardWrap>
       <li>
+        {/* 상품 이미지 */}
         <div className="img-wrap">
           <Image src={process.env.PUBLIC_URL + data.image} alt={data.alt} />
         </div>
+
+        {/* 상품 정보 */}
         <div className="card-info">
-          <h4 className="item-title">{data.title}</h4>
+          {/* 상품명 */}
+          <h2 className="item-title">{data.title}</h2>
+          {/* 할인율 */}
           <span className="discount-rate" >{data.discount_rate}</span>
+          {/* 가격 */}
           <span className="price">{CommaFormat(data.price)}원</span>
           <Pc>
+            {/* 할인 전 가격 */}
             <span className="dimmed-price">{data.dimmed_price}</span>
           </Pc>
           <Mobile>
+            {/* 할인 전 가격 */}
             <p className="dimmed-price">{data.dimmed_price}</p>
           </Mobile>
         </div>
@@ -43,6 +50,7 @@ const CardWrap = styled.ul`
     font-weight: 400;
   }
   .item-title {
+    font-size: 16px;
     margin: 10px 0;
     font-weight: 400;
     line-height: 1.5;
@@ -54,10 +62,12 @@ const CardWrap = styled.ul`
   .discount-rate {
     color: #f1622f;
     font-weight: 700;
+    margin-right: 5px;
   }
   .price {
     font-weight: 700;
     letter-spacing: -0.0em;
+    margin-right: 5px;
   }
   .dimmed-price {
     font-size: 14px;
@@ -68,7 +78,7 @@ const CardWrap = styled.ul`
 
   @media (max-width: 1229px) {
     margin-bottom: 0;
-    
+
     .img-wrap {
       width: 100%;
       text-align: center;

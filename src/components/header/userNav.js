@@ -6,11 +6,11 @@ import { firebaseAuth } from "../../firebase";
 
 function UserNav() {
 
-  /* firebase 로그아웃 */
+  // firebase 로그아웃
   const onLogOutClick = () =>
     firebaseAuth.signOut();
 
-  /* firebase profile정보 */
+  // firebase profile정보
   const auth = firebaseAuth;
   const user = auth.currentUser;
 

@@ -20,25 +20,25 @@ function CartItem({ item }) {
     <CartItemWrap>
       <Pc>
         {/* 체크박스 */}
-        <th>
+        <div>
           <h2 className="hidden">체크 박스</h2>
           <input
             type="checkbox"
             checked={item.checked}
             onChange={() => dispatch(checkedChange(item.id))}
           />
-        </th>
+        </div>
 
         {/* 상품 이미지 */}
-        <th>
+        <div>
           <img className="add-item-image" src={process.env.PUBLIC_URL + item.image} alt={item.alt} />
-        </th>
+        </div>
 
         {/* 상품명 */}
-        <th className="item-name">{item.name}</th>
+        <div className="item-name">{item.name}</div>
 
         {/* 상품 수량 카운터 */}
-        <th className="count-button">
+        <div className="count-button">
           <h2 className="hidden">상품 수량 변경 버튼</h2>
           {/* 빼기 버튼 */}
           <Button onClick={() =>
@@ -53,20 +53,20 @@ function CartItem({ item }) {
             <h2 className="hidden">수량 더하기 버튼</h2>
             +
           </Button>
-        </th>
+        </div>
 
         {/* 상품 가격 */}
-        <th className="item-price">
+        <div className="item-price">
           {CommaFormat(item.count * item.price)}<span>원</span>
-        </th>
+        </div>
 
         {/* 상품 개별 삭제 */}
-        <th className="item-cancle">
+        <div className="item-cancle">
           <h2 className="hidden">상품 개별 삭제 버튼</h2>
           <Button onClick={() => { dispatch(removeItem(item.id)) }}>
             <img src={process.env.PUBLIC_URL + '/image/item_cancle.png'} alt="상품 개별 삭제 버튼" />
           </Button>
-        </th>
+        </div>
       </Pc>
 
       <Mobile>
@@ -136,7 +136,7 @@ function CartItem({ item }) {
 export default CartItem;
 
 // pc
-const CartItemWrap = styled.tr`
+const CartItemWrap = styled.div`
   border-bottom: 1px solid #f2f2f2;
   display: flex;
   align-items: center;

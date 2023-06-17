@@ -68,9 +68,13 @@ function MainSlider() {
           </SwiperSlide>
       ))}
       {/* 커스텀 이전 버튼 */}
-      <SlideButton style={{ left: "20%" }} ref={BannerPrevRef} />
+      <SlideButton style={{ left: "20%" }} ref={BannerPrevRef}>
+        <h2 className='hidden'>슬라이드 이전 버튼</h2>
+      </SlideButton>
       {/* 커스텀 다음 버튼 */}
-      <SlideButton arrowRotate style={{ right: "20%" }} ref={BannerNextRef} />
+      <SlideButton arrowRotate style={{ right: "20%" }} ref={BannerNextRef}>
+        <h2 className='hidden'>슬라이드 다음 버튼</h2>
+      </SlideButton>
     </StyledSwiper>
   );
 };

@@ -1,14 +1,14 @@
 import styled from "styled-components";
-import "../../pages/cart/style.css"
+import "../../../pages/cart/style.css"
 //data
-import { mHeader } from "../../dummy/contentOption";
+import { mHeader } from "../../../dummy/contentOption";
 //redux
 import { useSelector } from "react-redux";
 
 
 function MobMenuHeader({ navigate, setModal, checkedList, handleAllCheck }) {
 
-  /* redux 데이터 */
+  // redux 데이터
   const state = useSelector((state) => state);
   const cartList = state.cart;
 

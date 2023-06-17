@@ -11,10 +11,10 @@ function MobTapContent({ items, navigate }) {
 
   const [swiper, setSwiper] = useState(0);
 
-  /* swiper activeIndex 슬라이드 버튼 활성화 */
+  // swiper activeIndex 슬라이드 버튼 활성화
   const [tabActiveindex, setTabActiveIndex] = useState(0);
 
-  /* 해당 아이템 필터 */
+  // 해당 아이템 필터
   const timeItems = items.filter(data => data.mob_detail_menu === "타임특가");
   const limitedItems = items.filter(data => data.mob_detail_menu === "한정특가");
   const onlyItems = items.filter(data => data.mob_detail_menu === "대박특가");

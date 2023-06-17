@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 //mobile
-import BottomNav from "./bottomNav/bottomNav";
-import MobDetailHeader from "./mobDetailHeader";
+import BottomNav from "./Nav/bottomNav";
+import MobDetailHeader from "./header/mobDetailHeader";
 //firebase
 import { firebaseAuth } from "../../firebase";
 
@@ -10,10 +10,10 @@ function MobMypage() {
 
   const navigate = useNavigate();
 
-  /* firebase 로그아웃 */
+  // firebase 로그아웃
   const onLogOutClick = () => firebaseAuth.signOut();
 
-  /* firebase profile정보 */
+  // firebase profile정보
   const auth = firebaseAuth;
   const user = auth.currentUser;
 

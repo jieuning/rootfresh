@@ -9,7 +9,7 @@ function DetailBottomNav({ sameItemFind, items, modal, setModal }) {
 
   const [popUp, setPopUp] = useState(false);
 
-  /* pathname 불러오기 */
+  // pathname 불러오기
   const location = useLocation();
 
   useEffect(() => {

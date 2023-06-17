@@ -6,31 +6,42 @@ import CommaFormat from "./CommaFormat";
 
 function Thefresh({ items, navigate }) {
 
-  /* 해당 아이템 필터 */
+  // 해당 아이템 필터
   const freshFruit = items.filter(data => data.id >= 48 && data.id <= 50);
   const freshSeafood = items.filter(data => data.id >= 51 && data.id <= 53);
 
   return (
     <TheFreshContainer>
+      {/* 더 프레시 채소,과일 */}
       <div>
         <div className="fresh-banner">
           <div className="fresh-title">
             <h3>더 신선한 싱그러운 제철 채소·과일</h3>
+
+            {/* 더보기 버튼 */}
             <button className="fresh-more-btn"
               onClick={() => navigate('/menu/THE신선')}>
+              <h2 className="hidden">더보기 버튼</h2>
               더 보기
             </button>
           </div>
-          <img src={process.env.PUBLIC_URL + '/image/thefresh1.png'} alt="감귤 이미지"/>
+
+          {/* 배너 이미지 */}
+          <img src={process.env.PUBLIC_URL + '/image/thefresh1.png'} alt="감귤 이미지" />
         </div>
+
+        {/* 상품 */}
         <ul className="fresh-item-wrap">
           {freshFruit.map((data, i) => (
             <li key={i} className="fresh-items"
-              onClick={() => navigate(`/detail/${data.id}`)}>
+              onClick={() => navigate(`/detail/${data.id}`)}
+            >
+              {/* 상품 이미지 */}
               <div className="item-image-wrap">
-                <img src={process.env.PUBLIC_URL + data.image} 
-                  alt="대하 이미지"/>
+                <img src={process.env.PUBLIC_URL + data.image} alt={data.alt} />
               </div>
+
+              {/* 가격, 설명 */}
               <div className="fresh-txt-wrap">
                 <p>{CommaFormat(data.price)}<span>원</span></p>
                 <span>{data.content}</span>
@@ -39,24 +50,38 @@ function Thefresh({ items, navigate }) {
           ))}
         </ul>
       </div>
+
+      {/* 더 프레시 해산물 */}
       <div>
         <div className="fresh-banner">
           <div className="fresh-title">
             <h3>더 신선한 제철 해산물</h3>
+
+            {/* 더보기 버튼 */}
             <button className="fresh-more-btn"
-              onClick={() => navigate('menu/THE신선')}>
+              onClick={() => navigate('menu/THE신선')}
+            >
+              <h2 className="hidden">더보기 버튼</h2>
               더 보기
             </button>
           </div>
-          <img src={process.env.PUBLIC_URL + '/image/thefresh2.png'} />
+
+          {/* 배너 이미지 */}
+          <img src={process.env.PUBLIC_URL + '/image/thefresh2.png'} alt="새우 이미지" />
         </div>
+
+        {/* 상품 */}
         <ul className="fresh-item-wrap">
           {freshSeafood.map((data, i) => (
             <li key={i} className="fresh-items"
-              onClick={() => navigate(`/detail/${data.id}`)}>
+              onClick={() => navigate(`/detail/${data.id}`)}
+            >
+              {/* 상품 이미지 */}
               <div className="item-image-wrap">
-                <img src={process.env.PUBLIC_URL + data.image} />
+                <img src={process.env.PUBLIC_URL + data.image} alt={data.alt} />
               </div>
+
+              {/* 가격, 설명 */}
               <div className="fresh-txt-wrap">
                 <p>{CommaFormat(data.price)}<span>원</span></p>
                 <span>{data.content}</span>
@@ -78,6 +103,7 @@ const TheFreshContainer = styled.div`
   align-items: flex-start;
   margin-top: 30px;
   flex-wrap: wrap;
+
   .fresh-items {
     display: flex;
     flex-direction: column;
@@ -144,8 +170,10 @@ const TheFreshContainer = styled.div`
     padding: 4px 10px;
     background-color: #fff;
   }
+
   @media(max-width: 1229px) {
     gap: 30px;
+    
     .fresh-banner img {
       width: calc(100% - 40px);
       height: auto;

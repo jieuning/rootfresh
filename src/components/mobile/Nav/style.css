@@ -1,9 +1,11 @@
+/* bottomNav 이미지 */
 .nav_image1 {
     width: 22px;
     height: 22px;
     background-image: url("/public/image/mob_nav_icon1.png");
     background-size: 22px;
 }
+
 .active1 {
     width: 22px;
     height: 22px;
@@ -17,6 +19,7 @@
     background-image: url("/public/image/mob_nav_icon4.png");
     background-size: 22px;
 }
+
 .active2 {
     width: 22px;
     height: 22px;
@@ -30,6 +33,7 @@
     background-image: url("/public/image/mob_nav_icon5.png");
     background-size: 22px;
 }
+
 .active3 {
     width: 22px;
     height: 22px;

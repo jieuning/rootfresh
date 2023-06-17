@@ -11,7 +11,7 @@ function SearchBar() {
 
   const navigate = useNavigate();
 
-  /* onChange 핸들러 */
+  // onChange 핸들러
   const KeyWordChangeHandler = (e) => {
     setKeyword(e.target.value);
   }

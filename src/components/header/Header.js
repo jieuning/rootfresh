@@ -20,17 +20,17 @@ function Header({ items, isLoggedIn }) {
 
   const navigate = useNavigate();
 
-  /* redux 데이터 */
+  // redux 데이터
   const state = useSelector((state) => state);
   const cartList = state.cart;
 
-  /* 스크롤시 헤더 고정 */
+  // 스크롤시 헤더 고정
   const updateScroll = () => {
     setFixedHeader(window.scrollY ||
       document.documentElement.scrollTop)
   };
 
-  /* clean-up */
+  // clean-up
   useEffect(() => {
     window.addEventListener('scroll', updateScroll);
     return () => {
@@ -51,7 +51,7 @@ function Header({ items, isLoggedIn }) {
       </div>
 
       {/* 헤더 */}
-      <div className={fixedHeader > 10 ? "fixed-header-container" : "header-container"}>
+      <div className={fixedHeader > 10 ? "fixed-header-wrap" : "header-wrap"}>
 
         {/* 유저 메뉴(로그아웃 기능 위치)*/}
         <div className={fixedHeader > 10 ? "fixed-login-menu" : "login-menu"}>
@@ -63,7 +63,6 @@ function Header({ items, isLoggedIn }) {
 
           {/* 로고 */}
           <h2 className="logo">
-            <h2 className="hidden">로고</h2>
             <img style={{ cursor: 'pointer' }}
               src={Logo} onClick={() => { navigate('/') }}
               alt="로고" />
@@ -84,21 +83,23 @@ function Header({ items, isLoggedIn }) {
           {/* 유저 편의 메뉴 */}
           <ul className={fixedHeader > 10 ? "fixed-user-menu" : "user-menu"}>
             {/* 배송 확인, 마이페이지, 찜하기 메뉴 */}
-            {[1, 2, 3].map((i) => (
-              <li key={i}>
-                <h2 className="hidden">{userMenuAlt[i]}</h2>
-                <img className="user-menu-icon"
-                  src={process.env.PUBLIC_URL + '/image/header_icon' + i + '.png'}
-                  alt={userMenuAlt[i]}
-                />
-              </li>
-            ))}
+            {
+              [0, 1, 2].map((i) => (
+                <li key={i}>
+                  <h2 className="hidden">{userMenuAlt[i]}</h2>
+                  <img className="user-menu-icon"
+                    src={process.env.PUBLIC_URL + '/image/header_icon' + i + '.png'}
+                    alt={userMenuAlt[i]}
+                  />
+                </li>
+              ))
+            }
 
             {/* 장바구니(담긴 상품 수량 표시 아이콘 때문에 따로 작성 ) */}
             <li>
               <h2 className="hidden">장바구니</h2>
               <img className="user-menu-icon"
-                src={process.env.PUBLIC_URL + '/image/header_icon4.png'} alt="장바구니"
+                src={process.env.PUBLIC_URL + '/image/header_icon3.png'} alt="장바구니"
                 onClick={() => { navigate('/Cart') }}
               />
               {/* 장바구니에 상품이 없으면 아이콘 제거 */}

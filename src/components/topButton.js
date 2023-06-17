@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-
 function ScrollTopButton() {
 
   const [showBtn, setShowBtn] = useState(false);
 
-  /* scroll top값 0 부드럽게 */
+  // scroll top값 0 부드럽게
   const scrollToTop = () => {
     window.scroll({
       top: 0,
@@ -14,7 +13,7 @@ function ScrollTopButton() {
     });
   };
 
-  /* scrollY값이 500일 때 버튼 나타남 */
+  // scrollY값이 500일 때 버튼 등장
   useEffect(() => {
     const handleShowBtn = () => {
       if (window.scrollY > 500) {
@@ -23,7 +22,7 @@ function ScrollTopButton() {
         setShowBtn(false)
       };
     };
-    /* clean-up */
+    // clean-up
     window.addEventListener("scroll", handleShowBtn);
     return () => {
       window.removeEventListener("scroll", handleShowBtn);
@@ -32,7 +31,9 @@ function ScrollTopButton() {
 
   return showBtn && (
     <TopWrap>
+      {/* 탑 버튼 */}
       <TopButton onClick={scrollToTop}>
+        <h2 className="hidden">스크롤 처음으로 이동 버튼</h2>
         TOP
       </TopButton>
     </TopWrap>

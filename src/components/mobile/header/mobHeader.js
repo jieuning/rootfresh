@@ -1,14 +1,14 @@
 import styled from "styled-components";
 //image
-import Logo from "../../assets/logo.png";
+import Logo from "../../../assets/logo.png";
 //data
-import { mHeader, menu } from "../../dummy/contentOption";
+import { mHeader, menu } from "../../../dummy/contentOption";
 //redux
 import { useSelector } from "react-redux";
 
 function MobHeader({ navigate }) {
 
-  /* redux 데이터 */
+  // redux 데이터
   const state = useSelector((state) => state);
   const cartList = state.cart;
 
@@ -73,6 +73,7 @@ const HeaderTop = styled.div`
   border-bottom: 1px solid #e5e5e5;
   z-index: 99;
   cursor: pointer;
+
   .m-user-menu {
     position: absolute;
     right: 0;
@@ -105,6 +106,7 @@ const Menu = styled.ul`
   border-bottom: 1px solid #e5e5e5;
   font-size: 14px;
   z-index: 99;
+  
   li {
     cursor: pointer;
   }

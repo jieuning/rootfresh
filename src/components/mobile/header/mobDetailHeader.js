@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 //data
-import { mHeader } from "../../dummy/contentOption";
+import { mHeader } from "../../../dummy/contentOption";
 //redux
 import { useSelector } from "react-redux";
 //mobile
@@ -10,7 +10,7 @@ import MobHeaderTitle from "./mobHeaderTitle";
 
 function MobDetailHeader({ findItem, category, name }) {
 
-  /* redux 데이터 */
+  // redux 데이터
   const state = useSelector((state) => state);
   const cartList = state.cart;
 

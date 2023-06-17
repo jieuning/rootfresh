@@ -6,7 +6,7 @@ import categorydata from "../../dummy/categorydata.json"
 //responsive
 import { Mobile } from "./responsive";
 //mobile
-import MobDetailHeader from "./mobDetailHeader";
+import MobDetailHeader from "./header/mobDetailHeader";
 
 function MobCategoryNav() {
 

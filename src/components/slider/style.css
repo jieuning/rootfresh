@@ -23,8 +23,6 @@
   border-radius: 30px;
 }
 
-/* 페이지네이션 끝 */
-
 /* 배너 이미지 모바일 */
 @media (max-width: 768px) {
   .banner-image {

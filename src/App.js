@@ -33,7 +33,7 @@ function App() {
   const [items, setItems] = useState(ItemData);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  /* 현재 로그인한 유저 데이터 저장 */
+  // 현재 로그인한 유저 데이터 저장
   useEffect(() => {
     onAuthStateChanged(firebaseAuth, (user) => {
       if (user) {
@@ -74,6 +74,7 @@ function App() {
         <Route path="/search"
           element={<SearchDetail items={items} navigate={navigate} />}
         />
+
         {/* 모바일 */}
         <Route path="/m_category_nav"
           element={<MobCategoryNav />}

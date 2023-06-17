@@ -8,56 +8,61 @@ import { addItem, increase } from "../../store/cartSlice";
 import CommaFormat from "../../components/CommaFormat";
 import CartModal from "../../components/cart/CartModal";
 //mobile
-import MobDetailHeader from "../../components/mobile/mobDetailHeader";
-import DetailBottomNav from "../../components/mobile/bottomNav/detailBottomNav";
+import MobDetailHeader from "../../components/mobile/header/mobDetailHeader";
+import DetailBottomNav from "../../components/mobile/Nav/detailBottomNav";
 //responsive
 import { Pc, Mobile } from "../../components/mobile/responsive";
 
 function DetailPage({ items }) {
 
-  /* url파라미터 가져오기 */
-  const { id } = useParams();
-
-  /* items데이터의 id와 url파라미터가 같은 데이터를 찾아줌*/
-  const findItem = items.find((data) => data.id == id);
-
-  /* redux데이터 */
-  const state = useSelector((state) => state);
-  const cartData = state.cart;
-
-  const dispatch = useDispatch();
-
   const [count, setCount] = useState(1);
   const [modal, setModal] = useState(false);
 
-  /* redux데이터와 findIndex id가 같은 index값을 찾아줌 */
+  // url id값 가져오기
+  const { id } = useParams();
+
+  // items데이터의 id와 url파라미터가 같은 데이터만 찾기
+  const findItem = items.find((data) => data.id == id);
+
+  // redux데이터 
+  const state = useSelector((state) => state);
+  const cartData = state.cart;
+  const dispatch = useDispatch();
+
+  // redux데이터와 findIndex id가 같은 index값 찾기
   const indexFind = cartData.findIndex((i) => { return i.id === findItem.id });
   const findItemId = findItem.id;
 
-  /* redux에 데이터 담기 */
+  // redux에 데이터 담기
   const sameItemFind = () => {
     indexFind < 0 ?
+      // 장바구니에 상품이 존재하지 않으면 담기
       dispatch(addItem({
         id: findItem.id,
         name: findItem.title,
+        alt: findItem.alt,
         price: findItem.price,
         image: findItem.image,
         count: count,
         checked: true,
       }))
-      : dispatch(increase(findItemId)) // 이미 담긴 중복된 상품은 수량만 증가
+      : 
+      // 이미 담긴 중복된 상품은 수량만 증가
+      dispatch(increase(findItemId))
   };
 
-  /* 구매 수량 카운터 */
+  // 수량 증가
   const onIncrease = () => {
     setCount(count + 1)
   };
+
+  // 수량 감소
   const onDecrease = () => {
     count === 1 ? alert('1개 이상부터 구매 가능합니다')
       : setCount(count - 1)
   };
 
-  /* 3초 뒤에 모달 사라짐 */
+  // 3초 뒤에 모달 사라지게
   useEffect(() => {
     setTimeout(() => { setModal(false) }, 3000)
   });
@@ -79,7 +84,7 @@ function DetailPage({ items }) {
         <div className="item-info-wrap">
           <div className="title-wrap">
             {/* 상품 타이틀 */}
-            <h4 className="detail-title">{findItem.title}</h4>
+            <h2 className="detail-title">{findItem.title}</h2>
             {/* 할인률 */}
             <p className="discount-rate">{findItem.discount_rate}</p>
             {/* 가격 */}
@@ -120,6 +125,7 @@ function DetailPage({ items }) {
                     </button>
                     {/* 수량 */}
                     <p>{count}</p>
+
                     {/* 수량 더하기 */}
                     <button onClick={onIncrease}>
                       <h2 className="hidden">수량 더하기 버튼</h2>
@@ -132,7 +138,7 @@ function DetailPage({ items }) {
           </dl>
           
           <Pc>
-            {/* 상품 가격 총 합계 */}
+            {/* 총 상품 금액 */}
             <div className="amount-wrap">
               <div className="amount-price">
                 <span className="amount-title">총 상품 금액: </span>
@@ -150,7 +156,7 @@ function DetailPage({ items }) {
                 장바구니 담기
               </button>
               
-              {/* 장바구니에 상품이 담겼을때 모달 */}
+              {/* 장바구니에 상품이 담겼을때 모달 등장 */}
               {modal === true ? <CartModal /> : null}
             </div>
           </Pc>
@@ -158,7 +164,7 @@ function DetailPage({ items }) {
       </div>
 
       <Mobile>
-        {/* 모바일 하단 고정 네비게이션(구매하기 버튼) */}
+        {/* 모바일 하단 고정 네비게이션 컴포넌트(구매하기 버튼) */}
         <DetailBottomNav
           sameItemFind={sameItemFind}
           items={items}

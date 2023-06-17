@@ -9,19 +9,19 @@ function Tab({ items, navigate }) {
 
   const [currentTab, clickTab] = useState(0);
 
-  /* 해당 아이템 필터 */
+  // 해당 아이템 필터
   const timeItems = items.filter(data => data.detail_menu === "타임특가");
   const limitedItems = items.filter(data => data.detail_menu === "한정특가");
   const onlyItems = items.filter(data => data.detail_menu === "대박특가");
 
-  /* 버튼 클릭시 해당 index로 이동 */
+  // 버튼 클릭시 해당 index로 이동
   const handleTabClick = (index) => {
     clickTab(index);
   };
 
   const tabArr = [
     {
-      /* 타임특가 탭 버튼 */
+      // 타임특가 탭 버튼
       tabButton: (
         <li className={currentTab === 0 ? "tabButton focused" : "tabButton"}
           onClick={() => handleTabClick(0)}>
@@ -52,7 +52,7 @@ function Tab({ items, navigate }) {
       )
     },
     {
-      /* 한정특가 탭 버튼 */
+      // 한정특가 탭 버튼
       tabButton: (
         <li className={currentTab === 1 ? "tabButton focused" : "tabButton"}
           onClick={() => handleTabClick(1)}>
@@ -81,7 +81,7 @@ function Tab({ items, navigate }) {
       )
     },
     {
-      /* 대박특가 탭 버튼 */
+      // 대박특가 탭 버튼
       tabButton: (
         <li className={currentTab === 2 ? "tabButton focused" : "tabButton"}
           onClick={() => handleTabClick(2)}>대박특가

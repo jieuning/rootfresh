@@ -6,7 +6,7 @@ function ScrollToTop() {
 
   const { pathname } = useLocation();
 
-  /* 페이지 이동시 scroll top에 유지 */
+  // 페이지 이동시 scroll top에 유지
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [pathname]);

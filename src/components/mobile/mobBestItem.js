@@ -18,6 +18,7 @@ function mobBestItem({ bestItems, navigate }) {
               <div className="card"
                 onClick={() => navigate(`/detail/${data.id}`)}
               >
+                {/* 카드 컴포넌트 */}
                 <Card data={data}></Card>
 
                 {/* 베스트 상품 순위 */}

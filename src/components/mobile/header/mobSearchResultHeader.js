@@ -4,24 +4,24 @@ import { useState } from "react";
 //redux
 import { useSelector } from "react-redux";
 //data
-import { mHeader } from "../../dummy/contentOption";
+import { mHeader } from "../../../dummy/contentOption";
 
 function MobSearchResultHeader() {
 
   const navigate = useNavigate();
 
-  /* redux 데이터 */
+  // redux 데이터
   const state = useSelector((state) => state);
   const cartList = state.cart;
 
   const [keyword, setKeyword] = useState("");
 
-  /* onChange 핸들러 */
+  // onChange 핸들러
   const KeyWordChangeHandler = (e) => {
     setKeyword(e.target.value);
   }
 
-  /* 기본 동작 방지 navigate 작동 */
+  // 기본 동작 방지 navigate 작동
   const onSubmitHandler = (e) => {
     e.preventDefault();
     navigate(`/search?keyword=${keyword}`);

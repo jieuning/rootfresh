@@ -45,10 +45,12 @@ function NewItem({ items, navigate }) {
           </SwiperSlide>
         ))}
       </Swiper>
+
       {/* 이전 버튼 */}
       <button className="swiper-button-prev">
         <h2 className="hidden">이전 상품 버튼</h2>
       </button>
+
       {/* 다음 버튼 */}
       <button className="swiper-button-next">
         <h2 className="hidden">다음 상품 버튼</h2>
@@ -95,6 +97,19 @@ const NewItemContainer = styled.div`
     {
       display: none
     }
+
+  @media(max-width: 1260px) {
+    .swiper-button-prev {
+      width: 35px;
+      height: 35px;
+      left: -10px;
+    }
+    .swiper-button-next {
+      width: 35px;
+      height: 35px;
+      right: -10px;
+    }
+  }
     
   @media(max-width: 1229px) {
     .swiper-button-prev {

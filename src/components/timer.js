@@ -1,29 +1,29 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
-/* 1의 자릿수일 때 0을 추가로 붙여줌 */
+/* 1의 자릿수일 때 0 추가 */
 const padNumber = (num) => {
   return String(num).padStart(2, '0');
 };
 
 const Timer = ({ hh, mm, ss }) => {
 
-  /* 문자를 숫자로 바꿔줌 */
+  // 문자를 숫자로 변경
   const HH = hh ? parseInt(hh) : 0;
   const MM = mm ? parseInt(mm) : 0;
   const SS = ss ? parseInt(ss) : 0;
 
-  /* 분에 60을 곱한 후의 결과를 초와 더함 */
+  // 분에 60을 곱한 후의 결과를 초와 더한 값
   const initialTime = useRef(HH * 60 * 60 + MM * 60 + SS);
 
-  /* 값을 변경해도 렌더링 되지 않는다 */
+  // 값을 변경해도 렌더링 X
   const interval = useRef(null);
 
   const [hour, setHour] = useState(padNumber(HH));
   const [min, setMin] = useState(padNumber(MM));
   const [sec, setSec] = useState(padNumber(SS));
 
-  /* 최초 렌더링할 때 계산하여 카운트 */
+  // 최초 렌더링할 때 계산하여 카운트
   useEffect(() => {
     interval.current = setInterval(() => {
       initialTime.current -= 1;
@@ -34,19 +34,19 @@ const Timer = ({ hh, mm, ss }) => {
     }, 1000);
   }, []);
 
-  /* initialTime가 남아있는지 체크, 0이되면 종료 */
+  // initialTime가 남아있는지 체크, 0이되면 종료
   useEffect(() => {
     if (initialTime.current <= 0) {
       clearInterval(interval.current);
     };
   }, [sec]);
 
-
   return (
     <TimerWrap>
-        <img src={process.env.PUBLIC_URL + '/image/clock_icon.png'}
-          alt="타이머 이미지" />
-        {hour} : {min} : {sec}
+      <img className="timer-icon" src={process.env.PUBLIC_URL + '/image/clock_icon.png'}
+        alt="타이머 아이콘"
+      />
+      {hour} : {min} : {sec}
     </TimerWrap>
   )
 };
@@ -61,14 +61,17 @@ const TimerWrap = styled.div`
   font-size: 28px;
   font-weight: 800;
   white-space: nowrap;
-  img {
+
+  .timer-icon {
     width: 30px;
     margin-right: 10px;
   }
+
   @media(max-width: 1229px) {
     font-size: 20px;
     justify-content: flex-start;
-    img {
+
+    .timer-icon {
       width: 22px;
     }
   }
